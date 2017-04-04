@@ -1,4 +1,4 @@
-package com.backend.controller;
+package com.backend.admin.controller;
 
 /**
  * Created by kevin on 2017/3/29.
@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ViewController {
     @RequestMapping("/")
     public String view(){
-        return "admin/login";
+        return "login";
     }
 
     @RequestMapping("/UserControl")
     public String userControl(){
-        return "admin/user";
+        return "user";
     }
 
     @RequestMapping("ItemsControl")
     public String itemsControl(){
-        return "admin/items";
+        return "items";
     }
 
 }

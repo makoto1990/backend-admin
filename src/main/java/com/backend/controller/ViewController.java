@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ViewController {
     @RequestMapping("/")
     public String view(){
-        return "login";
+        return "admin/login";
     }
 
     @RequestMapping("/UserControl")
     public String userControl(){
-        return  "user";
+        return "admin/user";
     }
 
     @RequestMapping("ItemsControl")
     public String itemsControl(){
-        return "items";
+        return "admin/items";
     }
 
 }

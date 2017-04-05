@@ -17,7 +17,7 @@ public class ViewController {
         return "user";
     }
 
-    @RequestMapping("ItemsControl")
+    @RequestMapping("／ItemsControl")
     public String itemsControl(){
         return "items";
     }

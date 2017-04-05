@@ -1,4 +1,4 @@
-package com.backend.controller;
+package com.backend.admin.controller;
 
 /**
  * Created by kevin on 2017/3/29.
@@ -14,7 +14,7 @@ public class ViewController {
 
     @RequestMapping("/UserControl")
     public String userControl(){
-        return  "user";
+        return "user";
     }
 
     @RequestMapping("ItemsControl")

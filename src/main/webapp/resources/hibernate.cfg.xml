@@ -4,9 +4,15 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url"/>
-    <property name="connection.driver_class"/>
-    <!-- <property name="connection.username"/> -->
+    <property name="connection.url">jdbc:sqlserver://123.206.116.122\MSSQLSERVER:1433;databaseName=onlineMarket
+    </property>
+    <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+      <mapping class="com.backend.admin.dao.CompositionEntity"/>
+      <mapping class="com.backend.admin.dao.GoodsEntity"/>
+      <mapping class="com.backend.admin.dao.OrderEntity"/>
+      <mapping class="com.backend.admin.dao.SellerEntity"/>
+      <mapping class="com.backend.admin.dao.UserEntity"/>
+      <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->

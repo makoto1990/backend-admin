@@ -19,7 +19,7 @@
 
 
     <!-- 视图渲染 jsp/freemaker/velocity-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 制定页面存放的路径 -->
         <property name="prefix" value="/WEB-INF/page/sellerEnd/"></property>
         <!-- 文件的后缀 -->

@@ -1,4 +1,4 @@
-package com.backend.admin.dao;
+package com.backend.dao;
 
 import javax.persistence.*;
 

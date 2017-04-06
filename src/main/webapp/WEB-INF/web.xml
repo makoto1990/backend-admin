@@ -5,67 +5,19 @@
          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
 
   <display-name>Demo</display-name>
-
-  <!-- Spring MVC 核心配置开始 -->
   <servlet>
-    <servlet-name>login</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <!-- 可以通过contextConfigLocation来自定义SpringMVC配置文件的位置，如不指定，则默认在WEB-INF目录下，名称为[<servlet-name>]-servlet.xml，
-         此时文件名必须为[<servlet-name>]-servlet.xml，否则会出错-->
-    <!--以下init-param是自定义SpringMVC的配置文件的位置 -->
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>WEB-INF/login-servlet.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet>
-    <servlet-name>admin</servlet-name>
+    <servlet-name>backendServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>WEB-INF/admin-servlet.xml</param-value>
+      <param-value>/WEB-INF/backend-servlet.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
-  <servlet>
-    <servlet-name>buyerEnd</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>WEB-INF/buyerEnd-servlet.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet>
-    <servlet-name>saleEnd</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>WEB-INF/saleEnd-servlet.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <!-- 拦截设置 -->
   <servlet-mapping>
-    <servlet-name>login</servlet-name>
+    <servlet-name>backendServlet</servlet-name>
     <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
     <url-pattern>/</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>buyerEnd</servlet-name>
-    <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
-    <url-pattern>/buyer</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>saleEnd</servlet-name>
-    <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
-    <url-pattern>/seller</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>admin</servlet-name>
-    <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
-    <url-pattern>/admin</url-pattern>
   </servlet-mapping>
   <!-- Spring MVC 核心配置结束 -->
 

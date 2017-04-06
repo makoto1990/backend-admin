@@ -7,11 +7,11 @@
     <property name="connection.url">jdbc:sqlserver://123.206.116.122\MSSQLSERVER:1433;databaseName=onlineMarket
     </property>
     <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-      <mapping class="com.backend.dao.CompositionEntity"/>
-      <mapping class="com.backend.dao.GoodsEntity"/>
-      <mapping class="com.backend.dao.OrderEntity"/>
-      <mapping class="com.backend.dao.SellerEntity"/>
-      <mapping class="com.backend.dao.UserEntity"/>
+      <mapping class="com.backend.adminEnd.dao.CompositionEntity"/>
+      <mapping class="com.backend.adminEnd.dao.GoodsEntity"/>
+      <mapping class="com.backend.adminEnd.dao.OrderEntity"/>
+      <mapping class="com.backend.adminEnd.dao.SellerEntity"/>
+      <mapping class="com.backend.adminEnd.dao.UserEntity"/>
       <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 

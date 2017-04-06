@@ -13,13 +13,16 @@
     <!-- 开启注解模式驱动 -->
     <mvc:annotation-driven></mvc:annotation-driven>
     <!-- 扫包 -->
-    <context:component-scan base-package="com.backend.adminEnd.*"></context:component-scan>
+    <context:component-scan base-package="com.backend.adminEnd.*">
+        <context:exclude-filter type = "annotation"
+          expression = "org.springframework.stereotype.Service" />
+    </context:component-scan>
     <!-- 静态资源过滤 -->
     <mvc:resources location="/resources/" mapping="/resources/**"/>
 
 
     <!-- 视图渲染 jsp/freemaker/velocity-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 制定页面存放的路径 -->
         <property name="prefix" value="/WEB-INF/page/admin/"></property>
         <!-- 文件的后缀 -->

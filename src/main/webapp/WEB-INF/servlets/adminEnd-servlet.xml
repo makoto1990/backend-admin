@@ -13,7 +13,10 @@
     <!-- 开启注解模式驱动 -->
     <mvc:annotation-driven></mvc:annotation-driven>
     <!-- 扫包 -->
-    <context:component-scan base-package="com.backend.adminEnd.*"></context:component-scan>
+    <context:component-scan base-package="com.backend.adminEnd.*">
+        <context:exclude-filter type = "annotation"
+          expression = "org.springframework.stereotype.Service" />
+    </context:component-scan>
     <!-- 静态资源过滤 -->
     <mvc:resources location="/resources/" mapping="/resources/**"/>
 

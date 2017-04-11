@@ -5,7 +5,7 @@ import com.backend.adminEnd.model.SellerEntity;
 /**
  * Created by kevin on 2017/4/11.
  */
-public interface SellerDaoImpl {
+public interface SellerDao {
     public void addSeller(SellerEntity seller);
     public void updateSeller(SellerEntity seller);
     public List<SellerEntity> listSeller();

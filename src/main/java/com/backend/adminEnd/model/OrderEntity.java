@@ -1,4 +1,4 @@
-package com.backend.adminEnd.dao;
+package com.backend.adminEnd.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

@@ -15,5 +15,4 @@ public interface CompositionDaoImpl {
     public List<CompositionEntity> getCompositionByGoodsId(String goodsId);
     public List<CompositionEntity> getCompositionByOrderId(String orderId);
     public void removeComposition(String orderGoodsId);
-
 }

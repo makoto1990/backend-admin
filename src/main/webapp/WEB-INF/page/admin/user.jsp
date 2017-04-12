@@ -31,13 +31,13 @@
         <c:if test="${!empty user.userName}">
             <tr>
                 <td>
-                    <form:label path="userID">
+                    <form:label path="userId">
                         <spring:message text="ID"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="userID" readonly="true" size="8"  disabled="true" />
-                    <form:hidden path="userID" />
+                    <form:input path="userId" readonly="true" size="8"  disabled="true" />
+                    <form:hidden path="userId" />
                 </td>
             </tr>
         </c:if>
@@ -73,28 +73,28 @@
         </tr>
         <tr>
         <td>
-            <form:label path="IDnumber">
-                <spring:message text="IDNumber"/>
+            <form:label path="iDnumber">
+                <spring:message text="iDNumber"/>
             </form:label>
         </td>
         <td>
-            <form:input path="IDnumber" />
+            <form:input path="iDnumber" />
         </td>
         </tr>
         <tr>
             <td>
-                <form:label path="Phone">
+                <form:label path="phone">
                     <spring:message text="phone"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="Phone" />
+                <form:input path="phone" />
             </td>
         </tr>
         <tr>
         <td>
             <form:label path="userStatus">
-                <spring:message text="UserStatus"/>
+                <spring:message text="userStatus"/>
             </form:label>
         </td>
         <td>
@@ -103,81 +103,81 @@
         </tr>
         <tr>
         <td>
-            <form:label path="Postcode">
+            <form:label path="postcode">
                 <spring:message text="postcode"/>
             </form:label>
         </td>
         <td>
-            <form:input path="Postcode" />
+            <form:input path="postcode" />
         </td>
         </tr>
         <tr>
         <td>
-            <form:label path="Province">
+            <form:label path="province">
                 <spring:message text="province"/>
             </form:label>
         </td>
         <td>
-            <form:input path="Province" />
+            <form:input path="province" />
         </td>
         </tr>
         <tr>
         <td>
-            <form:label path="City">
+            <form:label path="city">
                 <spring:message text="city"/>
             </form:label>
         </td>
         <td>
-            <form:input path="City" />
+            <form:input path="city" />
         </td>
         </tr>
         <tr>
         <td>
-            <form:label path="District">
+            <form:label path="district">
                 <spring:message text="district"/>
             </form:label>
         </td>
         <td>
-            <form:input path="District" />
+            <form:input path="district" />
         </td>
         </tr>
         <tr>
         <td>
-            <form:label path="Street">
+            <form:label path="street">
                 <spring:message text="street"/>
             </form:label>
         </td>
         <td>
-            <form:input path="Street" />
+            <form:input path="street" />
         </td>
         </tr>
         <tr>
             <td>
-                <form:label path="Address">
+                <form:label path="address">
                     <spring:message text="address"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="Address" />
+                <form:input path="address" />
             </td>
         </tr>
         <tr>
             <td>
                 <form:label path="isManager">
-                    <spring:message text="IsManager"/>
+                    <spring:message text="isManager"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="isManager" />
+                <form:checkbox path="isManager" />
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                <c:if test="${!empty User.userName}">
+                <c:if test="${!empty user.userName}">
                     <input type="submit"
                            value="<spring:message text="Edit User"/>" />
                 </c:if>
-                <c:if test="${empty User.userName}">
+                <c:if test="${empty user.userName}">
                     <input type="submit"
                            value="<spring:message text="Add User"/>" />
                 </c:if>
@@ -212,24 +212,24 @@
         </tr>
         <c:forEach items="${listUsers}" var="user">
             <tr>
-                <td>${user.userID}</td>
+                <td>${user.userId}</td>
                 <td>${user.userName}</td>
                 <td>${user.registerDate}</td>
                 <td>${user.password}</td>
                 <td>${user.realName}</td>
-                <td>${user.IDnumber}</td>
-                <td>${user.Phone}</td>
+                <td>${user.iDnumber}</td>
+                <td>${user.phone}</td>
                 <td>${user.userStatus}</td>
-                <td>${user.Postcode}</td>
-                <td>${user.Province}</td>
-                <td>${user.City}</td>
-                <td>${user.District}</td>
-                <td>${user.Street}</td>
-                <td>${user.Address}</td>
+                <td>${user.postcode}</td>
+                <td>${user.province}</td>
+                <td>${user.city}</td>
+                <td>${user.district}</td>
+                <td>${user.street}</td>
+                <td>${user.address}</td>
                 <td>${user.isManager}</td>
 
-                <td><a href="<c:url value='/edit/${user.userID}' />" >Edit</a></td>
-                <td><a href="<c:url value='/remove/${user.userID}' />" >Delete</a></td>
+                <td><a href="<c:url value='/edit/${user.userId}' />" >Edit</a></td>
+                <td><a href="<c:url value='/remove/${user.userId}' />" >Delete</a></td>
             </tr>
         </c:forEach>
     </table>

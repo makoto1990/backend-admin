@@ -28,6 +28,7 @@
         <!-- 文件的后缀 -->
         <property name="suffix" value=".jsp"></property>
     </bean>
-
-
+    <bean id="personService" class="com.backend.adminEnd.service.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
 </beans>

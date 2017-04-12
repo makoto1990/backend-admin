@@ -3,18 +3,50 @@ package com.backend.adminEnd.controller;
 /**
  * Created by kevin on 2017/3/29.
  */
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.backend.adminEnd.model.*;
+import com.backend.adminEnd.service.*;
+
 @Controller
 public class ViewController {
+
+    private UserService userService;
+
+    @Autowired(required=true)
+    @Qualifier(value = "userService")
+    public void setUserService(UserService us){
+        this.userService = us;
+    }
+
     @RequestMapping("/")
     public String adminIndex(){
         return "index";
     }
 
-    @RequestMapping("/UserControl")
-    public String adminUserControl(){
+    @RequestMapping(value="/UserControl",method = RequestMethod.GET)
+    public String adminUserControl(Model model){
+        model.addAttribute("user",new UserEntity());
+        model.addAttribute("listUsers",this.userService.listUser());
         return "user";
+    }
+
+    @RequestMapping(value="/UserControl/Add",method= RequestMethod.POST)
+    public String addUser(@ModelAttribute("user") UserEntity user){
+        if(Integer.parseInt(user.getUserId())==0){
+            this.userService.addUser(user);
+        }else{
+            this.userService.updateUser(user);
+        }
+        return "redirect:/UserControl";
     }
 
     @RequestMapping("/GoodsControl")

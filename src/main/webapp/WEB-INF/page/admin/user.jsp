@@ -24,7 +24,7 @@
     Add a Person
 </h1>
 
-<c:url var="addAction" value="/user/add" ></c:url>
+<c:url var="addAction" value="/admin/UserControl/Add" ></c:url>
 
 <form:form action="${addAction}" commandName="user">
     <table>

@@ -8,7 +8,7 @@
   <properties>
     <org.aspectj-version>1.7.4</org.aspectj-version>
     <org.slf4j-version>1.7.5</org.slf4j-version>
-    <hibernate.version>4.3.5.Final</hibernate.version>
+    <hibernate.version>5.2.9.Final</hibernate.version>
   </properties>
   <name>backend-admin Maven Webapp</name>
   <url>http://maven.apache.org</url>
@@ -115,6 +115,16 @@
       <scope>runtime</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>${hibernate.version}</version>
+    </dependency>
+    <dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-entitymanager</artifactId>
+    <version>${hibernate.version}</version>
+    </dependency>
     <dependency>
       <groupId>jstl</groupId>
       <artifactId>jstl</artifactId>

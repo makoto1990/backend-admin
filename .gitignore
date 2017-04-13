@@ -1,3 +1,5 @@
 /target/
-/.idea/
+/.idea/*
 *.iml
+!/.idea/misc.xml
+!/.idea/workspace.xml

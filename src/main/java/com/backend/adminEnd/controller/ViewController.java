@@ -38,7 +38,6 @@ public class ViewController {
         model.addAttribute("listUsers",this.userService.listUser());
         return "user";
     }
-
     @RequestMapping(value="/UserControl/Add",method= RequestMethod.POST)
     public String addUser(@ModelAttribute("user") UserEntity user){
         if(Integer.parseInt(user.getUserId())==0){

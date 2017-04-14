@@ -69,4 +69,6 @@
     <bean id="userService" class="com.backend.adminEnd.service.UserServiceImpl">
         <property name="userDao" ref="userDao"></property>
     </bean>
+
+
 </beans>

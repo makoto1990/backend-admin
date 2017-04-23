@@ -24,7 +24,7 @@
     Add a Person
 </h1>
 
-<c:url var="addAction" value="/admin/UserControl/AddUser" ></c:url>
+<c:url var="addAction" value="/admin/UserControl/Add" ></c:url>
 
 <form:form action="${addAction}" commandName="user">
     <table>
@@ -72,14 +72,14 @@
             </td>
         </tr>
         <tr>
-        <td>
-            <form:label path="iDnumber">
-                <spring:message text="iDNumber"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="iDnumber" />
-        </td>
+            <td>
+                <form:label path="iDnumber">
+                    <spring:message text="iDNumber"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="iDnumber" />
+            </td>
         </tr>
         <tr>
             <td>
@@ -92,64 +92,64 @@
             </td>
         </tr>
         <tr>
-        <td>
-            <form:label path="userStatus">
-                <spring:message text="userStatus"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="userStatus" />
-        </td>
+            <td>
+                <form:label path="userStatus">
+                    <spring:message text="userStatus"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="userStatus" />
+            </td>
         </tr>
         <tr>
-        <td>
-            <form:label path="postcode">
-                <spring:message text="postcode"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="postcode" />
-        </td>
+            <td>
+                <form:label path="postcode">
+                    <spring:message text="postcode"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="postcode" />
+            </td>
         </tr>
         <tr>
-        <td>
-            <form:label path="province">
-                <spring:message text="province"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="province" />
-        </td>
+            <td>
+                <form:label path="province">
+                    <spring:message text="province"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="province" />
+            </td>
         </tr>
         <tr>
-        <td>
-            <form:label path="city">
-                <spring:message text="city"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="city" />
-        </td>
+            <td>
+                <form:label path="city">
+                    <spring:message text="city"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="city" />
+            </td>
         </tr>
         <tr>
-        <td>
-            <form:label path="district">
-                <spring:message text="district"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="district" />
-        </td>
+            <td>
+                <form:label path="district">
+                    <spring:message text="district"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="district" />
+            </td>
         </tr>
         <tr>
-        <td>
-            <form:label path="street">
-                <spring:message text="street"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="street" />
-        </td>
+            <td>
+                <form:label path="street">
+                    <spring:message text="street"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="street" />
+            </td>
         </tr>
         <tr>
             <td>
@@ -168,7 +168,7 @@
                 </form:label>
             </td>
             <td>
-                <form:checkbox path="manager" />
+                <form:checkbox path="isManager" />
             </td>
         </tr>
         <tr>
@@ -226,10 +226,10 @@
                 <td>${user.district}</td>
                 <td>${user.street}</td>
                 <td>${user.address}</td>
-                <td>${user.manager}</td>
+                <td>${user.isManager}</td>
 
-                <td><a href="<c:url value='/admin/EditUser/${user.userId}' />" >Edit</a></td>
-                <td><a href="<c:url value='/admin/RemoveUser/${user.userId}' />" >Delete</a></td>
+                <td><a href="<c:url value='/edit/${user.userId}' />" >Edit</a></td>
+                <td><a href="<c:url value='/remove/${user.userId}' />" >Delete</a></td>
             </tr>
         </c:forEach>
     </table>

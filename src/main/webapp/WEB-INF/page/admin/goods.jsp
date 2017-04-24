@@ -25,20 +25,20 @@
 </h1>
 <tr><td><a href="<c:url value='/' />" >back</a></td></tr>
 
-<c:url var="addAction" value="/goods/add" ></c:url>
+<c:url var="addAction" value="/admin/GoodsControl/AddGoods" ></c:url>
 
 <form:form action="${addAction}" commandName="goods">
     <table>
         <c:if test="${!empty goods.goodsName}">
             <tr>
                 <td>
-                    <form:label path="goodsID">
+                    <form:label path="goodsId">
                         <spring:message text="Goods ID"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="goodsID" readonly="true" size="8"  disabled="true" />
-                    <form:hidden path="goodsID" />
+                    <form:input path="goodsId" readonly="true" size="8"  disabled="true" />
+                    <form:hidden path="goodsId" />
                 </td>
             </tr>
         </c:if>
@@ -109,7 +109,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="sellerID" />
+                <form:input path="sellerId" />
             </td>
         </tr>
         <tr>
@@ -152,16 +152,16 @@
                 <form:input path="largePrice" />
             </td>
         </tr>
-       <%-- <tr>
+       <tr>
             <td>
                 <form:label path="Picture">
                     <spring:message text="picture"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="Picture" />
+                <form:input path="picture" />
             </td>
-        </tr>--%>
+        </tr>
         <tr>
             <td colspan="2">
                 <c:if test="${!empty goods.goodsName}">
@@ -180,7 +180,7 @@
 </form:form>
 <br>
 <h3>User List</h3>
-<c:if test="${!empty listGoodses}">
+<c:if test="${!empty listGoods}">
     <table class="tg">
         <tr>
             <th width="80">Goods ID</th>
@@ -194,30 +194,30 @@
             <th width="120">Least Amount</th>
             <th width="120">Large Amount</th>
             <th width="120">Goods Large Price</th>
-            <th width="120">Goods Pricture</th>
+            <th width="120">Goods Picture</th>
 
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
-        <c:forEach items="${listGoodses}" var="goods">
+        <c:forEach items="${listGoods}" var="goods">
             <tr>
-                <td>${goods.goodsID}</td>
+                <td>${goods.goodsId}</td>
                 <td>${goods.goodsName}</td>
                 <td>${goods.goodsCount}</td>
                 <td>${goods.goodsPrice}</td>
                 <td>${goods.storeWay}</td>
                 <td>${goods.sourceArea}</td>
                 <td>${goods.setDate}</td>
-                <td>${goods.sellerID}</td>
+                <td>${goods.sellerId}</td>
                 <td>${goods.goodsType}</td>
                 <td>${goods.leastAmount}</td>
                 <td>${goods.largeAmount}</td>
                 <td>${goods.largePrice}</td>
-                <td><img src=${goods.Picture}/></td>
+                <td><img src=${goods.picture}/></td>
 
 
-                <td><a href="<c:url value='/edit/${goods.goodsID}' />" >Edit</a></td>
-                <td><a href="<c:url value='/remove/${goods.goodsID}' />" >Delete</a></td>
+                <td><a href="<c:url value='/admin/EditGoods/${goods.goodsId}' />" >Edit</a></td>
+                <td><a href="<c:url value='/admin/RemoveGoods/${goods.goodsId}' />" >Delete</a></td>
             </tr>
         </c:forEach>
     </table>

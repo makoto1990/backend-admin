@@ -31,6 +31,30 @@ public class ViewController {
         this.userService = us;
     }
 
+    @Autowired(required=true)
+    @Qualifier(value = "compositionService")
+    public void setCompositionService(CompositionService cs){
+        this.compositionService = cs;
+    }
+
+    @Autowired(required=true)
+    @Qualifier(value = "goodsService")
+    public void setGoodsService(GoodsService gs){
+        this.goodsService = gs;
+    }
+
+    @Autowired(required=true)
+    @Qualifier(value = "orderService")
+    public void setOrderService(OrderService os){
+        this.orderService = os;
+    }
+
+    @Autowired(required=true)
+    @Qualifier(value = "sellerService")
+    public void setSellerService(SellerService ss){
+        this.sellerService = ss;
+    }
+
     @RequestMapping("/")
     public String adminIndex(){
         return "index";
@@ -42,6 +66,7 @@ public class ViewController {
         model.addAttribute("listUsers",this.userService.listUser());
         return "user";
     }
+
     @RequestMapping(value="/UserControl/AddUser",method= RequestMethod.POST)
     public String addUser(@ModelAttribute("user") UserEntity user){
         if(Integer.parseInt(user.getUserId())==0){
@@ -58,31 +83,107 @@ public class ViewController {
         return "redirect:/UserControl";
     }
 
-    @RequestMapping("UserControl/EditUser/{id}")
+    @RequestMapping("/UserControl/EditUser/{id}")
     public String editUser(@PathVariable("id")String id,Model model){
         model.addAttribute("user",this.userService.getUserById(id));
         model.addAttribute("listUsers",this.userService.listUser());
         return "redirect:/UserControl";
     }
 
-    @RequestMapping("/GoodsControl")
-    public String adminGoodsControl(){
+    @RequestMapping(value="/GoodsControl",method = RequestMethod.GET)
+    public String adminGoodsControl(Model model){
+        model.addAttribute("goods",new GoodsEntity());
+        model.addAttribute("listGoods",this.goodsService.listGoods());
         return "goods";
     }
 
-    @RequestMapping("/OrderControl")
-    public String adminOrderControl(){
+    @RequestMapping("/GoodsControl/RemoveGoods/{id}")
+    public String removeGoods(@PathVariable("id")String id){
+        this.goodsService.removeGoods(id);
+        return "redirect:/GoodsControl";
+    }
+
+    @RequestMapping("/GoodsControl/FindGoods/{id}")
+    public String findGoods(@PathVariable("id")String id,Model model){
+        model.addAttribute("goods",this.goodsService.getGoodsByGoodsId(id));
+        model.addAttribute("listGoods",this.goodsService.listGoods());
+        return "redirect:/GoodsControl";
+    }
+
+    @RequestMapping(value="/OrderControl",method = RequestMethod.GET)
+    public String adminOrderControl(Model model){
+        model.addAttribute("order",new OrderEntity());
+        model.addAttribute("listOrder",this.orderService.listOrder());
         return "order";
     }
 
-    @RequestMapping("/SellerControl")
-    public String adminSellerControl(){
+    @RequestMapping("/OrderControl/RemoveOrder/{id}")
+    public String removeOrder(@PathVariable("id")String id){
+        this.orderService.removeOrder(id);
+        return "redirect:/OrderControl";
+    }
+
+    @RequestMapping("/OrderControl/FindOrder/{id}")
+    public String findOrder(@PathVariable("id")String id,Model model){
+        model.addAttribute("order",this.orderService.getOrderById(id));
+        model.addAttribute("listOrder",this.orderService.listOrder());
+        return "redirect:/OrderControl";
+    }
+
+    @RequestMapping(value="/SellerControl",method = RequestMethod.GET)
+    public String adminSellerControl(Model model){
+        model.addAttribute("seller",new SellerEntity());
+        model.addAttribute("listSellers",this.sellerService.listSeller());
         return "seller";
     }
 
-    @RequestMapping("/Composition")
-    public String adminCompositionControl(){
+    @RequestMapping(value="/SellerControl/AddSeller",method= RequestMethod.POST)
+    public String addSeller(@ModelAttribute("seller") SellerEntity seller){
+        if(Integer.parseInt(seller.getSellerId())==0){
+            this.sellerService.addSeller(seller);
+        }else{
+            this.sellerService.updateSeller(seller);
+        }
+        return "redirect:/SellerControl";
+    }
+
+    @RequestMapping("/SellerControl/RemoveSeller/{id}")
+    public String removeSeller(@PathVariable("id")String id){
+        this.sellerService.removeSeller(id);
+        return "redirect:/SellerControl";
+    }
+
+    @RequestMapping("/SellerControl/EditSeller/{id}")
+    public String editSeller(@PathVariable("id")String id,Model model){
+        model.addAttribute("seller",this.sellerService.getSellerById(id));
+        model.addAttribute("listSellers",this.sellerService.listSeller());
+        return "redirect:/SellerControl";
+    }
+
+    @RequestMapping(value="/CompositionControl",method = RequestMethod.GET)
+    public String adminCompositionControl(Model model){
+        model.addAttribute("composition",new CompositionEntity());
+        model.addAttribute("listComposition",this.compositionService.listComposition());
         return "composition";
     }
 
+    @RequestMapping("/CompositionControl/RemoveComposition/{id}")
+    public String removeComposition(@PathVariable("id")String id){
+        this.compositionService.removeComposition(id);
+        return "redirect:/CompositionControl";
+    }
+
+    @RequestMapping("/CompositionControl/FindSingleComposition/{id}")
+    public String findComposition(@PathVariable("id")String id,Model model){
+        model.addAttribute("composition",this.compositionService.getCompositionByOrderGoodsId(id));
+        model.addAttribute("listComposition",this.compositionService.listComposition());
+        return "redirect:/CompositionControl";
+    }
+
+    @RequestMapping("/CompositionControl/FindCompositionBySellerID/{id}")
+    public String findCompositionBySellerID(@PathVariable("id")String id,Model model){
+        model.addAttribute("composition",new CompositionEntity());
+        model.addAttribute("listComposition",this.compositionService.getCompositionBySellerId(id));
+        return "redirect:/CompositionControl";
+    }
 }

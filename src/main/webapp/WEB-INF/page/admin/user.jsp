@@ -24,7 +24,7 @@
     Add a Person
 </h1>
 
-<c:url var="addAction" value="/admin/UserControl/Add" ></c:url>
+<c:url var="addAction" value="/admin/UserControl/AddUser" ></c:url>
 
 <form:form action="${addAction}" commandName="user">
     <table>
@@ -163,12 +163,12 @@
         </tr>
         <tr>
             <td>
-                <form:label path="isManager">
-                    <spring:message text="isManager"/>
+                <form:label path="manager">
+                    <spring:message text="manager"/>
                 </form:label>
             </td>
             <td>
-                <form:checkbox path="isManager" />
+                <form:checkbox path="manager" />
             </td>
         </tr>
         <tr>
@@ -226,7 +226,7 @@
                 <td>${user.district}</td>
                 <td>${user.street}</td>
                 <td>${user.address}</td>
-                <td>${user.isManager}</td>
+                <td>${user.manager}</td>
 
                 <td><a href="<c:url value='/edit/${user.userId}' />" >Edit</a></td>
                 <td><a href="<c:url value='/remove/${user.userId}' />" >Delete</a></td>

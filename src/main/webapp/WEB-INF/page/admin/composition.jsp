@@ -18,20 +18,60 @@
         .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
         .tg .tg-4eph{background-color:#f9f9f9}
     </style>
+    <script src=/resources/angular/angular.min.js></script>
 </head>
 <body>
 <h1>
     Add a Composition
 </h1>
 <tr><td><a href="<c:url value='/' />" >back</a></td></tr>
+<div ng-app="myApp" ng-controller="myCtrl" ng-init="compositionID=''" ng-init="sellerID=''">
 
-<div ng-app="myApp" ng-controller="myCtrl">
     <c:url var="addAction" value="/composition/add" ></c:url>
     <button ng-click="toggle()">隐藏/显示</button>
 
     <form:form action="${addAction}" commandName="composition">
         <table ng-show="myVar">
+            <tr>
+                <td>
+                    <input type="text" ng-model="sellerID">
+                        <%--
+                    <form:label path="sellerId">
+                        <spring:message text="Seller Id"/>
+                    </form:label>
+                </td>
+                <td>
+                    <form:input path="sellerId" readonly="true" size="8"  />
+                    <%--<form:hidden path="sellerId"  /> --%>
+                </td><%--
+                <td><a href="<c:url value='/CompositionControl/FindSingleComposition/'+'sellerID' />" >FindSingle</a></td>
+                --%>
+                <td><a href="/admin/CompositionControl/FindCompositionBySellerID/{{sellerID}}"></a></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" ng-model="compositionID">
+                </td>
+                <td><a href="/admin/CompositionControl/FindCompositionBySellerID/{{compositionID}}"></a></td>
+            </tr>
             <c:if test="${!empty composition.goodsAmount}">
+                <tr>
+                    <th width="80">Composition ID</th>
+                    <th width="120">Goods Amount</th>
+                    <th width="120">Seller ID</th>
+                    <th width="120">Goods ID</th>
+
+                    <th width="60">Edit</th>
+                    <th width="60">Delete</th>
+                </tr>
+                <tr>
+                    <td>${composition.orderGoodsId}</td>
+                    <td>${composition.goodsAmount}</td>
+                    <td>${composition.sellerId}</td>
+                    <td>${composition.goodsID}</td>
+
+                </tr>
+                <%--
                 <tr>
                     <td>
                         <form:label path="order_goodsID">
@@ -39,11 +79,14 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:input path="order_goodsID" readonly="true" size="8"  disabled="true" />
-                        <form:hidden path="order_goodsID"  />
+                        <form:input path="orderGoodsId" readonly="true" size="8"  disabled="true" />
+                        <form:hidden path="orderGoodsId"  />
                     </td>
                 </tr>
+                --%>
+
             </c:if>
+           <%--
             <tr>
                 <td>
                     <form:label path="goodsAmount">
@@ -61,7 +104,7 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="sellerID" />
+                    <form:input path="sellerId" />
                 </td>
             </tr>
             <tr>
@@ -71,7 +114,7 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="goodsID" />
+                    <form:input path="goodsId" />
                 </td>
             </tr>
             <tr>
@@ -86,6 +129,8 @@
                     </c:if>
                 </td>
             </tr>
+
+            --%>
         </table>
 
     </form:form>
@@ -102,6 +147,7 @@
     });
 
 </script>
+
 <br>
 <h3>Composition List</h3>
 <c:if test="${!empty listcompositions}">
@@ -112,18 +158,18 @@
             <th width="120">Seller ID</th>
             <th width="120">Goods ID</th>
 
-            <th width="60">Edit</th>
+
             <th width="60">Delete</th>
         </tr>
         <c:forEach items="${listcompositions}" var="composition">
             <tr>
-                <td>${composition.order_goodsID}</td>
+                <td>${composition.orderGoodsId}</td>
                 <td>${composition.goodsAmount}</td>
                 <td>${composition.sellerId}</td>
                 <td>${composition.goodsID}</td>
 
-                <td><a href="<c:url value='/edit/${composition.order_goodsID}' />" >Edit</a></td>
-                <td><a href="<c:url value='/remove/${composition.order_goodsID}' />" >Delete</a></td>
+                <%--<td><a href="<c:url value='/edit/${composition.orderGoodsId}' />" >Edit</a></td> --%>
+                <td><a href="<c:url value='/admin/CompositionControl/RemoveComposition/${composition.orderGoodsId}' />" >Delete</a></td>
             </tr>
         </c:forEach>
     </table>

@@ -18,7 +18,7 @@
 </h1>
 <tr><td><a href="<c:url value='/' />" >back</a></td></tr>
 
-<c:url var="addAction" value="/seller/add" ></c:url>
+<c:url var="addAction" value="/admin/SellerControl/AddSeller" ></c:url>
 
 <form:form action="${addAction}" commandName="seller">
     <table>
@@ -30,8 +30,8 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="sellerID" readonly="true" size="8"  disabled="true" />
-                    <form:hidden path="sellerID" />
+                    <form:input path="sellerId" readonly="true" size="8"  disabled="true" />
+                    <form:hidden path="sellerId" />
                 </td>
             </tr>
         </c:if>
@@ -42,7 +42,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="userID" />
+                <form:input path="userId" />
             </td>
         </tr>
         <tr>
@@ -96,13 +96,13 @@
         </tr>
         <c:forEach items="${listSellers}" var="seller">
             <tr>
-                <td>${seller.sellerID}</td>
-                <td>${seller.userID}</td>
+                <td>${seller.sellerId}</td>
+                <td>${seller.userId}</td>
                 <td>${seller.registerDate}</td>
                 <td>${seller.sellerIntro}</td>
 
-                <td><a href="<c:url value='/edit/${seller.sellerID}' />" >Edit</a></td>
-                <td><a href="<c:url value='/remove/${seller.sellerID}' />" >Delete</a></td>
+                <td><a href="<c:url value='/admin/SellerControl/EditSeller/${seller.sellerID}' />" >Edit</a></td>
+                <td><a href="<c:url value='/admin/SellerControl/RemoveSeller/${seller.sellerID}' />" >Delete</a></td>
             </tr>
         </c:forEach>
     </table>

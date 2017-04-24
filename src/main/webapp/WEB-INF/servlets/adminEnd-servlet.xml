@@ -14,18 +14,18 @@
     <mvc:annotation-driven></mvc:annotation-driven>
     <!-- 扫包 -->
     <context:component-scan base-package="com.backend.adminEnd.*">
-        <context:exclude-filter type = "annotation"
-          expression = "org.springframework.stereotype.Service" />
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
     <!-- 静态资源过滤 -->
     <mvc:resources location="/resources/" mapping="/resources/**"/>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
-        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-        <property name="url" value="jdbc:sqlserver://123.206.116.122\MSSQLSERVER:1433;databaseName=onlineMarket" />
-        <property name="username" value="sa" />
-        <property name="password" value="ECUSTJ143@software" />
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        <property name="url" value="jdbc:sqlserver://123.206.116.122\MSSQLSERVER:1433;databaseName=onlineMarket"/>
+        <property name="username" value="sa"/>
+        <property name="password" value="ECUSTJ143@software"/>
         <property name="maxActive" value="100"></property>
         <property name="minIdle" value="20"></property>
         <property name="maxWait" value="3000"></property>
@@ -34,7 +34,7 @@
 
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan">
             <list>
                 <value>com.backend.adminEnd.model</value>
@@ -63,12 +63,43 @@
     </bean>
 
     <bean id="userDao" class="com.backend.adminEnd.dao.UserDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <bean id="userService" class="com.backend.adminEnd.service.UserServiceImpl">
         <property name="userDao" ref="userDao"></property>
     </bean>
 
+    <bean id="compositionDao" class="com.backend.adminEnd.dao.CompositionDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="compositionService" class="com.backend.adminEnd.service.CompositionServiceImpl">
+        <property name="compositionDao" ref="compositionDao"></property>
+    </bean>
+
+    <bean id="goodsDao" class="com.backend.adminEnd.dao.GoodsDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="goodsService" class="com.backend.adminEnd.service.GoodsServiceImpl">
+        <property name="goodsDao" ref="goodsDao"></property>
+    </bean>
+
+    <bean id="orderDao" class="com.backend.adminEnd.dao.OrderDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="orderService" class="com.backend.adminEnd.service.OrderServiceImpl">
+        <property name="orderDao" ref="orderDao"></property>
+    </bean>
+
+    <bean id="sellerDao" class="com.backend.adminEnd.dao.SellerDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="sellerService" class="com.backend.adminEnd.service.SellerServiceImpl">
+        <property name="sellerDao" ref="sellerDao"></property>
+    </bean>
 
 </beans>

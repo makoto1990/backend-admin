@@ -20,6 +20,10 @@ import com.backend.adminEnd.service.*;
 public class ViewController {
 
     private UserService userService;
+    private CompositionService compositionService;
+    private GoodsService goodsService;
+    private OrderService orderService;
+    private SellerService sellerService;
 
     @Autowired(required=true)
     @Qualifier(value = "userService")
@@ -38,13 +42,26 @@ public class ViewController {
         model.addAttribute("listUsers",this.userService.listUser());
         return "user";
     }
-    @RequestMapping(value="/UserControl/Add",method= RequestMethod.POST)
+    @RequestMapping(value="/UserControl/AddUser",method= RequestMethod.POST)
     public String addUser(@ModelAttribute("user") UserEntity user){
         if(Integer.parseInt(user.getUserId())==0){
             this.userService.addUser(user);
         }else{
             this.userService.updateUser(user);
         }
+        return "redirect:/UserControl";
+    }
+
+    @RequestMapping("/UserControl/RemoveUser/{id}")
+    public String removeUser(@PathVariable("id")String id){
+        this.userService.removeUser(id);
+        return "redirect:/UserControl";
+    }
+
+    @RequestMapping("UserControl/EditUser/{id}")
+    public String editUser(@PathVariable("id")String id,Model model){
+        model.addAttribute("user",this.userService.getUserById(id));
+        model.addAttribute("listUsers",this.userService.listUser());
         return "redirect:/UserControl";
     }
 

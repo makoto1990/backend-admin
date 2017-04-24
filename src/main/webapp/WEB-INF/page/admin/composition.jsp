@@ -46,13 +46,13 @@
                 </td><%--
                 <td><a href="<c:url value='/CompositionControl/FindSingleComposition/'+'sellerID' />" >FindSingle</a></td>
                 --%>
-                <td><a href="/admin/CompositionControl/FindCompositionBySellerID/{{sellerID}}"></a></td>
+                <td><a href="/admin/CompositionControl/FindCompositionBySellerID/{{sellerID}}">FindSeller</a></td>
             </tr>
             <tr>
                 <td>
                     <input type="text" ng-model="compositionID">
                 </td>
-                <td><a href="/admin/CompositionControl/FindCompositionBySellerID/{{compositionID}}"></a></td>
+                <td><a href="/admin/CompositionControl/FindSingleComposition/{{compositionID}}">FindId</a></td>
             </tr>
             <c:if test="${!empty composition.goodsAmount}">
                 <tr>

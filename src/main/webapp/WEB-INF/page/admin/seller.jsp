@@ -16,6 +16,7 @@
 <h1>
     Add a Seller
 </h1>
+<tr><td><a href="<c:url value='/' />" >back</a></td></tr>
 
 <c:url var="addAction" value="/seller/add" ></c:url>
 

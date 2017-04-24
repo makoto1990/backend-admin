@@ -16,7 +16,7 @@
 <h1>
     Add a Order
 </h1>
-
+<tr><td><a href="<c:url value='/' />" >back</a></td></tr>
 <c:url var="addAction" value="/order/add" ></c:url>
 
 <form:form action="${addAction}" commandName="order">

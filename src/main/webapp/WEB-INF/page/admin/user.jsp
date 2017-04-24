@@ -23,6 +23,7 @@
 <h1>
     Add a Person
 </h1>
+<tr><td><a href="<c:url value='/' />" >back</a></td></tr>
 
 <c:url var="addAction" value="/admin/UserControl/Add" ></c:url>
 

@@ -23,6 +23,8 @@
 <h1>
     Add a Composition
 </h1>
+<tr><td><a href="<c:url value='/' />" >back</a></td></tr>
+
 <div ng-app="myApp" ng-controller="myCtrl">
     <c:url var="addAction" value="/composition/add" ></c:url>
     <button ng-click="toggle()">隐藏/显示</button>

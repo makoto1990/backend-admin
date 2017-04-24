@@ -4,6 +4,12 @@
     <title>主页</title>
 </head>
 <body>
-所有页面通用模板，其余页面作为body模块
+    <tr>
+        <td><a href="<c:url value='/UserControl' />" >UserControl</a></td>
+        <td><a href="<c:url value='/GoodsControl' />" >GoodsControl</a></td>
+        <td><a href="<c:url value='/OrderControl' />" >OrderControl</a></td>
+        <td><a href="<c:url value='/SellerControl' />" >SellerControl</a></td>
+        <td><a href="<c:url value='/Composition' />" >Composition</a></td>
+    </tr>
 </body>
 </html>

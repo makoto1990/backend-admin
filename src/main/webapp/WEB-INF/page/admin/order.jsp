@@ -20,7 +20,7 @@
 <tr><td><a href="<c:url value='/' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
 
-<c:url var="addAction" value="/order/add" ></c:url>
+<c:url var="addAction" value="/admin/OrderControl/FindOrder/{id}" ></c:url>
 
 <form:form action="${addAction}" commandName="order">
     <table>
@@ -72,17 +72,17 @@
                 <td>${order.creatTime}</td>
                 <td>${order.userId}</td>
                 <td>${order.sellerId}</td>
-                <td><a href="<c:url value='/admin/OrderControl/RemoveOrder/${order.orderID}' />" >Delete</a></td>
+                <td><a href="<c:url value='/admin/OrderControl/RemoveOrder/${order.orderId}' />" >Delete</a></td>
             </tr>
         </c:if>
 
         <tr>
             <td colspan="2">
-                <c:if test="${!empty User.userName}">
+                <c:if test="${!empty order.orderId}">
                     <input type="submit"
                            value="<spring:message text="Edit User"/>" />
                 </c:if>
-                <c:if test="${empty User.userName}">
+                <c:if test="${empty order.orderId}">
                     <input type="submit"
                            value="<spring:message text="Add User"/>" />
                 </c:if>
@@ -107,7 +107,7 @@
 </script>
 <br>
 <h3>User List</h3>
-<c:if test="${!empty listOrders}">
+<c:if test="${!empty listOrder}">
     <table class="tg">
         <tr>
             <th width="80">Order ID</th>
@@ -132,7 +132,7 @@
             <th width="120">Order Seller ID</th>
             <th width="60">Delete</th>
         </tr>
-        <c:forEach items="${listOrders}" var="order">
+        <c:forEach items="${listOrder}" var="order">
             <tr>
                 <td>${order.orderId}</td>
                 <td>${order.receiverName}</td>
@@ -154,7 +154,7 @@
                 <td>${order.userId}</td>
                 <td>${order.sellerId}</td>
 
-                <td><a href="<c:url value='/admin/OrderControl/RemoveOrder/${order.orderID}' />" >Delete</a></td>
+                <td><a href="<c:url value='/admin/OrderControl/RemoveOrder/${order.orderId}' />" >Delete</a></td>
             </tr>
         </c:forEach>
     </table>

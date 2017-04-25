@@ -22,7 +22,7 @@
 
 <form:form action="${addAction}" commandName="seller">
     <table>
-        <c:if test="${!empty seller.userID}">
+        <c:if test="${!empty seller.userId}">
             <tr>
                 <td>
                     <form:label path="sellerID">
@@ -67,11 +67,11 @@
         </tr>
         <tr>
             <td colspan="2">
-                <c:if test="${!empty seller.userID}">
+                <c:if test="${!empty seller.userId}">
                     <input type="submit"
                            value="<spring:message text="Edit Seller"/>" />
                 </c:if>
-                <c:if test="${empty seller.userID}">
+                <c:if test="${empty seller.userId}">
                     <input type="submit"
                            value="<spring:message text="Add Seller"/>" />
                 </c:if>
@@ -101,8 +101,8 @@
                 <td>${seller.registerDate}</td>
                 <td>${seller.sellerIntro}</td>
 
-                <td><a href="<c:url value='/admin/SellerControl/EditSeller/${seller.sellerID}' />" >Edit</a></td>
-                <td><a href="<c:url value='/admin/SellerControl/RemoveSeller/${seller.sellerID}' />" >Delete</a></td>
+                <td><a href="<c:url value='/admin/SellerControl/EditSeller/${seller.sellerId}' />" >Edit</a></td>
+                <td><a href="<c:url value='/admin/SellerControl/RemoveSeller/${seller.sellerId}' />" >Delete</a></td>
             </tr>
         </c:forEach>
     </table>

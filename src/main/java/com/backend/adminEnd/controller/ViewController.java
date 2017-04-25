@@ -75,20 +75,20 @@ public class ViewController {
         } else {
             this.userService.updateUser(user);
         }
-        return "redirect:/UserControl";
+        return "redirect:/admin/UserControl";
     }
 
     @RequestMapping("/UserControl/RemoveUser/{id}")
     public String removeUser(@PathVariable("id") String id) {
         this.userService.removeUser(id);
-        return "redirect:/UserControl";
+        return "redirect:/admin/UserControl";
     }
 
     @RequestMapping("/UserControl/EditUser/{id}")
     public String editUser(@PathVariable("id") String id, Model model) {
         model.addAttribute("user", this.userService.getUserById(id));
         model.addAttribute("listUsers", this.userService.listUser());
-        return "redirect:/UserControl";
+        return "redirect:/admin/UserControl";
     }
 
     @RequestMapping(value = "/GoodsControl", method = RequestMethod.GET)
@@ -101,21 +101,21 @@ public class ViewController {
     @RequestMapping("/GoodsControl/RemoveGoods/{id}")
     public String removeGoods(@PathVariable("id") String id) {
         this.goodsService.removeGoods(id);
-        return "redirect:/GoodsControl";
+        return "redirect:/admin/GoodsControl";
     }
 
     @RequestMapping(value = "/GoodsControl/FindGoods/{id}", method = RequestMethod.GET)
     public String findGoods(@PathVariable("id") String id, Model model) {
         model.addAttribute("goods", this.goodsService.getGoodsByGoodsId(id));
         model.addAttribute("listGoods", this.goodsService.listGoods());
-        return "redirect:/GoodsControl";
+        return "redirect:/admin/GoodsControl";
     }
 
     @RequestMapping(value = "/GoodsControl/FindGoods/{id}", method = RequestMethod.POST)
     public String findGoodsByID(@PathVariable("id") String id, Model model) {
         model.addAttribute("goods", this.goodsService.getGoodsByGoodsId(id));
         model.addAttribute("listGoods", this.goodsService.listGoods());
-        return "redirect:/GoodsControl";
+        return "redirect:/admin/GoodsControl";
     }
 
     @RequestMapping(value = "/OrderControl", method = RequestMethod.GET)
@@ -128,21 +128,21 @@ public class ViewController {
     @RequestMapping("/OrderControl/RemoveOrder/{id}")
     public String removeOrder(@PathVariable("id") String id) {
         this.orderService.removeOrder(id);
-        return "redirect:/OrderControl";
+        return "redirect:/admin/OrderControl";
     }
 
     @RequestMapping(value = "/OrderControl/FindOrder/{id}", method = RequestMethod.GET)
     public String findOrder(@PathVariable("id") String id, Model model) {
         model.addAttribute("order", this.orderService.getOrderById(id));
         model.addAttribute("listOrder", this.orderService.listOrder());
-        return "redirect:/OrderControl";
+        return "redirect:/admin/OrderControl";
     }
 
     @RequestMapping(value = "/OrderControl/FindOrder/{id}", method = RequestMethod.POST)
     public String findOrderById(@PathVariable("id") String id, Model model) {
         model.addAttribute("order", this.orderService.getOrderById(id));
         model.addAttribute("listOrder", this.orderService.listOrder());
-        return "redirect:/OrderControl";
+        return "redirect:/admin/OrderControl";
     }
 
     @RequestMapping(value = "/SellerControl", method = RequestMethod.GET)
@@ -159,20 +159,20 @@ public class ViewController {
         } else {
             this.sellerService.updateSeller(seller);
         }
-        return "redirect:/SellerControl";
+        return "redirect:/admin/SellerControl";
     }
 
     @RequestMapping("/SellerControl/RemoveSeller/{id}")
     public String removeSeller(@PathVariable("id") String id) {
         this.sellerService.removeSeller(id);
-        return "redirect:/SellerControl";
+        return "redirect:/admin/SellerControl";
     }
 
     @RequestMapping("/SellerControl/EditSeller/{id}")
     public String editSeller(@PathVariable("id") String id, Model model) {
         model.addAttribute("seller", this.sellerService.getSellerById(id));
         model.addAttribute("listSellers", this.sellerService.listSeller());
-        return "redirect:/SellerControl";
+        return "redirect:/admin/SellerControl";
     }
 
     @RequestMapping(value = "/CompositionControl", method = RequestMethod.GET)
@@ -185,27 +185,27 @@ public class ViewController {
     @RequestMapping("/CompositionControl/RemoveComposition/{id}")
     public String removeComposition(@PathVariable("id") String id) {
         this.compositionService.removeComposition(id);
-        return "redirect:/CompositionControl";
+        return "redirect:/admin/CompositionControl";
     }
 
     @RequestMapping(value = "/CompositionControl/FindSingleComposition/{id}", method = RequestMethod.GET)
     public String findComposition(@PathVariable("id") String id, Model model) {
         model.addAttribute("composition", this.compositionService.getCompositionByOrderGoodsId(id));
         model.addAttribute("listComposition", this.compositionService.listComposition());
-        return "redirect:/CompositionControl";
+        return "redirect:/admin/CompositionControl";
     }
 
     @RequestMapping(value = "/CompositionControl/FindSingleComposition/{id}", method = RequestMethod.POST)
     public String findCompositionById(@PathVariable("id") String id, Model model) {
         model.addAttribute("composition", this.compositionService.getCompositionByOrderGoodsId(id));
         model.addAttribute("listComposition", this.compositionService.listComposition());
-        return "redirect:/CompositionControl";
+        return "redirect:/admin/CompositionControl";
     }
 
     @RequestMapping(value = "/CompositionControl/FindCompositionBySellerID/{id}", method = RequestMethod.POST)
     public String findCompositionBySellerID(@PathVariable("id") String id, Model model) {
         model.addAttribute("composition", new CompositionEntity());
         model.addAttribute("listComposition", this.compositionService.getCompositionBySellerId(id));
-        return "redirect:/CompositionControl";
+        return "redirect:/admin/CompositionControl";
     }
 }

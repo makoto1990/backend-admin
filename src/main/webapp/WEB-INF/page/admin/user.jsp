@@ -229,8 +229,8 @@
                 <td>${user.address}</td>
                 <td>${user.manager}</td>
 
-                <td><a href="<c:url value='/edit/${user.userId}' />" >Edit</a></td>
-                <td><a href="<c:url value='/remove/${user.userId}' />" >Delete</a></td>
+                <td><a href="<c:url value='/admin/UserControl/EditUser/${user.userId}' />" >Edit</a></td>
+                <td><a href="<c:url value='/admin/UserControl/RemoveUser/${user.userId}' />" >Delete</a></td>
             </tr>
         </c:forEach>
     </table>

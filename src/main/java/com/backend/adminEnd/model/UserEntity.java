@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by kevin on 2017/4/5.
+ * Created by kevin on 2017/4/25.
  */
 @Entity
-@Table(name = "User", schema = "dbo", catalog = "onlineMarket")
+@Table(name = "[User]", schema = "dbo", catalog = "onlineMarket")
 public class UserEntity {
     private String userId;
     private Timestamp registerDate;

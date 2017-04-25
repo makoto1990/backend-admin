@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by kevin on 2017/4/5.
+ * Created by kevin on 2017/4/25.
  */
 @Entity
 @Table(name = "Goods", schema = "dbo", catalog = "onlineMarket")
@@ -21,6 +21,7 @@ public class GoodsEntity {
     private Double leastAmount;
     private Double largeAmount;
     private Double largePrice;
+    private String picture;
 
     @Id
     @Column(name = "goodsID", nullable = false, length = 12)
@@ -142,6 +143,16 @@ public class GoodsEntity {
         this.largePrice = largePrice;
     }
 
+    @Basic
+    @Column(name = "Picture", nullable = true, length = 500)
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -161,6 +172,7 @@ public class GoodsEntity {
         if (leastAmount != null ? !leastAmount.equals(that.leastAmount) : that.leastAmount != null) return false;
         if (largeAmount != null ? !largeAmount.equals(that.largeAmount) : that.largeAmount != null) return false;
         if (largePrice != null ? !largePrice.equals(that.largePrice) : that.largePrice != null) return false;
+        if (picture != null ? !picture.equals(that.picture) : that.picture != null) return false;
 
         return true;
     }
@@ -179,6 +191,7 @@ public class GoodsEntity {
         result = 31 * result + (leastAmount != null ? leastAmount.hashCode() : 0);
         result = 31 * result + (largeAmount != null ? largeAmount.hashCode() : 0);
         result = 31 * result + (largePrice != null ? largePrice.hashCode() : 0);
+        result = 31 * result + (picture != null ? picture.hashCode() : 0);
         return result;
     }
 }

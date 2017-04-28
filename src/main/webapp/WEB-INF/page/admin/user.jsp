@@ -200,6 +200,7 @@
             <th width="120">User Real Name</th>
             <th width="120">User ID number</th>
             <th width="120">User Phone</th>
+            <th width="120">User Status</th>
             <th width="120">User Postcode</th>
             <th width="120">User Province</th>
             <th width="120">User City</th>

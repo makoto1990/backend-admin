@@ -8,9 +8,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page session="false" %>
+<%@ page session="false" pageEncoding="UTF-8" %>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Goods Page</title>
     <style type="text/css">
         .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
@@ -234,7 +235,7 @@
 </script>
 <br>
 <h3>User List</h3>
-<c:if test="${!empty listGoodses}">
+<c:if test="${!empty listGoods}">
     <table class="tg">
         <tr>
             <th width="80">Goods ID</th>
@@ -253,7 +254,7 @@
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
-        <c:forEach items="${listGoodses}" var="goods">
+        <c:forEach items="${listGoods}" var="goods">
             <tr>
                 <td>${goods.goodsId}</td>
                 <td>${goods.goodsName}</td>
@@ -267,7 +268,7 @@
                 <td>${goods.leastAmount}</td>
                 <td>${goods.largeAmount}</td>
                 <td>${goods.largePrice}</td>
-                <td><img src=${goods.Picture}/></td>
+                <td><img src=${goods.picture}/></td>
 
             <%-- <td><a href="<c:url value='/edit/${goods.goodsID}' />" >Edit</a></td>--%>
             <td><a href="<c:url value='/admin/GoodsControl/RemoveGoods/${goods.goodsId}' />" >Delete</a></td>

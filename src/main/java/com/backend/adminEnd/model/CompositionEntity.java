@@ -3,10 +3,10 @@ package com.backend.adminEnd.model;
 import javax.persistence.*;
 
 /**
- * Created by kevin on 2017/4/5.
+ * Created by kevin on 2017/4/25.
  */
 @Entity
-@Table(name = "Composition", schema = "dbo", catalog = "onlineMarket")
+@Table(name = "[Composition]", schema = "dbo", catalog = "onlineMarket")
 public class CompositionEntity {
     private String orderGoodsId;
     private Double goodsAmount;

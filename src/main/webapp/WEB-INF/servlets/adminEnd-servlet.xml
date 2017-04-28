@@ -50,16 +50,16 @@
         </property>
     </bean>
     <bean id="hibernateTemplateMysql" class="org.springframework.orm.hibernate5.HibernateTemplate">
-        <property name="sessionFactory" ref="sessionFactory"></property>
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
 
     <!-- 视图渲染 jsp/freemaker/velocity-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 制定页面存放的路径 -->
-        <property name="prefix" value="/WEB-INF/page/admin/"></property>
+        <property name="prefix" value="/WEB-INF/page/admin/"/>
         <!-- 文件的后缀 -->
-        <property name="suffix" value=".jsp"></property>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
     <bean id="userDao" class="com.backend.adminEnd.dao.UserDaoImpl">
@@ -67,7 +67,7 @@
     </bean>
 
     <bean id="userService" class="com.backend.adminEnd.service.UserServiceImpl">
-        <property name="userDao" ref="userDao"></property>
+        <property name="userDao" ref="userDao"/>
     </bean>
 
 

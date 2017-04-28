@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page session="false" %>
+<%@ page session="false" pageEncoding="UTF-8" %>
 <html>
 <head>
     <title>Order Page</title>
@@ -17,10 +17,10 @@
 <h1>
     Add a Order
 </h1>
-<tr><td><a href="<c:url value='/' />" >back</a></td></tr>
+<tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
 
-<c:url var="addAction" value="/admin/OrderControl/FindOrder/{id}" ></c:url>
+<c:url var="addAction" value="/admin/OrderControl/FindOrder/${order.orderId}" ></c:url>
 
 <form:form action="${addAction}" commandName="order">
     <table>

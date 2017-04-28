@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
@@ -12,7 +12,7 @@
         <td><a href="<c:url value='/admin/GoodsControl' />" >GoodsControl</a></td>
         <td><a href="<c:url value='/admin/OrderControl' />" >OrderControl</a></td>
         <td><a href="<c:url value='/admin/SellerControl' />" >SellerControl</a></td>
-        <td><a href="<c:url value='/admin/CompositionControl' />" >Composition</a></td>
+        <td><a href="<c:url value='/admin/CompositionControl' />" >CompositionControl</a></td>
     </tr>
 </body>
 </html>

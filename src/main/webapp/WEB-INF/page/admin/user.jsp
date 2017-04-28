@@ -23,7 +23,7 @@
 <h1>
     Add a Person
 </h1>
-<tr><td><a href="<c:url value='/' />" >back</a></td></tr>
+<tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
 
 <c:url var="addAction" value="/admin/UserControl/AddUser" ></c:url>
 
@@ -200,6 +200,7 @@
             <th width="120">User Real Name</th>
             <th width="120">User ID number</th>
             <th width="120">User Phone</th>
+            <th width="120">User Status</th>
             <th width="120">User Postcode</th>
             <th width="120">User Province</th>
             <th width="120">User City</th>

@@ -24,10 +24,10 @@
 <h1>
     Add a Composition
 </h1>
-<tr><td><a href="<c:url value='/' />" >back</a></td></tr>
+<tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="compositionID=''" ng-init="sellerID=''">
 
-    <c:url var="addAction" value="/composition/add" ></c:url>
+    <c:url var="addAction" value="/admin/CompositionControl/FindSingleComposition/${composition.orderGoodsId}" ></c:url>
     <button ng-click="toggle()">隐藏/显示</button>
 
     <form:form action="${addAction}" commandName="composition">

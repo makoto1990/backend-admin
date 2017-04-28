@@ -12,7 +12,7 @@
         <td><a href="<c:url value='/admin/GoodsControl' />" >GoodsControl</a></td>
         <td><a href="<c:url value='/admin/OrderControl' />" >OrderControl</a></td>
         <td><a href="<c:url value='/admin/SellerControl' />" >SellerControl</a></td>
-        <td><a href="<c:url value='/admin/CompositionControl' />" >Composition</a></td>
+        <td><a href="<c:url value='/admin/CompositionControl' />" >CompositionControl</a></td>
     </tr>
 </body>
 </html>

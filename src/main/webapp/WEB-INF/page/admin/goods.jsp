@@ -24,9 +24,9 @@
 <h1>
     Find a Goods
 </h1>
-<tr><td><a href="<c:url value='/' />" >back</a></td></tr>
+<tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
-<c:url var="findAction" value="/ad" ></c:url>
+<c:url var="findAction" value="/admin/GoodsControl/FindGoods/${goods.goodsId}" ></c:url>
 
 <form:form action="${findAction}" commandName="goods">
     <table>
@@ -77,7 +77,7 @@
                 <td>${goods.leastAmount}</td>
                 <td>${goods.largeAmount}</td>
                 <td>${goods.largePrice}</td>
-                <td><img src=${goods.Picture}/></td>
+                <td><img src=${goods.picture}/></td>
                 <td><a href="<c:url value='/admin/GoodsControl/RemoveGoods/${goods.goodsId}' />" >Delete</a></td>
             </tr>
         </c:if>

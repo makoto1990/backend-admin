@@ -69,7 +69,7 @@ public class ViewController {
 
     @RequestMapping(value = "/UserControl/AddUser", method = RequestMethod.POST)
     public String addUser(@ModelAttribute("user") UserEntity user) {
-        if (Integer.parseInt(user.getUserId()) == 0) {
+        if (user.getUserId()==null) {
             this.userService.addUser(user);
         } else {
             this.userService.updateUser(user);

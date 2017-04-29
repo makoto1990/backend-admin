@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <h4 align="center">抱歉！您的密码错误，请<a href="/default/index.jsp">重新登陆</a></h4>
+            <h4 align="center">抱歉！您的密码错误，请<a href="/">重新登陆</a></h4>
 
         </div>
     </div>

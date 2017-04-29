@@ -19,19 +19,19 @@ public class GoodsDaoImpl implements GoodsDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<GoodsEntity> listGoods() {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         return session.createQuery("from GoodsEntity").list();
     }
 
     @Override
     public GoodsEntity getGoodsByGoodsId(String goodsId) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         return (GoodsEntity) session.load(GoodsEntity.class, goodsId);
     }
 
     @Override
     public void removeGoods(String goodsId) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         GoodsEntity g = (GoodsEntity) session.load(GoodsEntity.class, goodsId);
         if (g != null) {
             session.delete(g);

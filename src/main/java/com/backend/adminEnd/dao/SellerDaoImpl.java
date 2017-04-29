@@ -18,32 +18,32 @@ public class SellerDaoImpl implements SellerDao {
 
     @Override
     public void addSeller(SellerEntity seller) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         session.persist(seller);
     }
 
     @Override
     public void updateSeller(SellerEntity seller) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         session.update(seller);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public List<SellerEntity> listSeller() {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         return session.createQuery("from SellerEntity").list();
     }
 
     @Override
     public SellerEntity getSellerById(String sellerId) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         return (SellerEntity) session.load(SellerEntity.class, sellerId);
     }
 
     @Override
     public void removeSeller(String sellerId) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         SellerEntity s = (SellerEntity) session.load(SellerEntity.class, sellerId);
         if (s != null) {
             session.delete(s);

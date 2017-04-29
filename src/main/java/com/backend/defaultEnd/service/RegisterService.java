@@ -33,7 +33,7 @@ public class RegisterService {
             n = 1;
             oldDay = dateNowStr;
         }
-        String userID = dateNowStr + n++;
+        String userID = dateNowStr +"00" + n++;
         user.setUserId(userID);
         try{
             addUser(user);

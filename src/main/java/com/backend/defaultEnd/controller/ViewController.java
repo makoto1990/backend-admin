@@ -56,15 +56,17 @@ public class ViewController {
 
     @RequestMapping(value = "/",method = RequestMethod.POST)
     public String login(@ModelAttribute("user")UserEntity user,@ModelAttribute("style")int style){
-        if(this.loginService.findUser(user.getUserName()).getPassword()!=null) {
-            if (this.loginService.checkPassword(user.getUserName(), user.getPassword())) {
+        String passwordTemp;
+        if((passwordTemp=this.loginService.findUser(user.getUserName()).getPassword())!=null) {
+            passwordTemp=passwordTemp.trim();
+            if (passwordTemp.equals(user.getPassword())) {
                 switch (style) {
                     case 1:
-                        return "redirect:/buyer";
+                        return "redirect:/buyer/";
                     case 2:
-                        return "redirect:/seller";
+                        return "redirect:/seller/";
                     case 3:
-                        return "redirect:/admin";
+                        return "redirect:/admin/";
                 }
             } else
                 return "error";

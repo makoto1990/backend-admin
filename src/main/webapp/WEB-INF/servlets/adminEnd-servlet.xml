@@ -35,7 +35,7 @@
         <property name="initialSize" value="30"/>
     </bean>
 
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+    <bean id="adminSessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
@@ -55,11 +55,11 @@
     </bean>
 
     <bean id="hibernateTemplateMSSQL" class="org.springframework.orm.hibernate5.HibernateTemplate">
-        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="sessionFactory" ref="adminSessionFactory"/>
     </bean>
 
     <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="sessionFactory" ref="adminSessionFactory"/>
     </bean>
 
 
@@ -72,7 +72,7 @@
     </bean>
 
     <bean id="userDao" class="com.backend.adminEnd.dao.UserDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="sessionFactory" ref="adminSessionFactory"/>
     </bean>
 
     <bean id="userService" class="com.backend.adminEnd.service.UserServiceImpl">
@@ -80,7 +80,7 @@
     </bean>
 
     <bean id="compositionDao" class="com.backend.adminEnd.dao.CompositionDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="sessionFactory" ref="adminSessionFactory"/>
     </bean>
 
     <bean id="compositionService" class="com.backend.adminEnd.service.CompositionServiceImpl">
@@ -88,7 +88,7 @@
     </bean>
 
     <bean id="goodsDao" class="com.backend.adminEnd.dao.GoodsDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="sessionFactory" ref="adminSessionFactory"/>
     </bean>
 
     <bean id="goodsService" class="com.backend.adminEnd.service.GoodsServiceImpl">
@@ -96,7 +96,7 @@
     </bean>
 
     <bean id="orderDao" class="com.backend.adminEnd.dao.OrderDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="sessionFactory" ref="adminSessionFactory"/>
     </bean>
 
     <bean id="orderService" class="com.backend.adminEnd.service.OrderServiceImpl">
@@ -104,7 +104,7 @@
     </bean>
 
     <bean id="sellerDao" class="com.backend.adminEnd.dao.SellerDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="sessionFactory" ref="adminSessionFactory"/>
     </bean>
 
     <bean id="sellerService" class="com.backend.adminEnd.service.SellerServiceImpl">

@@ -1,6 +1,6 @@
 package com.backend.adminEnd.dao;
 
-import com.backend.adminEnd.model.UserEntity;
+import com.backend.model.UserEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 

@@ -1,6 +1,6 @@
 package com.backend.adminEnd.service;
 import java.util.List;
-import com.backend.adminEnd.model.CompositionEntity;
+import com.backend.model.CompositionEntity;
 /**
  * Created by kevin on 2017/4/11.
  */

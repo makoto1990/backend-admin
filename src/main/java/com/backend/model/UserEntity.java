@@ -1,4 +1,4 @@
-package com.backend.adminEnd.model;
+package com.backend.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

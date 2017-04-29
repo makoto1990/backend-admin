@@ -1,6 +1,6 @@
 package com.backend.adminEnd.dao;
 
-import com.backend.adminEnd.model.CompositionEntity;
+import com.backend.model.CompositionEntity;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

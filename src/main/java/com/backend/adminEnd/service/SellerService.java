@@ -1,6 +1,6 @@
 package com.backend.adminEnd.service;
 
-import com.backend.adminEnd.model.SellerEntity;
+import com.backend.model.SellerEntity;
 
 import java.util.List;
 

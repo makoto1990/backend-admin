@@ -1,6 +1,6 @@
 package com.backend.adminEnd.dao;
 
-import com.backend.adminEnd.model.GoodsEntity;
+import com.backend.model.GoodsEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 

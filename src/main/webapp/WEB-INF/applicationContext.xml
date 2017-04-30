@@ -14,5 +14,44 @@
   http://www.springframework.org/schema/util
   http://www.springframework.org/schema/util/spring-util-4.0.xsd
   ">
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        <property name="url" value="jdbc:sqlserver://123.206.116.122\MSSQLSERVER:1433;databaseName=onlineMarket"/>
+        <property name="username" value="sa"/>
+        <property name="password" value="ECUSTJ143@software"/>
+        <property name="maxActive" value="100"/>
+        <property name="minIdle" value="20"/>
+        <property name="maxWait" value="3000"/>
+        <property name="initialSize" value="30"/>
+    </bean>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.backend.model.UserEntity</value>
+                <value>com.backend.model.OrderEntity</value>
+                <value>com.backend.model.SellerEntity</value>
+                <value>com.backend.model.GoodsEntity</value>
+                <value>com.backend.model.CompositionEntity</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="dialect">org.hibernate.dialect.SQLServer2012Dialect</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2012Dialect</prop>
+                <prop key="show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <bean id="hibernateTemplateMSSQL" class="org.springframework.orm.hibernate5.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
 </beans>

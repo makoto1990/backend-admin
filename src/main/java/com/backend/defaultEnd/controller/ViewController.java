@@ -20,6 +20,7 @@ public class ViewController {
 
     private LoginService loginService;
     private RegisterService registerService;
+    public String passwordTemp;
 
 
     @Autowired(required = true)
@@ -56,7 +57,7 @@ public class ViewController {
 
     @RequestMapping(value = "/",method = RequestMethod.POST)
     public String login(@ModelAttribute("user")UserEntity user,@ModelAttribute("style")int style){
-        String passwordTemp;
+
         if((passwordTemp=this.loginService.findUser(user.getUserName()).getPassword())!=null) {
             passwordTemp=passwordTemp.trim();
             if (passwordTemp.equals(user.getPassword())) {

@@ -32,7 +32,7 @@
                 </td>
                 <td>
                     <form:input path="sellerId" readonly="true" size="8"  disabled="true" />
-                    <form:hidden path="sellerId" />
+                    <%--<form:hidden path="sellerId" />--%>
                 </td>
             </tr>
         </c:if>

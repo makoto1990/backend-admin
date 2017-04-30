@@ -27,7 +27,7 @@
 <tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="compositionID=''" ng-init="sellerID=''">
 
-    <c:url var="addAction" value="/admin/CompositionControl/FindSingleComposition/${composition.orderGoodsId}" ></c:url>
+    <c:url var="addAction" value="/admin/CompositionControl/FindCompositionBySellerID/${composition.orderGoodsId}" ></c:url>
     <button ng-click="toggle()">隐藏/显示</button>
 
     <form:form action="${addAction}" commandName="composition">
@@ -35,17 +35,8 @@
             <tr>
                 <td>
                     <input type="text" ng-model="sellerID">
-                        <%--
-                    <form:label path="sellerId">
-                        <spring:message text="Seller Id"/>
-                    </form:label>
+
                 </td>
-                <td>
-                    <form:input path="sellerId" readonly="true" size="8"  />
-                    <%--<form:hidden path="sellerId"  /> --%>
-                </td><%--
-                <td><a href="<c:url value='/CompositionControl/FindSingleComposition/'+'sellerID' />" >FindSingle</a></td>
-                --%>
                 <td><a href="/admin/CompositionControl/FindCompositionBySellerID/{{sellerID}}">FindSeller</a></td>
             </tr>
             <tr>
@@ -61,7 +52,6 @@
                     <th width="120">Seller ID</th>
                     <th width="120">Goods ID</th>
 
-                    <th width="60">Edit</th>
                     <th width="60">Delete</th>
                 </tr>
                 <tr>
@@ -69,68 +59,11 @@
                     <td>${composition.goodsAmount}</td>
                     <td>${composition.sellerId}</td>
                     <td>${composition.goodsID}</td>
+                    <td><a href="<c:url value='/admin/CompositionControl/RemoveComposition/${composition.orderGoodsId}' />" >Delete</a></td>
 
                 </tr>
-                <%--
-                <tr>
-                    <td>
-                        <form:label path="order_goodsID">
-                            <spring:message text="Order_goodsID"/>
-                        </form:label>
-                    </td>
-                    <td>
-                        <form:input path="orderGoodsId" readonly="true" size="8"  disabled="true" />
-                        <form:hidden path="orderGoodsId"  />
-                    </td>
-                </tr>
-                --%>
-
             </c:if>
-           <%--
-            <tr>
-                <td>
-                    <form:label path="goodsAmount">
-                        <spring:message text="Goods Amount"/>
-                    </form:label>
-                </td>
-                <td>
-                    <form:input path="goodsAmount" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <form:label path="sellerID">
-                        <spring:message text="Seller ID"/>
-                    </form:label>
-                </td>
-                <td>
-                    <form:input path="sellerId" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <form:label path="goodsID">
-                        <spring:message text="Goods ID"/>
-                    </form:label>
-                </td>
-                <td>
-                    <form:input path="goodsId" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <c:if test="${!empty composition.goodsAmount}">
-                        <input type="submit"
-                               value="<spring:message text="Edit composition"/>" />
-                    </c:if>
-                    <c:if test="${empty composition.goodsAmount}">
-                        <input type="submit"
-                               value="<spring:message text="Add composition"/>" />
-                    </c:if>
-                </td>
-            </tr>
 
-            --%>
         </table>
 
     </form:form>
@@ -168,7 +101,6 @@
                 <td>${composition.sellerId}</td>
                 <td>${composition.goodsId}</td>
 
-                <%--<td><a href="<c:url value='/edit/${composition.orderGoodsId}' />" >Edit</a></td> --%>
                 <td><a href="<c:url value='/admin/CompositionControl/RemoveComposition/${composition.orderGoodsId}' />" >Delete</a></td>
             </tr>
         </c:forEach>

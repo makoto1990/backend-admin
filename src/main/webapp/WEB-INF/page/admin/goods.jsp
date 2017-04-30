@@ -11,7 +11,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Goods Page</title>
     <style type="text/css">
         .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
@@ -32,20 +31,8 @@
 <form:form action="${findAction}" commandName="goods">
     <table>
         <tr>
-            <%--
-            <td>
-                <form:label path="goodsID">
-                    <spring:message text="Goods ID"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="goodsId" readonly="true" size="8"  />
-                <form:hidden path="goodsId" />
-            </td>
-            <td><a href="<c:url value='/admin/GoodsControl/FindGoods/${goods.goodsId}' />" >Find</a></td>
-            --%>
             <td><input type="text" ng-model="ID"></td>
-            <td><a href="/admin/admin/GoodsControl/FindGoods/{{ID}}"></a></td>
+            <td><a href="/admin/GoodsControl/FindGoods/{{ID}}"></a></td>
         </tr>
 
         <c:if test="${!empty goods.goodsName}">
@@ -62,7 +49,6 @@
                 <th width="120">Large Amount</th>
                 <th width="120">Goods Large Price</th>
                 <th width="120">Goods Pricture</th>
-                <th width="60">Edit</th>
                 <th width="60">Delete</th>
             </tr>
             <tr>
@@ -82,139 +68,6 @@
                 <td><a href="<c:url value='/admin/GoodsControl/RemoveGoods/${goods.goodsId}' />" >Delete</a></td>
             </tr>
         </c:if>
-            <%--
-            <tr>
-                <td>
-                    <form:label path="goodsID">
-                        <spring:message text="Goods ID"/>
-                    </form:label>
-                </td>
-                <td>
-                    <form:input path="goodsID" readonly="true" size="8"  disabled="true" />
-                    <form:hidden path="goodsID" />
-                </td>
-            </tr>
-        </c:if>
-        <tr>
-            <td>
-                <form:label path="goodsName">
-                    <spring:message text="Name"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="goodsName" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="goodsCount">
-                    <spring:message text="Count"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="goodsCount" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="goodsPrice">
-                    <spring:message text="Price"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="goodsPrice" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="storeWay">
-                    <spring:message text="Store Way"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="storeWay" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="sourceArea">
-                    <spring:message text="Source Area"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="sourceArea" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="setDate">
-                    <spring:message text="Set Date"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="setDate" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="sellerID">
-                    <spring:message text="Seller ID"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="sellerID" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="goodsType">
-                    <spring:message text="Goods Type"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="goodsType" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="leastAmount">
-                    <spring:message text="Least Amount"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="leastAmount" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="largeAmount">
-                    <spring:message text="Large Amount"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="largeAmount" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="largePrice">
-                    <spring:message text="Large Price"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="largePrice" />
-            </td>
-        </tr>
-       <tr>
-            <td>
-                <form:label path="Picture">
-                    <spring:message text="picture"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="Picture" />
-            </td>
-        </tr>--%>
 
     </table>
 
@@ -251,7 +104,6 @@
             <th width="120">Goods Large Price</th>
             <th width="120">Goods Pricture</th>
 
-            <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
         <c:forEach items="${listGoods}" var="goods">

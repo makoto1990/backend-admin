@@ -1,6 +1,6 @@
 package com.backend.adminEnd.dao;
 import java.util.List;
-import com.backend.adminEnd.model.UserEntity;
+import com.backend.model.UserEntity;
 
 /**
  * Created by kevin on 2017/4/11.

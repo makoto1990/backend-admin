@@ -1,4 +1,6 @@
-package com.backend.adminEnd.model;
+package com.backend.model;
+
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -27,6 +29,7 @@ public class UserEntity {
 
     @Id
     @Column(name = "userID", nullable = false, length = 12)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public String getUserId() {
         return userId;
     }

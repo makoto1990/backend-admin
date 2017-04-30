@@ -6,7 +6,6 @@ package com.backend.adminEnd.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,8 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.backend.adminEnd.model.*;
 import com.backend.adminEnd.service.*;
+import com.backend.model.*;
 
 @Controller
 public class ViewController {
@@ -70,7 +69,7 @@ public class ViewController {
 
     @RequestMapping(value = "/UserControl/AddUser", method = RequestMethod.POST)
     public String addUser(@ModelAttribute("user") UserEntity user) {
-        if (Integer.parseInt(user.getUserId()) == 0) {
+        if (user.getUserId()==null) {
             this.userService.addUser(user);
         } else {
             this.userService.updateUser(user);
@@ -88,7 +87,7 @@ public class ViewController {
     public String editUser(@PathVariable("id") String id, Model model) {
         model.addAttribute("user", this.userService.getUserById(id));
         model.addAttribute("listUsers", this.userService.listUser());
-        return "redirect:/admin/UserControl";
+        return "user";
     }
 
     @RequestMapping(value = "/GoodsControl", method = RequestMethod.GET)
@@ -108,14 +107,14 @@ public class ViewController {
     public String findGoods(@PathVariable("id") String id, Model model) {
         model.addAttribute("goods", this.goodsService.getGoodsByGoodsId(id));
         model.addAttribute("listGoods", this.goodsService.listGoods());
-        return "redirect:/admin/GoodsControl";
+        return "goods";
     }
 
     @RequestMapping(value = "/GoodsControl/FindGoods/{id}", method = RequestMethod.POST)
     public String findGoodsByID(@PathVariable("id") String id, Model model) {
         model.addAttribute("goods", this.goodsService.getGoodsByGoodsId(id));
         model.addAttribute("listGoods", this.goodsService.listGoods());
-        return "redirect:/admin/GoodsControl";
+        return "goods";
     }
 
     @RequestMapping(value = "/OrderControl", method = RequestMethod.GET)
@@ -135,14 +134,14 @@ public class ViewController {
     public String findOrder(@PathVariable("id") String id, Model model) {
         model.addAttribute("order", this.orderService.getOrderById(id));
         model.addAttribute("listOrder", this.orderService.listOrder());
-        return "redirect:/admin/OrderControl";
+        return "order";
     }
 
     @RequestMapping(value = "/OrderControl/FindOrder/{id}", method = RequestMethod.POST)
     public String findOrderById(@PathVariable("id") String id, Model model) {
         model.addAttribute("order", this.orderService.getOrderById(id));
         model.addAttribute("listOrder", this.orderService.listOrder());
-        return "redirect:/admin/OrderControl";
+        return "order";
     }
 
     @RequestMapping(value = "/SellerControl", method = RequestMethod.GET)
@@ -172,7 +171,7 @@ public class ViewController {
     public String editSeller(@PathVariable("id") String id, Model model) {
         model.addAttribute("seller", this.sellerService.getSellerById(id));
         model.addAttribute("listSellers", this.sellerService.listSeller());
-        return "redirect:/admin/SellerControl";
+        return "seller";
     }
 
     @RequestMapping(value = "/CompositionControl", method = RequestMethod.GET)
@@ -192,20 +191,20 @@ public class ViewController {
     public String findComposition(@PathVariable("id") String id, Model model) {
         model.addAttribute("composition", this.compositionService.getCompositionByOrderGoodsId(id));
         model.addAttribute("listComposition", this.compositionService.listComposition());
-        return "redirect:/admin/CompositionControl";
+        return "composition";
     }
 
     @RequestMapping(value = "/CompositionControl/FindSingleComposition/{id}", method = RequestMethod.POST)
     public String findCompositionById(@PathVariable("id") String id, Model model) {
         model.addAttribute("composition", this.compositionService.getCompositionByOrderGoodsId(id));
         model.addAttribute("listComposition", this.compositionService.listComposition());
-        return "redirect:/admin/CompositionControl";
+        return "composition";
     }
 
     @RequestMapping(value = "/CompositionControl/FindCompositionBySellerID/{id}", method = RequestMethod.POST)
     public String findCompositionBySellerID(@PathVariable("id") String id, Model model) {
         model.addAttribute("composition", new CompositionEntity());
         model.addAttribute("listComposition", this.compositionService.getCompositionBySellerId(id));
-        return "redirect:/admin/CompositionControl";
+        return "composition";
     }
 }

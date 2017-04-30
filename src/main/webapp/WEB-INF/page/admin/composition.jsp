@@ -8,7 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page session="false" %>
+<%@ page pageEncoding="UTF-8" %>
 <html>
 <head>
     <title>Composition Page</title>
@@ -150,7 +150,7 @@
 
 <br>
 <h3>Composition List</h3>
-<c:if test="${!empty listcompositions}">
+<c:if test="${!empty listComposition}">
     <table class="tg">
         <tr>
             <th width="80">Composition ID</th>
@@ -161,12 +161,12 @@
 
             <th width="60">Delete</th>
         </tr>
-        <c:forEach items="${listcompositions}" var="composition">
+        <c:forEach items="${listComposition}" var="composition">
             <tr>
                 <td>${composition.orderGoodsId}</td>
                 <td>${composition.goodsAmount}</td>
                 <td>${composition.sellerId}</td>
-                <td>${composition.goodsID}</td>
+                <td>${composition.goodsId}</td>
 
                 <%--<td><a href="<c:url value='/edit/${composition.orderGoodsId}' />" >Edit</a></td> --%>
                 <td><a href="<c:url value='/admin/CompositionControl/RemoveComposition/${composition.orderGoodsId}' />" >Delete</a></td>

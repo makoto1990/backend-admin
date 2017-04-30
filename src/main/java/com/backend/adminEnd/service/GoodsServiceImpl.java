@@ -1,7 +1,7 @@
 package com.backend.adminEnd.service;
 
 import com.backend.adminEnd.dao.GoodsDao;
-import com.backend.adminEnd.model.GoodsEntity;
+import com.backend.model.GoodsEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

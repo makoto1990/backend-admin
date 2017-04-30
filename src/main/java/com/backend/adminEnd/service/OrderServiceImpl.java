@@ -1,7 +1,7 @@
 package com.backend.adminEnd.service;
 
 import com.backend.adminEnd.dao.OrderDao;
-import com.backend.adminEnd.model.OrderEntity;
+import com.backend.model.OrderEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

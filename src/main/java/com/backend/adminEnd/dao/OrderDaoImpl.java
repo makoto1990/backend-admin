@@ -1,6 +1,6 @@
 package com.backend.adminEnd.dao;
 
-import com.backend.adminEnd.model.OrderEntity;
+import com.backend.model.OrderEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -18,7 +18,7 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public void removeOrder(String orderId) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         OrderEntity o = (OrderEntity) session.load(OrderEntity.class, orderId);
         if (o != null) {
             session.delete(o);
@@ -28,13 +28,13 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<OrderEntity> listOrder() {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         return session.createQuery("from OrderEntity").list();
     }
 
     @Override
     public OrderEntity getOrderById(String orderId) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         return (OrderEntity) session.load(OrderEntity.class, orderId);
     }
 }

@@ -1,6 +1,6 @@
 package com.backend.adminEnd.service;
 
-import com.backend.adminEnd.model.UserEntity;
+import com.backend.model.UserEntity;
 
 import java.util.List;
 

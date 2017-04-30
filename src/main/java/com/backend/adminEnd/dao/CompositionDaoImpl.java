@@ -1,6 +1,6 @@
 package com.backend.adminEnd.dao;
 
-import com.backend.adminEnd.model.CompositionEntity;
+import com.backend.model.CompositionEntity;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -24,20 +24,20 @@ public class CompositionDaoImpl implements CompositionDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<CompositionEntity> listComposition() {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         return session.createQuery("from CompositionEntity").list();
     }
 
     @Override
     public CompositionEntity getCompositionByOrderGoodsId(String orderGoodsId) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         return (CompositionEntity) session.load(CompositionEntity.class, orderGoodsId);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public List<CompositionEntity> getCompositionBySellerId(String sellerId) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<CompositionEntity> criteria = builder.createQuery(CompositionEntity.class);
         Root<CompositionEntity> root = criteria.from(CompositionEntity.class);
@@ -48,7 +48,7 @@ public class CompositionDaoImpl implements CompositionDao {
 
     @Override
     public void removeComposition(String orderGoodsId) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         CompositionEntity c = (CompositionEntity) session.load(CompositionEntity.class, orderGoodsId);
         if (c != null) {
             session.delete(c);

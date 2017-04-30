@@ -1,9 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page session="false" %>
+<%@ page pageEncoding="UTF-8" %>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Seller Page</title>
     <style type="text/css">
         .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
@@ -37,7 +38,7 @@
         </c:if>
         <tr>
             <td>
-                <form:label path="userID">
+                <form:label path="userId">
                     <spring:message text="User ID"/>
                 </form:label>
             </td>

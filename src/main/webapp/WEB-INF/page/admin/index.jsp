@@ -8,7 +8,7 @@
 </head>
 <body>
     <tr>
-        <td><a href="<c:url value='/admin/UserControl' />" >UserControl</a></td>
+        <td><a href="<c:url value="/admin/UserControl" />" >UserControl</a></td>
         <td><a href="<c:url value='/admin/GoodsControl' />" >GoodsControl</a></td>
         <td><a href="<c:url value='/admin/OrderControl' />" >OrderControl</a></td>
         <td><a href="<c:url value='/admin/SellerControl' />" >SellerControl</a></td>

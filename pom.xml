@@ -207,6 +207,7 @@
       <artifactId>sqljdbc42</artifactId>
       <version>6.0</version>
     </dependency>
+    <!--改过原本为sqljdbc42 和6.0-->
   </dependencies>
   <build>
     <plugins>

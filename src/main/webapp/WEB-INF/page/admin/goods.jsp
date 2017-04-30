@@ -24,7 +24,7 @@
 <h1>
     Find a Goods
 </h1>
-<tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
+<tr><td><a href="<c:url value='/admin' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
 <c:url var="findAction" value="/admin/GoodsControl/FindGoods/${goods.goodsId}" ></c:url>
 
@@ -32,7 +32,7 @@
     <table>
         <tr>
             <td><input type="text" ng-model="ID"></td>
-            <td><a href="/admin/GoodsControl/FindGoods/{{ID}}"></a></td>
+            <td><a href="/admin/GoodsControl/FindGoods/{{ID}}">Find</a></td>
         </tr>
 
         <c:if test="${!empty goods.goodsName}">
@@ -99,6 +99,7 @@
             <th width="120">Goods Source</th>
             <th width="120">Seller ID</th>
             <th width="120">Goods Type</th>
+            <th width="120">Goods Set Date</th>
             <th width="120">Least Amount</th>
             <th width="120">Large Amount</th>
             <th width="120">Goods Large Price</th>
@@ -114,9 +115,9 @@
                 <td>${goods.goodsPrice}</td>
                 <td>${goods.storeWay}</td>
                 <td>${goods.sourceArea}</td>
-                <td>${goods.setDate}</td>
                 <td>${goods.sellerId}</td>
                 <td>${goods.goodsType}</td>
+                <td>${goods.setDate}</td>
                 <td>${goods.leastAmount}</td>
                 <td>${goods.largeAmount}</td>
                 <td>${goods.largePrice}</td>

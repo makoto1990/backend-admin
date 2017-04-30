@@ -55,12 +55,12 @@ public class ViewController {
         this.sellerService = ss;
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/admin")
     public String adminIndex() {
         return "index";
     }
 
-    @RequestMapping(value = "/UserControl", method = RequestMethod.GET)
+    @RequestMapping(value="/UserControl", method = RequestMethod.GET)
     public String adminUserControl(Model model) {
         model.addAttribute("user", new UserEntity());
         model.addAttribute("listUsers", this.userService.listUser());

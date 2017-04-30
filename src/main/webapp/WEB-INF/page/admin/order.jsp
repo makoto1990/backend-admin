@@ -17,7 +17,7 @@
 <h1>
     Add a Order
 </h1>
-<tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
+<tr><td><a href="<c:url value='/admin' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
 
 <c:url var="addAction" value="/admin/OrderControl/FindOrder/${order.orderId}" ></c:url>
@@ -26,7 +26,7 @@
     <table>
         <tr>
             <td><input type="text" ng-model="ID"></td>
-            <td><a href="/admin/OrderControl/FindOrder/{{ID}}"></a></td>
+            <td><a href="/admin/OrderControl/FindOrder/{{ID}}">Find</a></td>
         </tr>
         <c:if test="${!empty order.receiverName}">
             <tr>
@@ -75,7 +75,7 @@
                 <td><a href="<c:url value='/admin/OrderControl/RemoveOrder/${order.orderId}' />" >Delete</a></td>
             </tr>
         </c:if>
-
+<%--
         <tr>
             <td colspan="2">
                 <c:if test="${!empty order.orderId}">
@@ -87,7 +87,7 @@
                            value="<spring:message text="Add User"/>" />
                 </c:if>
             </td>
-        </tr>
+        </tr>--%>
     </table>
 
 

@@ -58,19 +58,20 @@
 <h1>
     Add a Person
 </h1>
-<tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
+<tr><td><a href="<c:url value='/admin' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
-
+    <button ng-click="toggle2()">ADD</button>
 <c:url var="addAction" value="/admin/UserControl/AddUser" ></c:url>
 
 <form:form action="${addAction}" commandName="user">
-    <c:if test="${!empty user.userId}">
+    {{myVar}}
+    <c:if test="${empty user.userId}">
         <button ng-click="toggle2()">ADD</button>
     </c:if>
-    <c:if test="${empty user.userId}">
+    <c:if test="${!empty user.userId}">
         <button ng-click="toggle()">EDIT</button>
     </c:if>
-    <table ng-hide="myVar">
+    <table >
 
         <tr>
             <td>
@@ -79,7 +80,7 @@
                     </form:label>
             </td>
             <td>
-                <form:input path="userId" readonly="true" size="8"  disabled="myVar2" />
+                <form:input path="userId"     />
             </td>
         </tr>
         <tr>
@@ -208,8 +209,9 @@
                     <spring:message text="register Date"/>
                 </form:label>
             </td>
+            <td><text value="registerDate"></text></td>
             <td>
-                <form:checkbox path="registerDate" ng-model="Now" disabled="true" />
+                <form:input path="registerDate" ng-model="Now" disabled="true" />
             </td>
         </tr>
         <tr>
@@ -247,28 +249,15 @@
         $scope.myVar = true;
         $scope.myVar2 = true;
         $scope.toggle = function() {
-            $scope.myVar = !$scope.myVar;
         };
         $scope.toggle2 = function() {
             $scope.myVar = !$scope.myVar;
+
             $scope.myVar2= !$scope.myVar2;
         };
         var now1=new Date();
-        //让时间在页面显示
         $scope.Now=now1.getHours()+':'+now1.getMinutes()+':'+now1.getSeconds();
 
-        //写一个方法获取当前时间
-        $scope.SetTimer=function(){
-            //angularJs的特性，需要手动把变化映射到html元素上面
-            $scope.$apply(function(){
-                var now=new Date();
-                //在控制台打印，可以不要
-                console.log($scope.Now);
-                $scope.Now=now.getHours()+':'+now.getMinutes()+':'+now.getSeconds();
-            });
-        };
-        //每隔1秒刷新一次时间
-        $scope.SetTimerInterval=setInterval($scope.SetTimer,1000);
     });
 
 </script>
@@ -276,7 +265,6 @@
 <h3>User List</h3>
 <c:if test="${!empty listUsers}">
     <table class="tg">
-        <tr>
             <th width="80">User ID</th>
             <th width="120">User Name</th>
             <th width="120">User RegisterDate</th>
@@ -284,6 +272,7 @@
             <th width="120">User Real Name</th>
             <th width="120">User ID number</th>
             <th width="120">User Phone</th>
+            <th width="120">User Status</th>
             <th width="120">User Postcode</th>
             <th width="120">User Province</th>
             <th width="120">User City</th>
@@ -291,7 +280,6 @@
             <th width="120">User Street</th>
             <th width="120">User Address</th>
             <th width="120">User isManager</th>
-
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>

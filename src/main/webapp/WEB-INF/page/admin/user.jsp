@@ -60,17 +60,15 @@
 </h1>
 <tr><td><a href="<c:url value='/admin' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
-    <button ng-click="toggle2()">ADD</button>
-<c:url var="addAction" value="/admin/UserControl/AddUser" ></c:url>
 
-<form:form action="${addAction}" commandName="user">
-    {{myVar}}
-    <c:if test="${empty user.userId}">
-        <button ng-click="toggle2()">ADD</button>
-    </c:if>
+<c:url var="addAction" value="/admin/UserControl/AddUser" ></c:url>
     <c:if test="${!empty user.userId}">
         <button ng-click="toggle()">EDIT</button>
     </c:if>
+    <c:if test="${empty user.userId}">
+        <button ng-click="toggle2()">ADD</button>
+    </c:if>
+<form:form action="${addAction}" commandName="user">
     <table >
 
         <tr>
@@ -240,6 +238,7 @@
 
 
 </form:form>
+
 </div>
 <script>
 

@@ -23,7 +23,7 @@
 
 <form:form action="${addAction}" commandName="seller">
     <table>
-        <c:if test="${!empty seller.userId}">
+        <c:if test="${empty seller.userId}">
             <tr>
                 <td>
                     <form:label path="sellerId">
@@ -31,7 +31,7 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="sellerId" readonly="true" size="8"  disabled="true" />
+                    <form:input path="sellerId" />
                     <%--<form:hidden path="sellerId" />--%>
                 </td>
             </tr>

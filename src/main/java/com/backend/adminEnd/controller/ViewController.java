@@ -55,7 +55,7 @@ public class ViewController {
         this.sellerService = ss;
     }
 
-    @RequestMapping("/admin")
+    @RequestMapping("/")
     public String adminIndex() {
         return "index";
     }
@@ -110,13 +110,6 @@ public class ViewController {
         return "goods";
     }
 
-    @RequestMapping(value = "/GoodsControl/FindGoods/{id}", method = RequestMethod.POST)
-    public String findGoodsByID(@PathVariable("id") String id, Model model) {
-        model.addAttribute("goods", this.goodsService.getGoodsByGoodsId(id));
-        model.addAttribute("listGoods", this.goodsService.listGoods());
-        return "goods";
-    }
-
     @RequestMapping(value = "/OrderControl", method = RequestMethod.GET)
     public String adminOrderControl(Model model) {
         model.addAttribute("order", new OrderEntity());
@@ -132,13 +125,6 @@ public class ViewController {
 
     @RequestMapping(value = "/OrderControl/FindOrder/{id}", method = RequestMethod.GET)
     public String findOrder(@PathVariable("id") String id, Model model) {
-        model.addAttribute("order", this.orderService.getOrderById(id));
-        model.addAttribute("listOrder", this.orderService.listOrder());
-        return "order";
-    }
-
-    @RequestMapping(value = "/OrderControl/FindOrder/{id}", method = RequestMethod.POST)
-    public String findOrderById(@PathVariable("id") String id, Model model) {
         model.addAttribute("order", this.orderService.getOrderById(id));
         model.addAttribute("listOrder", this.orderService.listOrder());
         return "order";
@@ -194,14 +180,7 @@ public class ViewController {
         return "composition";
     }
 
-    @RequestMapping(value = "/CompositionControl/FindSingleComposition/{id}", method = RequestMethod.POST)
-    public String findCompositionById(@PathVariable("id") String id, Model model) {
-        model.addAttribute("composition", this.compositionService.getCompositionByOrderGoodsId(id));
-        model.addAttribute("listComposition", this.compositionService.listComposition());
-        return "composition";
-    }
-
-    @RequestMapping(value = "/CompositionControl/FindCompositionBySellerID/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/CompositionControl/FindCompositionBySellerID/{id}", method = RequestMethod.GET)
     public String findCompositionBySellerID(@PathVariable("id") String id, Model model) {
         model.addAttribute("composition", new CompositionEntity());
         model.addAttribute("listComposition", this.compositionService.getCompositionBySellerId(id));

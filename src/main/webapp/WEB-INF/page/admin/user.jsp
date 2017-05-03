@@ -58,7 +58,7 @@
 <h1>
     Add a Person
 </h1>
-<tr><td><a href="<c:url value='/admin' />" >back</a></td></tr>
+<tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
 <div ng-app="myApp2" ng-controller="myCtrl" ng-init="ID=''" >
 
 <c:url var="addAction" value="/admin/UserControl/AddUser" ></c:url>

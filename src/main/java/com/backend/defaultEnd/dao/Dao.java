@@ -3,13 +3,12 @@ package com.backend.defaultEnd.dao;
 import com.backend.model.UserEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
+import org.hibernate.Transaction;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 public class Dao {
-
     private SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sf){
@@ -23,11 +22,15 @@ public class Dao {
         Root<UserEntity> root = criteria.from(UserEntity.class);
         criteria.select(root);
         criteria.where(builder.equal(root.get("userName"),userName));
-        return session.createQuery(criteria).getSingleResult();
+        UserEntity result = session.createQuery(criteria).getSingleResult();
+        session.close();
+        return result;
     }
 
     public void addUser(UserEntity user) {
-        Session session = this.sessionFactory.openSession();
+        Session session = this.sessionFactory.getCurrentSession();
+        Transaction tx =session.beginTransaction();
         session.persist(user);
+        tx.commit();
     }
 }

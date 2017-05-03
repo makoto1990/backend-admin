@@ -24,7 +24,7 @@
 <h1>
     Find a Goods
 </h1>
-<tr><td><a href="<c:url value='/admin' />" >back</a></td></tr>
+<tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
 <c:url var="findAction" value="/admin/GoodsControl/FindGoods/${goods.goodsId}" ></c:url>
 

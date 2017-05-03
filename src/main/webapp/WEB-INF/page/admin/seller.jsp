@@ -18,7 +18,7 @@
 <h1>
     Add a Seller
 </h1>
-<tr><td><a href="<c:url value='/admin' />" >back</a></td></tr>
+<tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
 <c:url var="addAction" value="/admin/SellerControl/AddSeller" ></c:url>
     <c:if test="${!empty seller.userId}">

@@ -24,7 +24,7 @@
 <h1>
     Add a Composition
 </h1>
-<tr><td><a href="<c:url value='/admin' />" >back</a></td></tr>
+<tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="compositionID=''" ng-init="sellerID=''">
 
     <c:url var="addAction" value="/admin/CompositionControl/FindCompositionBySellerID/${composition.orderGoodsId}" ></c:url>

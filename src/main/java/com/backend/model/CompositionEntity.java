@@ -9,10 +9,11 @@ import javax.persistence.*;
 @Table(name = "[Composition]", schema = "dbo", catalog = "onlineMarket")
 public class CompositionEntity {
     private String orderGoodsId;
-    private Double goodsAmount;
+    private Integer goodsAmount;
     private String sellerId;
     private String goodsId;
     private String orderId;
+
 
     @Id
     @Column(name = "order_goodsID", nullable = false, length = 24)
@@ -26,11 +27,11 @@ public class CompositionEntity {
 
     @Basic
     @Column(name = "goodsAmount", nullable = true, precision = 0)
-    public Double getGoodsAmount() {
+    public Integer getGoodsAmount() {
         return goodsAmount;
     }
 
-    public void setGoodsAmount(Double goodsAmount) {
+    public void setGoodsAmount(Integer goodsAmount) {
         this.goodsAmount = goodsAmount;
     }
 

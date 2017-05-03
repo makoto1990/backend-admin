@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 public class GoodsEntity {
     private String goodsId;
     private String goodsName;
-    private Double goodsCount;
+    private Integer goodsCount;
     private Double goodsPrice;
     private String storeWay;
     private String sourceArea;
@@ -22,6 +22,8 @@ public class GoodsEntity {
     private Double largeAmount;
     private Double largePrice;
     private String picture;
+    private String goodsSize;
+    private String goodsIntro;
 
     @Id
     @Column(name = "goodsID", nullable = false, length = 12)
@@ -32,6 +34,18 @@ public class GoodsEntity {
     public void setGoodsId(String goodsId) {
         this.goodsId = goodsId;
     }
+
+    @Basic
+    @Column(name= "goodsSize",nullable = true,length = 50)
+    public String getGoodsSize() {return goodsSize;}
+
+    public void setGoodsSize(String goodsSize){this.goodsSize=goodsSize;}
+
+    @Basic
+    @Column(name = "goodsIntro",nullable = true,length = 500)
+    public String getGoodsIntro(){return goodsIntro;}
+
+    public void setGoodsIntro(String goodsIntro){this.goodsIntro=goodsIntro;}
 
     @Basic
     @Column(name = "goodsName", nullable = true, length = 20)
@@ -45,11 +59,11 @@ public class GoodsEntity {
 
     @Basic
     @Column(name = "goodsCount", nullable = true, precision = 0)
-    public Double getGoodsCount() {
+    public Integer getGoodsCount() {
         return goodsCount;
     }
 
-    public void setGoodsCount(Double goodsCount) {
+    public void setGoodsCount(Integer goodsCount) {
         this.goodsCount = goodsCount;
     }
 
@@ -163,6 +177,8 @@ public class GoodsEntity {
         if (goodsId != null ? !goodsId.equals(that.goodsId) : that.goodsId != null) return false;
         if (goodsName != null ? !goodsName.equals(that.goodsName) : that.goodsName != null) return false;
         if (goodsCount != null ? !goodsCount.equals(that.goodsCount) : that.goodsCount != null) return false;
+        if (goodsSize != null ? !goodsSize.equals(that.goodsSize) : that.goodsSize != null) return false;
+        if (goodsIntro != null ? !goodsIntro.equals(that.goodsIntro) : that.goodsIntro != null) return false;
         if (goodsPrice != null ? !goodsPrice.equals(that.goodsPrice) : that.goodsPrice != null) return false;
         if (storeWay != null ? !storeWay.equals(that.storeWay) : that.storeWay != null) return false;
         if (sourceArea != null ? !sourceArea.equals(that.sourceArea) : that.sourceArea != null) return false;
@@ -182,6 +198,8 @@ public class GoodsEntity {
         int result = goodsId != null ? goodsId.hashCode() : 0;
         result = 31 * result + (goodsName != null ? goodsName.hashCode() : 0);
         result = 31 * result + (goodsCount != null ? goodsCount.hashCode() : 0);
+        result = 31 * result + (goodsSize != null ? goodsSize.hashCode() : 0);
+        result = 31 * result + (goodsIntro != null ? goodsIntro.hashCode() : 0);
         result = 31 * result + (goodsPrice != null ? goodsPrice.hashCode() : 0);
         result = 31 * result + (storeWay != null ? storeWay.hashCode() : 0);
         result = 31 * result + (sourceArea != null ? sourceArea.hashCode() : 0);

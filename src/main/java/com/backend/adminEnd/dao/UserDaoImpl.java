@@ -3,6 +3,7 @@ package com.backend.adminEnd.dao;
 import com.backend.model.UserEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -19,13 +20,17 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void addUser(UserEntity user) {
         Session session = this.sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         session.persist(user);
+        transaction.commit();
     }
 
     @Override
     public void updateUser(UserEntity user) {
         Session session = this.sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         session.update(user);
+        transaction.commit();
     }
 
     @Override
@@ -44,9 +49,11 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void removeUser(String userId) {
         Session session = this.sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         UserEntity u = (UserEntity) session.load(UserEntity.class, userId);
         if (u != null) {
             session.delete(u);
         }
+        transaction.commit();
     }
 }

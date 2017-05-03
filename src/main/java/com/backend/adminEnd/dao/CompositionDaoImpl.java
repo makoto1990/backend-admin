@@ -5,6 +5,8 @@ import com.backend.model.CompositionEntity;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
+import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.hibernate.Session;
@@ -50,9 +52,11 @@ public class CompositionDaoImpl implements CompositionDao {
     @Override
     public void removeComposition(String orderGoodsId) {
         Session session = this.sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
         CompositionEntity c = (CompositionEntity) session.load(CompositionEntity.class, orderGoodsId);
         if (c != null) {
             session.delete(c);
         }
+        transaction.commit();
     }
 }

@@ -3,6 +3,7 @@ package com.backend.adminEnd.dao;
 import com.backend.model.GoodsEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -32,9 +33,11 @@ public class GoodsDaoImpl implements GoodsDao {
     @Override
     public void removeGoods(String goodsId) {
         Session session = this.sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         GoodsEntity g = (GoodsEntity) session.load(GoodsEntity.class, goodsId);
         if (g != null) {
             session.delete(g);
         }
+        transaction.commit();
     }
 }

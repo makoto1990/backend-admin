@@ -3,6 +3,7 @@ package com.backend.adminEnd.dao;
 import com.backend.model.OrderEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -19,10 +20,12 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public void removeOrder(String orderId) {
         Session session = this.sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         OrderEntity o = (OrderEntity) session.load(OrderEntity.class, orderId);
         if (o != null) {
             session.delete(o);
         }
+        transaction.commit();
     }
 
     @Override

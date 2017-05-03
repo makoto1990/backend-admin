@@ -3,6 +3,7 @@ package com.backend.adminEnd.dao;
 import com.backend.model.SellerEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -19,13 +20,17 @@ public class SellerDaoImpl implements SellerDao {
     @Override
     public void addSeller(SellerEntity seller) {
         Session session = this.sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         session.persist(seller);
+        transaction.commit();
     }
 
     @Override
     public void updateSeller(SellerEntity seller) {
         Session session = this.sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         session.update(seller);
+        transaction.commit();
     }
 
     @Override
@@ -44,9 +49,11 @@ public class SellerDaoImpl implements SellerDao {
     @Override
     public void removeSeller(String sellerId) {
         Session session = this.sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         SellerEntity s = (SellerEntity) session.load(SellerEntity.class, sellerId);
         if (s != null) {
             session.delete(s);
         }
+        transaction.commit();
     }
 }

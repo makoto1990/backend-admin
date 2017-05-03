@@ -69,7 +69,7 @@
         <button ng-click="toggle2()">ADD</button><p>{{myVar2}}{{Now}}</p>
     </c:if>
 <form:form action="${addAction}" commandName="user">
-    <table >
+    <table ng-hide="myVar">
 
         <tr>
             <td>
@@ -247,6 +247,7 @@
         $scope.myVar = true;
         $scope.myVar2 = true;
         $scope.toggle = function() {
+            $scope.myVar=!$scope.myVar;
         };
         $scope.toggle2 = function() {
             $scope.myVar = !$scope.myVar;
@@ -254,7 +255,7 @@
             $scope.myVar2= !$scope.myVar2;
         };
         var now1=new Date();
-        $scope.Now=now1.getYear()+'-'+now1.getMonth()+'-'+now1.getUTCDate()+' '+now1.getHours()+':'+now1.getMinutes()+':'+now1.getSeconds();
+        $scope.Now=now1.getUTCFullYear()+'-'+now1.getUTCMonth()+'-'+now1.getUTCDate()+' '+now1.getHours()+':'+now1.getMinutes()+':'+now1.getSeconds();
 
     });
 

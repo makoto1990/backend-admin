@@ -12,6 +12,7 @@
         .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
         .tg .tg-4eph{background-color:#f9f9f9}
     </style>
+    <script src=/resources/angular/angular.min.js></script>
 </head>
 <body>
 <h1>
@@ -20,9 +21,14 @@
 <tr><td><a href="<c:url value='/admin' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
 <c:url var="addAction" value="/admin/SellerControl/AddSeller" ></c:url>
-
+    <c:if test="${!empty seller.userId}">
+        <button ng-click="toggle()">EDIT</button>
+    </c:if>
+    <c:if test="${empty seller.userId}">
+        <button ng-click="toggle2()">ADD</button><p>{{myVar2}}{{Now}}</p>
+    </c:if>
 <form:form action="${addAction}" commandName="seller">
-    <table>
+    <table ng-hide="myVar">
         <c:if test="${empty seller.userId}">
             <tr>
                 <td>
@@ -91,6 +97,7 @@
         $scope.myVar = true;
         $scope.myVar2 = true;
         $scope.toggle = function() {
+            $scope.myVar=!$scope.myVar;
         };
         $scope.toggle2 = function() {
             $scope.myVar = !$scope.myVar;
@@ -98,7 +105,7 @@
             $scope.myVar2= !$scope.myVar2;
         };
         var now1=new Date();
-        $scope.Now=now1.getYear()+'-'+now1.getMonth()+'-'+now1.getUTCDate()+' '+now1.getHours()+':'+now1.getMinutes()+':'+now1.getSeconds();
+        $scope.Now=now1.getUTCFullYear()+'-'+now1.getUTCMonth()+'-'+now1.getUTCDate()+' '+now1.getHours()+':'+now1.getMinutes()+':'+now1.getSeconds();
 
     });
 

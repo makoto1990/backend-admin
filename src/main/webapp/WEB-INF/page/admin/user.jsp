@@ -209,7 +209,7 @@
                 </form:label>
             </td>
             <td>
-                <form:checkbox path="registerDate" ng-model="Now" disabled="true" />
+                <form:input path="registerDate" ng-model="Now" disabled="true" />
             </td>
         </tr>
         <tr>

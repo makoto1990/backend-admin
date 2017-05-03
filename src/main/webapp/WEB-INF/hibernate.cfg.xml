@@ -6,9 +6,6 @@
     <session-factory>
         <property name="connection.url">jdbc:sqlserver://123.206.116.122\MSSQLSERVER:1433;databaseName=onlineMarket</property>
         <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-        <property name="connection.username">sa</property>
-        <property name="connection.password">ECUSTJ143@software</property>
-        <property name="hibernate.current_session_context_class">thread</property>
         <mapping class="com.backend.model.CompositionEntity"/>
         <mapping class="com.backend.model.GoodsEntity"/>
         <mapping class="com.backend.model.OrderEntity"/>

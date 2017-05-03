@@ -36,13 +36,13 @@ public class GoodsEntity {
     }
 
     @Basic
-    @Column(name="goodsSize",nullable = true ,length = 50)
+    @Column(name= "goodsSize",nullable = true,length = 50)
     public String getGoodsSize() {return goodsSize;}
 
     public void setGoodsSize(String goodsSize){this.goodsSize=goodsSize;}
 
     @Basic
-    @Column(name = "goodsIntro",nullable = true ,length = 500)
+    @Column(name = "goodsIntro",nullable = true,length = 500)
     public String getGoodsIntro(){return goodsIntro;}
 
     public void setGoodsIntro(String goodsIntro){this.goodsIntro=goodsIntro;}

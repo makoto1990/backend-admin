@@ -14,6 +14,7 @@ public class CompositionEntity {
     private String goodsId;
     private String orderId;
 
+
     @Id
     @Column(name = "order_goodsID", nullable = false, length = 24)
     public String getOrderGoodsId() {
@@ -26,11 +27,11 @@ public class CompositionEntity {
 
     @Basic
     @Column(name = "goodsAmount", nullable = true, precision = 0)
-    public int getGoodsAmount() {
+    public Integer getGoodsAmount() {
         return goodsAmount;
     }
 
-    public void setGoodsAmount(int goodsAmount) {
+    public void setGoodsAmount(Integer goodsAmount) {
         this.goodsAmount = goodsAmount;
     }
 

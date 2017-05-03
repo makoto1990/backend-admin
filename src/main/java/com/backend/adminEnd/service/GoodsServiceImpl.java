@@ -32,6 +32,6 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     @Transactional
     public void removeGoods(String goodsId) {
-        this.removeGoods(goodsId);
+        this.goodsDao.removeGoods(goodsId);
     }
 }

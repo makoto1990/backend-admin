@@ -49,6 +49,8 @@
                 <th width="120">Large Amount</th>
                 <th width="120">Goods Large Price</th>
                 <th width="120">Goods Pricture</th>
+                <th width="120">Goods Size</th>
+                <th width="120">Goods Intro</th>
                 <th width="60">Delete</th>
             </tr>
             <tr>
@@ -65,6 +67,8 @@
                 <td>${goods.largeAmount}</td>
                 <td>${goods.largePrice}</td>
                 <td><img src=${goods.picture}/></td>
+                <td>${goods.goodsSize}</td>
+                <td>${goods.goodsIntro}</td>
                 <td><a href="<c:url value='/admin/GoodsControl/RemoveGoods/${goods.goodsId}' />" >Delete</a></td>
             </tr>
         </c:if>
@@ -104,6 +108,8 @@
             <th width="120">Large Amount</th>
             <th width="120">Goods Large Price</th>
             <th width="120">Goods Pricture</th>
+            <th width="120">Goods Size</th>
+            <th width="120">Goods Intro</th>
 
             <th width="60">Delete</th>
         </tr>
@@ -122,6 +128,8 @@
                 <td>${goods.largeAmount}</td>
                 <td>${goods.largePrice}</td>
                 <td><img src=${goods.picture}/></td>
+                <td>${goods.goodsSize}</td>
+                <td>${goods.goodsIntro}</td>
 
             <%-- <td><a href="<c:url value='/edit/${goods.goodsID}' />" >Edit</a></td>--%>
             <td><a href="<c:url value='/admin/GoodsControl/RemoveGoods/${goods.goodsId}' />" >Delete</a></td>

@@ -59,14 +59,14 @@
     Add a Person
 </h1>
 <tr><td><a href="<c:url value='/admin' />" >back</a></td></tr>
-<div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
+<div ng-app="myApp2" ng-controller="myCtrl" ng-init="ID=''" >
 
 <c:url var="addAction" value="/admin/UserControl/AddUser" ></c:url>
     <c:if test="${!empty user.userId}">
         <button ng-click="toggle()">EDIT</button>
     </c:if>
     <c:if test="${empty user.userId}">
-        <button ng-click="toggle2()">ADD</button>
+        <button ng-click="toggle2()">ADD</button><p>{{myVar2}}{{Now}}</p>
     </c:if>
 <form:form action="${addAction}" commandName="user">
     <table >
@@ -207,7 +207,6 @@
                     <spring:message text="register Date"/>
                 </form:label>
             </td>
-            <td><text value="registerDate"></text></td>
             <td>
                 <form:input path="registerDate" ng-model="Now" disabled="true" />
             </td>
@@ -242,7 +241,7 @@
 </div>
 <script>
 
-    var app = angular.module("myApp", []);
+    var app = angular.module("myApp2", []);
 
     app.controller("myCtrl", function($scope) {
         $scope.myVar = true;
@@ -255,7 +254,7 @@
             $scope.myVar2= !$scope.myVar2;
         };
         var now1=new Date();
-        $scope.Now=now1.getHours()+':'+now1.getMinutes()+':'+now1.getSeconds();
+        $scope.Now=now1.getYear()+'-'+now1.getMonth()+'-'+now1.getUTCDate()+' '+now1.getHours()+':'+now1.getMinutes()+':'+now1.getSeconds();
 
     });
 

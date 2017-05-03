@@ -18,7 +18,7 @@
     Add a Seller
 </h1>
 <tr><td><a href="<c:url value='/admin' />" >back</a></td></tr>
-
+<div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
 <c:url var="addAction" value="/admin/SellerControl/AddSeller" ></c:url>
 
 <form:form action="${addAction}" commandName="seller">
@@ -49,11 +49,11 @@
         <tr>
             <td>
                 <form:label path="registerDate">
-                    <spring:message text="RegisterDate"/>
+                    <spring:message text="register Date"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="registerDate" />
+                <form:input path="registerDate" ng-model="Now" disabled="true" />
             </td>
         </tr>
         <tr>
@@ -82,6 +82,27 @@
 
 
 </form:form>
+</div>
+<script>
+
+    var app = angular.module("myApp", []);
+
+    app.controller("myCtrl", function($scope) {
+        $scope.myVar = true;
+        $scope.myVar2 = true;
+        $scope.toggle = function() {
+        };
+        $scope.toggle2 = function() {
+            $scope.myVar = !$scope.myVar;
+
+            $scope.myVar2= !$scope.myVar2;
+        };
+        var now1=new Date();
+        $scope.Now=now1.getYear()+'-'+now1.getMonth()+'-'+now1.getUTCDate()+' '+now1.getHours()+':'+now1.getMinutes()+':'+now1.getSeconds();
+
+    });
+
+</script>
 <br>
 <h3>Seller List</h3>
 <c:if test="${!empty listSellers}">

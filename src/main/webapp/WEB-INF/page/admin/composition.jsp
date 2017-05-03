@@ -51,6 +51,7 @@
                     <th width="120">Goods Amount</th>
                     <th width="120">Seller ID</th>
                     <th width="120">Goods ID</th>
+                    <th width="120">Orders ID</th>
 
                     <th width="60">Delete</th>
                 </tr>
@@ -59,6 +60,7 @@
                     <td>${composition.goodsAmount}</td>
                     <td>${composition.sellerId}</td>
                     <td>${composition.goodsID}</td>
+                    <td>${composition.orderId}</td>
                     <td><a href="<c:url value='/admin/CompositionControl/RemoveComposition/${composition.orderGoodsId}' />" >Delete</a></td>
 
                 </tr>
@@ -90,7 +92,7 @@
             <th width="120">Goods Amount</th>
             <th width="120">Seller ID</th>
             <th width="120">Goods ID</th>
-
+            <th width="120">Orders ID</th>
 
             <th width="60">Delete</th>
         </tr>
@@ -99,7 +101,8 @@
                 <td>${composition.orderGoodsId}</td>
                 <td>${composition.goodsAmount}</td>
                 <td>${composition.sellerId}</td>
-                <td>${composition.goodsId}</td>
+                <td>${composition.goodsID}</td>
+                <td>${composition.orderId}</td>
 
                 <td><a href="<c:url value='/admin/CompositionControl/RemoveComposition/${composition.orderGoodsId}' />" >Delete</a></td>
             </tr>

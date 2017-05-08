@@ -106,8 +106,8 @@
         };
         var now1=new Date();
         $scope.Now=now1.getUTCFullYear()+'-'+now1.getUTCMonth()+'-'+now1.getUTCDate()+' '+now1.getHours()+':'+now1.getMinutes()+':'+now1.getSeconds();
-        $scope.sId=${seller.sellerId};
-        $scope.uId=${seller.userId};
+        $scope.sId="${seller.sellerId}";
+        $scope.uId="${seller.userId}";
 
     });
 

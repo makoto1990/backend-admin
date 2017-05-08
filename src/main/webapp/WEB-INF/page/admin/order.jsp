@@ -26,7 +26,7 @@
     <table>
         <tr>
             <td><input type="text" ng-model="ID"></td>
-            <td><a href="/admin/OrderControl/FindOrder/{{ID}}"></a></td>
+            <td><a href="/admin/OrderControl/FindOrder/{{ID}}">Find</a></td>
         </tr>
         <c:if test="${!empty order.receiverName}">
             <tr>

@@ -10,6 +10,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <html>
 <head>
     <title>User Page</title>
@@ -51,51 +52,53 @@
             background-color: #f9f9f9
         }
     </style>
+    <script src=/resources/angular/angular.min.js></script>
 </head>
 <body>
 <h1>
     Add a Person
 </h1>
-<tr>
-    <td><a href="<c:url value='/admin/' />">back</a></td>
-</tr>
+<tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
+<div ng-app="myApp2" ng-controller="myCtrl" ng-init="ID=''" >
 
-<c:url var="addAction" value="/admin/UserControl/AddUser"></c:url>
-
+<c:url var="addAction" value="/admin/UserControl/AddUser" ></c:url>
+    <c:if test="${!empty user.userId}">
+        <button ng-click="toggle()">EDIT</button>
+    </c:if>
+    <c:if test="${empty user.userId}">
+        <button ng-click="toggle2()">ADD</button><p>{{myVar2}}{{Now}}</p>
+    </c:if>
 <form:form action="${addAction}" commandName="user">
-    <table>
-        <c:if test="${!empty user.userName}">
-        <tr>
+    <table ng-hide="myVar">
 
-                <td>
+        <tr>
+            <td>*
                     <form:label path="userId">
                         <spring:message text="ID"/>
                     </form:label>
-                </td>
-                <td>
-                    <form:input path="userId" size="12"/>
-                </td>
-
-        </tr>
-        </c:if>
-        <tr>
+            </td>
             <td>
+                <form:input path="userId"  ng-model="uId"   />
+            </td>
+        </tr>
+        <tr>
+            <td>*
                 <form:label path="userName">
                     <spring:message text="Name"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="userName"/>
+                <form:input path="userName" ng-model="uName"/>
             </td>
         </tr>
         <tr>
-            <td>
+            <td>*
                 <form:label path="password">
                     <spring:message text="Password"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="password"/>
+                <form:input path="password" ng-model="uPass"/>
             </td>
         </tr>
         <tr>
@@ -105,17 +108,17 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="realName"/>
+                <form:input path="realName" />
             </td>
         </tr>
         <tr>
             <td>
                 <form:label path="iDnumber">
-                    <spring:message text="iDNumber"/>
+                    <spring:message text="iDNumber" />
                 </form:label>
             </td>
             <td>
-                <form:input path="iDnumber"/>
+                <form:input path="iDnumber" ng-model="id" />
             </td>
         </tr>
         <tr>
@@ -125,7 +128,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="phone"/>
+                <form:input path="phone" ng-model="phone"/>
             </td>
         </tr>
         <tr>
@@ -135,7 +138,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="userStatus"/>
+                <form:input path="userStatus" />
             </td>
         </tr>
         <tr>
@@ -145,7 +148,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="postcode"/>
+                <form:input path="postcode" />
             </td>
         </tr>
         <tr>
@@ -155,7 +158,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="province"/>
+                <form:input path="province" />
             </td>
         </tr>
         <tr>
@@ -165,7 +168,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="city"/>
+                <form:input path="city" />
             </td>
         </tr>
         <tr>
@@ -175,7 +178,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="district"/>
+                <form:input path="district" />
             </td>
         </tr>
         <tr>
@@ -185,7 +188,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="street"/>
+                <form:input path="street" />
             </td>
         </tr>
         <tr>
@@ -195,7 +198,17 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="address"/>
+                <form:input path="address" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form:label path="registerDate">
+                    <spring:message text="register Date"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="registerDate" ng-model="Now" disabled="true" />
             </td>
         </tr>
         <tr>
@@ -205,18 +218,18 @@
                 </form:label>
             </td>
             <td>
-                <form:checkbox path="manager"/>
+                <form:checkbox path="manager" />
             </td>
         </tr>
-        <tr>
+        <tr ng-if="uName!=NULL&&uName!=''&&uPass!=''&&uPass!=NULL&&uId>100000000000&&uId<999999999999&&(id>100000000000000000&&id<999999999999999999||id==0)&&(phone>10000000000&&phone<9999999999||phone==0)">
             <td colspan="2">
                 <c:if test="${!empty user.userName}">
                     <input type="submit"
-                           value="<spring:message text="Edit User"/>"/>
+                           value="<spring:message text="Edit User"/>" />
                 </c:if>
                 <c:if test="${empty user.userName}">
                     <input type="submit"
-                           value="<spring:message text="Add User"/>"/>
+                           value="<spring:message text="Add User"/>" />
                 </c:if>
             </td>
         </tr>
@@ -224,11 +237,37 @@
 
 
 </form:form>
+
+</div>
+<script >
+
+    var app = angular.module("myApp2", []);
+
+    app.controller("myCtrl", function($scope) {
+        $scope.myVar = true;
+        $scope.myVar2 = true;
+        $scope.toggle = function() {
+            $scope.myVar=!$scope.myVar;
+        };
+        $scope.toggle2 = function() {
+            $scope.myVar = !$scope.myVar;
+
+            $scope.myVar2= !$scope.myVar2;
+        };
+        var now1=new Date();
+        $scope.Now=now1.getUTCFullYear()+'-'+now1.getUTCMonth()+'-'+now1.getUTCDate()+' '+now1.getHours()+':'+now1.getMinutes()+':'+now1.getSeconds();
+        $scope.uId="${user.userId}";
+        $scope.id="${user.iDnumber}";
+        $scope.phone="${user.phone}";
+        $scope.uName="${user.userName}";
+        $scope.uPass="${user.password}";
+    });
+
+</script>
 <br>
 <h3>User List</h3>
 <c:if test="${!empty listUsers}">
     <table class="tg">
-        <tr>
             <th width="80">User ID</th>
             <th width="120">User Name</th>
             <th width="120">User RegisterDate</th>
@@ -244,7 +283,6 @@
             <th width="120">User Street</th>
             <th width="120">User Address</th>
             <th width="120">User isManager</th>
-
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
@@ -266,8 +304,8 @@
                 <td>${user.address}</td>
                 <td>${user.manager}</td>
 
-                <td><a href="<c:url value='/admin/UserControl/EditUser/${user.userId}' />">Edit</a></td>
-                <td><a href="<c:url value='/admin/UserControl/RemoveUser/${user.userId}' />">Delete</a></td>
+                <td><a href="<c:url value='/admin/UserControl/EditUser/${user.userId}' />" >Edit</a></td>
+                <td><a href="<c:url value='/admin/UserControl/RemoveUser/${user.userId}' />" >Delete</a></td>
             </tr>
         </c:forEach>
     </table>

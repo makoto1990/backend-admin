@@ -12,48 +12,54 @@
         .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
         .tg .tg-4eph{background-color:#f9f9f9}
     </style>
+    <script src=/resources/angular/angular.min.js></script>
 </head>
 <body>
 <h1>
     Add a Seller
 </h1>
 <tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
-
+<div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
 <c:url var="addAction" value="/admin/SellerControl/AddSeller" ></c:url>
-
+    <c:if test="${!empty seller.userId}">
+        <button ng-click="toggle()">EDIT</button>
+    </c:if>
+    <c:if test="${empty seller.userId}">
+        <button ng-click="toggle2()">ADD</button><p>{{myVar2}}{{Now}}</p>
+    </c:if>
 <form:form action="${addAction}" commandName="seller">
-    <table>
-        <c:if test="${!empty seller.userId}">
+    <table ng-hide="myVar">
+        <c:if test="${empty seller.userId}">
             <tr>
-                <td>
-                    <form:label path="sellerID">
+                <td>*
+                    <form:label path="sellerId">
                         <spring:message text="Seller ID"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="sellerId" readonly="true" size="8"  disabled="true" />
-                    <form:hidden path="sellerId" />
+                    <form:input path="sellerId" ng-model="sId"/>
+                    <%--<form:hidden path="sellerId" />--%>
                 </td>
             </tr>
         </c:if>
         <tr>
-            <td>
+            <td>*
                 <form:label path="userId">
-                    <spring:message text="User ID"/>
+                    <spring:message text="User ID" />
                 </form:label>
             </td>
             <td>
-                <form:input path="userId" />
+                <form:input path="userId" ng-model="uId"/>
             </td>
         </tr>
         <tr>
             <td>
                 <form:label path="registerDate">
-                    <spring:message text="RegisterDate"/>
+                    <spring:message text="register Date"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="registerDate" />
+                <form:input path="registerDate" ng-model="Now" disabled="true" />
             </td>
         </tr>
         <tr>
@@ -66,7 +72,7 @@
                 <form:input path="sellerIntro" />
             </td>
         </tr>
-        <tr>
+        <tr ng-if="uId>100000000000&&uId<999999999999&&sId>100000000000&&sId<999999999999">
             <td colspan="2">
                 <c:if test="${!empty seller.userId}">
                     <input type="submit"
@@ -82,6 +88,30 @@
 
 
 </form:form>
+</div>
+<script>
+
+    var app = angular.module("myApp", []);
+
+    app.controller("myCtrl", function($scope) {
+        $scope.myVar = true;
+        $scope.myVar2 = true;
+        $scope.toggle = function() {
+            $scope.myVar=!$scope.myVar;
+        };
+        $scope.toggle2 = function() {
+            $scope.myVar = !$scope.myVar;
+
+            $scope.myVar2= !$scope.myVar2;
+        };
+        var now1=new Date();
+        $scope.Now=now1.getUTCFullYear()+'-'+now1.getUTCMonth()+'-'+now1.getUTCDate()+' '+now1.getHours()+':'+now1.getMinutes()+':'+now1.getSeconds();
+        $scope.sId=${seller.sellerId};
+        $scope.uId=${seller.userId};
+
+    });
+
+</script>
 <br>
 <h3>Seller List</h3>
 <c:if test="${!empty listSellers}">

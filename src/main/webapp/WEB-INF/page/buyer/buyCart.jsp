@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import="com.backend.buyerEnd.dao.OrderDao"%>
-<%@ page import="com.backend.buyerEnd.model.*" %>
 <%@ page import="com.backend.model.*" %>
 <%@ page import="java.util.*" %>
 

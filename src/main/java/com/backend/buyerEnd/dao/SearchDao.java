@@ -1,21 +1,19 @@
-package com.backend.buyerEnd.search;
-
+package com.backend.buyerEnd.dao;
 
 import com.backend.model.GoodsEntity;
-import org.hibernate.Hibernate;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.type.StandardBasicTypes;
 
 import java.util.ArrayList;
-
-public class SearchBean {
-    public SearchBean() {
-        super();
-    }
-
+import java.util.List;
+/**
+ * Created by kevin on 2017/5/8.
+ */
+public class SearchDao {
     private ArrayList<GoodsEntity> allGoods = new ArrayList<GoodsEntity>();
     private ArrayList<String> allType = new ArrayList<String>();
 
@@ -27,7 +25,7 @@ public class SearchBean {
         Session session = null;
         try {
             session = factory.openSession();
-            //��������  
+            //��������
             session.beginTransaction();
 
             SQLQuery query = session.createSQLQuery("select distinct goodsType as a from [onlineMarket].[dbo].[Goods]");
@@ -39,17 +37,17 @@ public class SearchBean {
                 allType.add(type);
             }
 
-            //�ύ����  
+            //�ύ����
             session.getTransaction().commit();
 
         } catch (Exception e) {
             e.printStackTrace();
-            //�ع�����  
+            //�ع�����
             session.getTransaction().rollback();
         } finally {
             if (session != null) {
                 if (session.isOpen()) {
-                    //�ر�session  
+                    //�ر�session
                     session.close();
                 }
             }
@@ -58,7 +56,7 @@ public class SearchBean {
     }
 
 
-    //public ArrayList<Goods> loadAllGoods(String s) { 
+    //public ArrayList<Goods> loadAllGoods(String s) {
     public ArrayList<GoodsEntity> loadAllGoods() {
 
         allGoods.clear();
@@ -67,7 +65,7 @@ public class SearchBean {
         Session session = null;
         try {
             session = factory.openSession();
-            //��������  
+            //��������
             session.beginTransaction();
 
             SQLQuery query = session.createSQLQuery("select * from [onlineMarket].[dbo].[Goods]");
@@ -78,17 +76,17 @@ public class SearchBean {
                 allGoods.add(goods);
             }
 
-            //�ύ����  
+            //�ύ����
             session.getTransaction().commit();
 
         } catch (Exception e) {
             e.printStackTrace();
-            //�ع�����  
+            //�ع�����
             session.getTransaction().rollback();
         } finally {
             if (session != null) {
                 if (session.isOpen()) {
-                    //�ر�session  
+                    //�ر�session
                     session.close();
                 }
             }

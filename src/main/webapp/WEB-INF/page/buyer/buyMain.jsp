@@ -58,7 +58,7 @@
 	<!-- 商品展示 -->
 			
     <div class="row">
-    	<jsp:useBean id="allgoods" class="com.backend.buyerEnd.search.SearchBean" />
+    	<jsp:useBean id="allgoods" class="com.backend.buyerEnd.service.SearchService" />
 	    	<% 	ArrayList<GoodsEntity> allGoods=new ArrayList<GoodsEntity>();
 	    		allGoods=allgoods.loadAllGoods();
 	            int l=allGoods.size();

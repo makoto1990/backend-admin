@@ -63,11 +63,11 @@ public class ViewController {
             if (passwordTemp.equals(user.getPassword())) {
                 switch (style) {
                     case 1:
-                        return "redirect:/buyer/";
+                        return "redirect:/buyer/"+user.getUserName();
                     case 2:
-                        return "redirect:/seller/";
+                        return "redirect:/seller/"+user.getUserName();
                     case 3:
-                        return "redirect:/admin/";
+                        return "redirect:/admin/"+user.getUserName();
                 }
             } else
                 return "error";

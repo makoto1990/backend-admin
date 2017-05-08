@@ -37,9 +37,15 @@ public class ViewController {
     @Qualifier(value = "searchService")
     public void setSearchService(SearchService ss){this.searchService=ss;}
 
-    @RequestMapping("/")
-    public String buyerIndex(){
+    @RequestMapping("/{username}")
+    public String buyerIndex(@PathVariable("username")String username,Model model){
+        model.addAttribute("sname",username);
         return "buyMain";
+    }
+
+    @RequestMapping("/")
+    public String violentAccess(){
+        return "redirect:/";
     }
 
     @RequestMapping("/Cart")

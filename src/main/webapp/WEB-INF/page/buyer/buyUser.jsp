@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="com.backend.buyerEnd.dao.OrderDao,com.backend.model.*,
-	com.backend.buyerEnd.model.*,java.util.*" %>
+<%@ page import="com.backend.buyerEnd.dao.OrderDao,com.backend.model.*,java.util.*" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

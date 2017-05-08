@@ -28,9 +28,9 @@ public class Dao {
     }
 
     public void addUser(UserEntity user) {
-        Session session = this.sessionFactory.getCurrentSession();
-        Transaction tx =session.beginTransaction();
+        Session session = this.sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         session.persist(user);
-        tx.commit();
+        transaction.commit();
     }
 }

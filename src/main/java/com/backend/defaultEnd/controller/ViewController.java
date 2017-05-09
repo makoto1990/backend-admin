@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import com.backend.model.*;
 import com.backend.defaultEnd.service.*;
 
@@ -56,18 +57,19 @@ public class ViewController {
     }
 
     @RequestMapping(value = "/",method = RequestMethod.POST)
-    public String login(@ModelAttribute("user")UserEntity user,@ModelAttribute("style")int style){
+    public String login(@ModelAttribute("user")UserEntity user,@ModelAttribute("style")int style,HttpServletRequest request){
 
         if((passwordTemp=this.loginService.findUser(user.getUserName()).getPassword())!=null) {
             passwordTemp=passwordTemp.trim();
             if (passwordTemp.equals(user.getPassword())) {
+                request.getSession().setAttribute("sname",user.getUserName());
                 switch (style) {
                     case 1:
-                        return "redirect:/buyer/"+user.getUserName();
+                        return "redirect:/buyer/";
                     case 2:
-                        return "redirect:/seller/"+user.getUserName();
+                        return "redirect:/seller/";
                     case 3:
-                        return "redirect:/admin/"+user.getUserName();
+                        return "redirect:/admin/";
                 }
             } else
                 return "error";

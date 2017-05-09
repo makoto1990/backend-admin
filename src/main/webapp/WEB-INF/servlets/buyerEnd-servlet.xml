@@ -35,40 +35,42 @@ http://www.springframework.org/schema/aop
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean id="goodsDao" class="com.backend.buyerEnd.dao.GoodsDao">
+    <bean id="buyerGoodsDao" class="com.backend.buyerEnd.dao.GoodsDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="orderDao" class="com.backend.buyerEnd.dao.OrderDao">
+    <bean id="buyerOrderDao" class="com.backend.buyerEnd.dao.OrderDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="userDao" class="com.backend.buyerEnd.dao.UserDao">
+    <bean id="buyerUserDao" class="com.backend.buyerEnd.dao.UserDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="searchDao" class="com.backend.buyerEnd.dao.SearchDao"/>
+    <bean id="buyerSearchDao" class="com.backend.buyerEnd.dao.SearchDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
-    <bean id="sellerDao" class="com.backend.buyerEnd.dao.SellerDao">
+    <bean id="buyerSellerDao" class="com.backend.buyerEnd.dao.SellerDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <bean id="detailService" class="com.backend.buyerEnd.service.DetailService">
-        <property name="goodsDao" ref="goodsDao"/>
-        <property name="sellerDao" ref="sellerDao"/>
+        <property name="goodsDao" ref="buyerGoodsDao"/>
+        <property name="sellerDao" ref="buyerSellerDao"/>
     </bean>
 
     <bean id="buyerGoodsService" class="com.backend.buyerEnd.service.GoodsService">
-        <property name="goodsDao" ref="goodsDao"/>
+        <property name="goodsDao" ref="buyerGoodsDao"/>
     </bean>
 
     <bean id="buyerUserService" class="com.backend.buyerEnd.service.UserService">
-        <property name="userDao" ref="userDao"/>
+        <property name="userDao" ref="buyerUserDao"/>
     </bean>
 
     <bean id="searchService" class="com.backend.buyerEnd.service.SearchService">
-        <property name="goodsDao" ref="goodsDao"/>
-        <property name="searchDao" ref="searchDao"/>
+        <property name="goodsDao" ref="buyerGoodsDao"/>
+        <property name="searchDao" ref="buyerSearchDao"/>
     </bean>
 
 

@@ -37,6 +37,7 @@
         </property>
         <property name="hibernateProperties">
             <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2012Dialect</prop>
                 <prop key="dialect">org.hibernate.dialect.SQLServer2012Dialect</prop>
                 <prop key="show_sql">true</prop>
             </props>
@@ -74,5 +75,7 @@
             <!-- <tx:method name="*" read-only="true"/> -->
         </tx:attributes>
     </tx:advice>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
 </beans>

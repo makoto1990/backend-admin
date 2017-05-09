@@ -3,6 +3,7 @@ package com.backend.buyerEnd.controller;
 /**
  * Created by kevin on 2017/5/3.
  */
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import javax.servlet.http.HttpServletRequest;
 import com.backend.buyerEnd.service.*;
 import com.backend.model.*;
 import java.util.*;
@@ -37,15 +38,19 @@ public class ViewController {
     @Qualifier(value = "searchService")
     public void setSearchService(SearchService ss){this.searchService=ss;}
 
-    @RequestMapping("/{username}")
-    public String buyerIndex(@PathVariable("username")String username,Model model){
-        model.addAttribute("sname",username);
-        return "buyMain";
-    }
-
     @RequestMapping("/")
-    public String violentAccess(){
-        return "redirect:/";
+    public String buyerIndex(HttpServletRequest request,Model model){
+        if(request.getSession().getAttribute("sname")==null){
+            return "saleError";
+        }
+        ArrayList<String> allType;
+        allType=this.searchService.getAllType();
+        request.getSession().setAttribute("goodsTypes",allType);
+        ArrayList<GoodsEntity> allGoods;
+        allGoods=this.searchService.loadAllGoods();
+        request.getSession().setAttribute("username",request.getSession().getAttribute("sname"));
+        request.getSession().setAttribute("allGoods",allGoods);
+        return "buyMain";
     }
 
     @RequestMapping("/Cart")
@@ -53,8 +58,17 @@ public class ViewController {
         return "buyCart";
     }
 
+    @RequestMapping("/BuyDetail/{id}")
+    public String buyDetail(@PathVariable("id")String id,HttpServletRequest request){
+        request.getSession().setAttribute("flag",id);
+        return "buyDetail";
+    }
+
     @RequestMapping("/UserInfo")
-    public String userInfo(){
+    public String userInfo(HttpServletRequest request){
+        String name = request.getSession().getAttribute("sname").toString();
+        UserEntity userEntity = this.userService.getUserByUserName(name);
+        request.getSession().setAttribute("userEntity",userEntity);
         return "buyerUserInfor";
     }
 
@@ -64,8 +78,8 @@ public class ViewController {
     }
 
     @RequestMapping(value = "/Search",method = RequestMethod.POST)
-    public String searchGoods(Model model,@ModelAttribute("searchinfo")String searchInfo){
-        model.addAttribute("allgoods",this.searchService.loadAllGoods(searchInfo));
+    public String searchGoods(@ModelAttribute("searchinfo")String searchInfo,HttpServletRequest request){
+        request.getSession().setAttribute("allgoods",this.searchService.loadAllGoods(searchInfo));
         return "buySearch";
     }
 

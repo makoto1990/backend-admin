@@ -12,7 +12,12 @@
                         http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
 http://www.springframework.org/schema/aop
   http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
-
+    <aop:config proxy-target-class="true">
+        <aop:pointcut expression=" execution(* com.backend.sellerEnd.dao..*(..))"
+                      id="serviceMethod" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod" />
+    </aop:config>
+    <aop:aspectj-autoproxy expose-proxy="true" />
 
     <!-- 开启注解模式驱动 -->
     <mvc:annotation-driven/>
@@ -29,6 +34,37 @@ http://www.springframework.org/schema/aop
         <!-- 文件的后缀 -->
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    <bean id="sellerSellerDao" class="com.backend.sellerEnd.dao.SellerDao"/>
+
+    <bean id="editSellerService" class="com.backend.sellerEnd.service.SellerService">
+        <property name="sellerDao" ref="sellerSellerDao"/>
+    </bean>
+
+    <bean id="sellerGoodsDao" class="com.backend.sellerEnd.dao.GoodsDao"/>
+
+    <bean id="sellerGoodsService" class="com.backend.sellerEnd.service.GoodsService">
+        <property name="goodsDao" ref="sellerGoodsDao"/>
+    </bean>
+
+    <bean id="searchDao" class="com.backend.sellerEnd.dao.SearchDao"/>
+
+    <bean id="orderSearchService" class="com.backend.sellerEnd.service.SearchService">
+        <property name="searchDao" ref="searchDao"/>
+    </bean>
+
+    <bean id="pictureDao" class="com.backend.sellerEnd.dao.PictureDao"/>
+
+    <bean id="pictureUploadService" class="com.backend.sellerEnd.service.PictureUploadService">
+        <property name="pictureDao" ref="pictureDao"/>
+    </bean>
+
+    <bean id="sellerOrderDao" class="com.backend.sellerEnd.dao.OrderDao"/>
+
+    <bean id="sellerOrderService" class="com.backend.sellerEnd.service.OrderService">
+        <property name="orderDao" ref="sellerOrderDao"/>
+    </bean>
+
 
 
 

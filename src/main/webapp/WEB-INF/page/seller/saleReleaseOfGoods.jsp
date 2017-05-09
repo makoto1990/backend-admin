@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" import="com.demo.supermarket.*"
-         import="com.demo.supermarketSale.*"
+<%@ page language="java" contentType="text/html; charset=utf-8" import="com.backend.model.*"
+         import="com.backend.sellerEnd.*"
          pageEncoding="utf-8" %>
 <%@page import="java.util.ArrayList" %>
 <%@page errorPage="saleError.jsp" %>
@@ -8,32 +8,33 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>支农网上生鲜超市</title>
-    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-    <link href="../bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/resources/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
+    <link href="/resources/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script>
         function ret() {
-            window.location.href = "saleMain.jsp";
+            window.location.href = "/seller/";
         }
     </script>
 </head>
 <body>
 <%String sellerName = (String) request.getSession().getAttribute("sname"); %>
 <%!
-    Goods goods = new Goods();
+    GoodsEntity goods = new GoodsEntity();
     ArrayList goodslist = new ArrayList();
     int i1;
 %>
 
 <nav class="navbar navbar-default" style="padding:20px">
-    <a href="../index.jsp" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>
+    <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</span></a>
     <button class="btn btn-default" onclick="ret()">返回</button>
+
 </nav>
 <div class="container col-md-12" style="background-color:#EBEBEB">
     <h1 style="color:#A3A3A3">已发布商品</h1>
     <div class="styled-select">
         <form style="padding-top:20px"
-              action="${pageContext.request.contextPath}/GoodsControServlet?value=searchgoods&&name=<%=sellerName%>"
+              action="${pageContext.request.contextPath}/Goods/Search?name=<%=sellerName%>"
               method="post">
             <span style="font-size:20px;color:#FF8C00">商品类别</span>
             <select name="goodstype" id="selecttype" class="selectpicker"
@@ -54,7 +55,7 @@
             goodslist = (ArrayList) request.getSession().getAttribute("goodslist");
             if (goodslist != null) {
                 for (i1 = 0; i1 < goodslist.size(); i1++) {
-                    goods = (Goods) goodslist.get(i1);
+                    goods = (GoodsEntity) goodslist.get(i1);
                     if (goods != null) {
         %>
         <div class="col-sm-6 col-md-3">
@@ -65,21 +66,21 @@
                          style="display:inline-block; vertical-align:middle; max-height:220px; max-width:300px;">
                 </div>
                 <div class="caption">
-                    <h3 style="color:red"><%=goods.getgoodsName() %>&nbsp;&nbsp;￥<%=goods.getgoodsPrice() %>
+                    <h3 style="color:red"><%=goods.getGoodsName() %>&nbsp;&nbsp;￥<%=goods.getGoodsPrice() %>
                     </h3>
-                    <p>产地：<%=goods.getsourceArea() %>
+                    <p>产地：<%=goods.getSourceArea() %>
                     </p>
                     <p>
                     <table>
                         <tr>
                             <td style="padding:20px">
-                                <form action="${pageContext.request.contextPath}/GoodsControServlet?value=edit&goodsID=<%=goods.getgoodsID() %>"
+                                <form action="${pageContext.request.contextPath}/Goods/Edit/<%=goods.getGoodsId() %>"
                                       method="post">
                                     <button type="submit" class="btn btn-primary" role="button">编辑商品</button>
                                 </form>
                             </td>
                             <td>
-                                <form action="${pageContext.request.contextPath}/GoodsControServlet?value=delete&goodsID=<%=goods.getgoodsID() %>"
+                                <form action="${pageContext.request.contextPath}/Goods/Delete/<%=goods.getGoodsId() %>"
                                       method="post">
                                     <button type="submit" class="btn btn-default" role="button">删除商品</button>
                                 </form>

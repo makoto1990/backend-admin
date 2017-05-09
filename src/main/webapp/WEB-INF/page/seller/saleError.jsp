@@ -10,14 +10,14 @@
         function TimeClose() {
             window.setTimeout('TimeClose()', 1000);//让程序每秒重复执行当前函数。
             if (cTime <= 0)//判断秒数如果为0
-                window.location.href = "../index.jsp";
+                window.location.href = "/";
             ;//执行关闭网页的操作
             document.getElementById("infor").innerHTML = "会话已过期，" + cTime + "秒后将返回登陆页面！";//显示倒计时时间
             cTime--;//减少秒数
         }
 
         function ret() {
-            window.location.href = "../index.jsp";
+            window.location.href = "/";
         }
     </script>
 

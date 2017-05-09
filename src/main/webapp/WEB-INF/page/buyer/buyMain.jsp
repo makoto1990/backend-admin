@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" import="java.util.*" import="com.backend.model.*"
          import="javax.servlet.http.*" pageEncoding="utf-8" %>
+<%@ page import="org.springframework.http.HttpRequest" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>支农网上生鲜超市</title>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/resources/jquery/jquery.min.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <%
@@ -33,15 +34,15 @@
 			<!-- 轮播（Carousel）项目 -->
 			<div class="carousel-inner">
 				<div class="item active">
-				    <img src="../resources/images/top1.png" alt="First slide">
+				    <img src="/resources/images/top1.png" alt="First slide">
 					<!-- <img src="/wp-content/uploads/2014/07/slide1.png" alt="First slide">  -->
 				</div>
 				<div class="item">
-					<img src="../resources/images/top2.png" alt="Second slide">
+					<img src="/resources/images/top2.png" alt="Second slide">
 					<!--<img src="/wp-content/uploads/2014/07/slide2.png" alt="Second slide">  -->
 				</div>
 				<div class="item">
-					<img src="../resources/images/top3.png" alt="Third slide">
+					<img src="/resources/images/top3.png" alt="Third slide">
 					<!--<img src="/wp-content/uploads/2014/07/slide3.png" alt="Third slide">  -->
 				</div>
 			</div>
@@ -58,22 +59,20 @@
 	<!-- 商品展示 -->
 			
     <div class="row">
-    	<jsp:useBean id="allgoods" class="com.backend.buyerEnd.service.SearchService" />
-	    	<% 	ArrayList<GoodsEntity> allGoods=new ArrayList<GoodsEntity>();
-	    		allGoods=allgoods.loadAllGoods();
-	            int l=allGoods.size();
-	            HttpSession sess=request.getSession();
-	            sess.setAttribute("userName", name);
-	            String str="../resources/images/";	            
-	            for (int i=0;i<l;i++){
-	            	GoodsEntity tmp=allGoods.get(i);
+	    	<%
+	            String str="/resources/images/";
+	            ArrayList<GoodsEntity> allGoods =(ArrayList) request.getSession().getAttribute("allGoods");
+	            int i=0;
+				HttpSession sess = request.getSession();
+	            for (GoodsEntity tmp : allGoods){
 	            	String goodsName=tmp.getGoodsName().trim();
 	            	String picPath=str+goodsName+".jpg";
-	            	String detailPath="../buy/buyDetail.jsp?flag="+i;
+	            	String detailPath="/buy/BuyDetail/"+i;
 	            	sess.setAttribute("goodsName"+i, tmp.getGoodsName());
 	            	sess.setAttribute("goodsId"+i, tmp.getGoodsId());
 	            	sess.setAttribute("goodsType"+i, tmp.getGoodsType());
 	            	sess.setAttribute("sellerId"+i, tmp.getSellerId());
+	            	i++;
 			%>
 				<div class="col-sm-6 col-md-3">
 					<div class="thumbnail">

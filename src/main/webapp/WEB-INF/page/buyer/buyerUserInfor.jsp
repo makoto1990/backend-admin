@@ -19,9 +19,7 @@
 
     <form class="form-horizontal" role="form">
     	<%
-    		UserDao dao = new UserDao();
-     		UserEntity userEntity = dao.getUserByUserName(name);
-
+     		UserEntity userEntity = (UserEntity) request.getSession().getAttribute("userEntity");
      		{%>
      		<div class="form-group">
         		<label class="col-sm-5 control-label">用户ID</label>

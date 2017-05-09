@@ -10,29 +10,39 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.type.StandardBasicTypes;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 
 
 public class SearchService {
+    public SearchService(){
+        super();
+    }
+
     private GoodsDao goodsDao;
     private SearchDao searchDao;
 
+    @Transactional
     public ArrayList<String> getAllType(){
         return this.searchDao.getAllType();
     }
 
+    @Transactional
     public ArrayList<GoodsEntity> loadAllGoods(){
         return this.searchDao.loadAllGoods();
     }
 
+    @Transactional
     public int getSize(){
         return this.searchDao.getSize();
     }
 
+    @Transactional
     public String getPicture(int index){
         return this.searchDao.getPicture(index);
     }
 
+    @Transactional
     public String getGoodsName(int index){
         return this.searchDao.getGoodsName(index);
     }
@@ -45,6 +55,7 @@ public class SearchService {
         this.searchDao=searchDao;
     }
 
+    @Transactional
     public ArrayList<GoodsEntity> loadAllGoods(String s){
         return this.goodsDao.loadAllGoods(s);
     }

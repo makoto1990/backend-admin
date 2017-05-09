@@ -1,16 +1,17 @@
-<%@ page language="java" import="com.demo.supermarket.*" import="com.demo.supermarketSale.*"
+<%@ page language="java" import="com.backend.model.*" import="com.backend.sellerEnd.*"
          contentType="text/html; charset=GBK"
          pageEncoding="GBK" %>
 <%@page import="java.util.ArrayList" %>
+<%@ page import="com.backend.sellerEnd.service.SearchService" %>
 <%@page errorPage="saleError.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Ö§Å©ÍøÉÏÉúÏÊ³¬ÊÐ</title>
-    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-    <link href="../bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/resources/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
+    <link href="/resources/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
     <script>
         function cancelinfor() {
@@ -32,20 +33,19 @@
     String id;
     ArrayList list = new ArrayList();
     ArrayList goodslist = new ArrayList();
-    Order order = new Order();
-    Goods goods = new Goods();
-    Composition composition = new Composition();
+    OrderEntity order = new OrderEntity();
+    GoodsEntity goods = new GoodsEntity();
+    CompositionEntity composition = new CompositionEntity();
     String status;
 %>
 
 <%
     id = request.getParameter("id");
-    OrderSearch t = new OrderSearch();
-    OrderSearch m = new OrderSearch();
-    list = t.SearchOrderDetails(id);
-    goodslist = m.SearchOrderGood(id);
-    order = (Order) list.get(0);
-    status = order.getorderStatus().trim();
+    SearchService searchService = (SearchService) request.getSession().getAttribute("searchService");
+    list = searchService.SearchOrderDetails(id);
+    goodslist = searchService.SearchOrderGood(id);
+    order = (OrderEntity) list.get(0);
+    status = order.getOrderStatus().trim();
 
 %>
 <div class="container">
@@ -60,9 +60,9 @@
             </tr>
 
             <tr>
-                <td><%=order.getorderID() %>
+                <td><%=order.getOrderId() %>
                 </td>
-                <td><%=order.getreceiverName() %>
+                <td><%=order.getReceiverName() %>
                 </td>
                 <td><%=order.getPhone() %>
                 </td>
@@ -78,27 +78,27 @@
             </tr>
 
             <tr>
-                <td><%=order.getcreatTime() %>
+                <td><%=order.getCreatTime() %>
                 </td>
 
-                <% if (order.getpayTime() == null) { %>
+                <% if (order.getPayTime() == null) { %>
                 <td>Î´¸¶¿î</td>
                 <%} else { %>
-                <td><%=order.getpayTime() %>
+                <td><%=order.getPayTime() %>
                 </td>
                 <%} %>
 
-                <% if (order.getconfirmTime() == null) { %>
+                <% if (order.getConfirmTime() == null) { %>
                 <td>Î´È·ÈÏ</td>
                 <%} else { %>
-                <td><%=order.getconfirmTime()%>
+                <td><%=order.getConfirmTime()%>
                 </td>
                 <%} %>
 
-                <% if (order.getdeliveryTime() == null) { %>
+                <% if (order.getDeliveryTime() == null) { %>
                 <td>Î´·¢»õ</td>
                 <%} else { %>
-                <td><%=order.getdeliveryTime() %>
+                <td><%=order.getDeliveryTime() %>
                 </td>
                 <%} %>
             </tr>
@@ -123,11 +123,11 @@
                         <td>ÉÌÆ·×Ü¼Û</td>
                             <%
             for(int i=0;i<goodslist.size();i+=2){
-              goods=(Goods)goodslist.get(i);
-	          composition=(Composition)goodslist.get(i+1);
+              goods=(GoodsEntity) goodslist.get(i);
+	          composition=(CompositionEntity) goodslist.get(i+1);
             %>
                     <tr>
-                        <td><a href="#"><%=goods.getGoodsID() %>
+                        <td><a href="#"><%=goods.getGoodsId() %>
                         </a></td>
                         <td><%=goods.getGoodsName() %>
                         </td>
@@ -135,9 +135,9 @@
                         </td>
                         <td><%=goods.getGoodsPrice() %>
                         </td>
-                        <td><%=composition.getgoodsAmount() %>
+                        <td><%=composition.getGoodsAmount() %>
                         </td>
-                        <td><%=goods.getGoodsPrice() * composition.getgoodsAmount() %>
+                        <td><%=goods.getGoodsPrice() * composition.getGoodsAmount() %>
                         </td>
                     </tr>
                     <%} %>
@@ -158,9 +158,9 @@
             </tr>
 
             <tr>
-                <td><%=order.getshipCost() %>
+                <td><%=order.getShipCost() %>
                 </td>
-                <td><%=order.getallPrice() %>
+                <td><%=order.getAllPrice() %>
                 </td>
             </tr>
         </table>
@@ -188,18 +188,18 @@
         </table>
         <div>
             <%if (!status.equals("¶©µ¥ÒÑÈ¡Ïû")) {%>
-            <form action="${pageContext.request.contextPath}/OrderControServlet" align="right">
+            <form action="${pageContext.request.contextPath}/Order/Update" align="right">
                 <input type="text" name="contro" value="0" style="display:none">
-                <input type="text" name="id" value="<%=order.getorderID() %>" style="display:none">
+                <input type="text" name="id" value="<%=order.getOrderId() %>" style="display:none">
                 <input type="submit" style="width:150px;height:50px" class="btn btn-warning" onclick="cancelinfor()"
                        value="È¡Ïû¶©µ¥"/>
             </form>
             <%} %>
             <p></p>
             <%if (status.equals("µÈ´ýÂô¼ÒÈ·ÈÏ")) {%>
-            <form action="${pageContext.request.contextPath}/OrderControServlet" align="right">
+            <form action="${pageContext.request.contextPath}/Order/Update" align="right">
                 <input type="text" name="contro" value="1" style="display:none">
-                <input type="text" name="id" value="<%=order.getorderID() %>" style="display:none">
+                <input type="text" name="id" value="<%=order.getOrderId() %>" style="display:none">
                 <input type="submit" style="width:150px;height:50px" class="btn btn-primary" onclick="confirminfor()"
                        value="È·ÈÏ¶©µ¥"/>
             </form>
@@ -208,9 +208,9 @@
                 if (status.equals("µÈ´ýÂô¼Ò·¢»õ")) {
             %>
             <p></p>
-            <form action="${pageContext.request.contextPath}/OrderControServlet" align="right">
+            <form action="${pageContext.request.contextPath}/Order/Update" align="right">
                 <input type="text" name="contro" value="2" style="display:none">
-                <input type="text" name="id" value="<%=order.getorderID() %>" style="display:none">
+                <input type="text" name="id" value="<%=order.getOrderId() %>" style="display:none">
                 <input type="submit" style="width:150px;height:50px" class="btn btn-primary" onclick="sendinfor()"
                        value="·¢»õ"/>
             </form>

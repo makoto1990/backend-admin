@@ -66,7 +66,7 @@ public class ViewController {
         return "redirect:/";
     }
 
-    @RequestMapping(value="/UserControl/", method = RequestMethod.GET)
+    @RequestMapping(value="/UserControl", method = RequestMethod.GET)
     public String adminUserControl(Model model) {
         model.addAttribute("user", new UserEntity());
         model.addAttribute("listUsers", this.userService.listUser());
@@ -172,6 +172,7 @@ public class ViewController {
         model.addAttribute("listComposition", this.compositionService.listComposition());
         return "composition";
     }
+
 
     @RequestMapping("/CompositionControl/RemoveComposition/{id}")
     public String removeComposition(@PathVariable("id") String id) {

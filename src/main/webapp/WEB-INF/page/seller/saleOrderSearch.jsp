@@ -1,7 +1,6 @@
-<%@ page language="java" import="com.demo.supermarket.*" import="com.demo.supermarketSale.*"
+<%@ page language="java" import="com.backend.model.OrderEntity" import="java.util.ArrayList"
          contentType="text/html; charset=GBK"
          pageEncoding="GBK" %>
-<%@page import="java.util.ArrayList" %>
 <%@page errorPage="saleError.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,7 +14,7 @@
 
     <script>
         function ret() {
-            window.location.href = "saleMain.jsp";
+            window.location.href = "/seller/";
         }
 
         function searchbyselect() {
@@ -35,7 +34,7 @@
 </head>
 <body>
 <nav class="navbar navbar-default" style="padding:20px">
-    <a href="../index.jsp" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>
+    <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>
     <button class="btn btn-default" onclick="ret()">返回</button>
 </nav>
 <div class="container">
@@ -45,24 +44,27 @@
 
 
 <div class="container" id="">
-    <form action="${pageContext.request.contextPath}/SearchOrderServlet" method="post">
+    <form action="${pageContext.request.contextPath}/Search/Order" method="post">
         <div class="input-prepend input-append">
-<span class="add-on"><select name="select" id="selectsearchoption" onclick="searchbyselect()" class="selectpicker"
-                             style="width:150px ;height:40px">
-<option value="id">订单编号</option>
-<option value="date">下单日期</option>
-<option value="name">商品标题</option>
-</select></span>
-
-            <input type="text" style="width:300px" name="input" placeholder="输入查询内容，支持模糊查询"
-                   class="span2 search-query input-lg">
             <span class="add-on">
-<button type="submit" class="btn btn-success" style="width:100px;height:50px"><span class="glyphicon glyphicon-search">查询</span></button>&nbsp;&nbsp;<span
-                    id="tip" style="color:#6E6E6E">查询格式如：201704020001</span>
+                <select name="select" id="selectsearchoption" onclick="searchbyselect()" class="selectpicker" style="width:150px ;height:40px">
+                    <option value="id">订单编号</option>
+                    <option value="date">下单日期</option>
+                    <option value="name">商品标题</option>
+                </select>
+            </span>
+            <input type="text" style="width:300px" name="input" placeholder="输入查询内容，支持模糊查询" class="span2 search-query input-lg">
+            <span class="add-on">
+                <button type="submit" class="btn btn-success" style="width:100px;height:50px">
+                    <span class="glyphicon glyphicon-search">查询</span>
+                </button>&nbsp;&nbsp;
+                <span id="tip" style="color:#6E6E6E">查询格式如：201704020001</span>
+            </span>
+        </div>
     </form>
 </div>
 <%!
-    Order order = new Order();
+    OrderEntity order = new OrderEntity();
 
 %>
 <div class="table-responsive">
@@ -83,17 +85,22 @@
                 k = b.size();
             }
             for (int i = 0; i < k; i++) {
-                order = (Order) b.get(i);
+                order = (OrderEntity) b.get(i);
         %>
         <tr>
             <td>
-                <a href="saleOrderDetails.jsp?id=<%=order.getorderID() %>" target="_blank"><%=order.getorderID() %>
-                </a></td>
-            <td><%=order.getreceiverName()%>
+                <a href="${pageContext.request.contextPath}/Order/Detail/<%=order.getOrderId() %>" target="_blank">
+                    <%=order.getOrderId() %>
+                </a>
             </td>
-            <td><%=order.getcreatTime()%>
+            <td>
+                <%=order.getReceiverName()%>
             </td>
-            <td><%=order.getorderStatus()%>
+            <td>
+                <%=order.getCreatTime()%>
+            </td>
+            <td>
+                <%=order.getOrderStatus()%>
             </td>
         </tr>
         <% }%>

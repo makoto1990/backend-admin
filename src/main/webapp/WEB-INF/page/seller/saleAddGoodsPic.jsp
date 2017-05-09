@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" import="com.demo.supermarket.*"
-         import="com.demo.supermarketSale.*"
+<%@ page language="java" contentType="text/html; charset=utf-8" import="com.backend.model.*"
+         import="com.backend.sellerEnd.*"
          pageEncoding="utf-8" %>
 <%@page errorPage="saleError.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,18 +30,18 @@
     addGoodsID = (String) request.getSession().getAttribute("addgoodsid");
 %>
 <nav class="navbar navbar-default" style="padding:20px">
-    <a href="../index.jsp" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>
+    <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>
     <button class="btn btn-default" onclick="ret()">返回</button>
 </nav>
 
 <div class="container" style="background-color:#CCCCCC">
-    <form method="post" action="${pageContext.request.contextPath}/ImgUploadServlet?goodsID=<%=addGoodsID %>"
+    <form method="post" action="${pageContext.request.contextPath}/Goods/UploadImage?goodsID=<%=addGoodsID %>"
           enctype="multipart/form-data">
         <div>
             <h4>商品添加成功，请为您的商品添加一张图片：</h4>
             <div class="thumbnail" style="height:220px;width:300px">
                 <div style="height:220px;width:220px" overflow:hidden; text-align:center; border:1px solid red;>
-                    <img src="../resources/images/default.jpg"
+                    <img src="/resources/images/default.jpg"
                          class="img-responsive center-block"
                          style="display:inline-block; vertical-align:middle; max-height:220px; max-width:250px;">
                     <p>默认图片</p>

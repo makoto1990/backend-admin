@@ -1,20 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" import="com.demo.supermarket.*"
-         import="com.demo.supermarketSale.*"
+<%@ page language="java" contentType="text/html; charset=utf-8" import="com.backend.model.*"
+         import="com.backend.sellerEnd.*"
          pageEncoding="utf-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>支农网上生鲜超市</title>
-    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-    <link href="../bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/resources/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
+    <link href="/resources/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
 </head>
 
 <body>
 <nav class="navbar navbar-default" style="padding:20px">
-    <a href="../index.jsp" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>
+    <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>
     <form action="${pageContext.request.contextPath}/GoodsControServlet?value=release" method="post">
         <input type="submit" class="btn btn-default" value="返回">
     </form>
@@ -22,63 +22,63 @@
 
 <div class="container" style="background-color:#CCCCCC">
     <%!
-        Goods goods = new Goods();
+        GoodsEntity goods = new GoodsEntity();
         String goodsname;
     %>
     <%
-        goods = (Goods) request.getSession().getAttribute("goods");
+        goods = (GoodsEntity) request.getSession().getAttribute("goods");
     %>
-    <form action="${pageContext.request.contextPath}/GoodsControServlet?value=saveedit&goodsID=<%=goods.getgoodsID() %>"
+    <form action="${pageContext.request.contextPath}/Goods/SaveEdit?goodsID=<%=goods.getGoodsId() %>"
           method="post">
 
         <table border="4">
             <tr>
                 <td style="padding:20px" class="col-sm-3 col-md-2">商品编号:</td>
-                <td class="col-sm-3 col-md-2"><input type="text" disabled placeholder="<%=goods.getgoodsID() %>"></td>
+                <td class="col-sm-3 col-md-2"><input type="text" disabled placeholder="<%=goods.getGoodsId() %>"></td>
 
                 <td style="padding:20px" class="col-sm-3 col-md-2">商品名称：</td>
-                <td class="col-sm-3 col-md-2"><input type="text" name="name" placeholder="<%=goods.getgoodsName()%>">
+                <td class="col-sm-3 col-md-2"><input type="text" name="name" placeholder="<%=goods.getGoodsName()%>">
                 </td>
             </tr>
 
             <tr>
                 <td style="padding:20px" class="col-sm-3 col-md-2">商品数量：</td>
-                <td class="col-sm-3 col-md-2"><input type="text" name="count" placeholder="<%=goods.getgoodsCount()%>">
+                <td class="col-sm-3 col-md-2"><input type="text" name="count" placeholder="<%=goods.getGoodsCount()%>">
                 </td>
 
                 <td style="padding:20px" class="col-sm-3 col-md-2">商品单价:</td>
-                <td class="col-sm-3 col-md-2"><input type="text" name="price" placeholder="<%=goods.getgoodsPrice() %>">
+                <td class="col-sm-3 col-md-2"><input type="text" name="price" placeholder="<%=goods.getGoodsPrice() %>">
                 </td>
             </tr>
 
             <tr>
                 <td style="padding:20px" class="col-sm-3 col-md-2">运输中存储：</td>
-                <td class="col-sm-3 col-md-2"><input type="text" name="storeWay" placeholder="<%=goods.getstoreWay()%>">
+                <td class="col-sm-3 col-md-2"><input type="text" name="storeWay" placeholder="<%=goods.getStoreWay()%>">
                 </td>
 
                 <td style="padding:20px" class="col-sm-3 col-md-2">原产地：</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="sourceArea"
-                                                     placeholder="<%=goods.getsourceArea()%>"></td>
+                                                     placeholder="<%=goods.getSourceArea()%>"></td>
             </tr>
 
             <tr>
                 <td style="padding:20px" class="col-sm-3 col-md-2">商品类别:</td>
-                <td class="col-sm-3 col-md-2"><input type="text" name="type" placeholder="<%=goods.getgoodsType() %>">
+                <td class="col-sm-3 col-md-2"><input type="text" name="type" placeholder="<%=goods.getGoodsType() %>">
                 </td>
 
                 <td style="padding:20px" class="col-sm-3 col-md-2">起送量：</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="leastAmount"
-                                                     placeholder="<%=goods.getleastAmount()%>"></td>
+                                                     placeholder="<%=goods.getLeastAmount()%>"></td>
             </tr>
 
             <tr>
                 <td style="padding:20px" class="col-sm-3 col-md-2">大量采购起送量：</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="largeAmount"
-                                                     placeholder="<%=goods.getlargeAmount()%>"></td>
+                                                     placeholder="<%=goods.getLargeAmount()%>"></td>
 
                 <td style="padding:20px" class="col-sm-3 col-md-2">大量采购价：</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="largePrice"
-                                                     placeholder="<%=goods.getlargePrice()%>"></td>
+                                                     placeholder="<%=goods.getLargePrice()%>"></td>
             </tr>
         </table>
 

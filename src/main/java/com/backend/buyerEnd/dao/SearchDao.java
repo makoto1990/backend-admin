@@ -14,17 +14,19 @@ import java.util.List;
  * Created by kevin on 2017/5/8.
  */
 public class SearchDao {
+    private SessionFactory sessionFactory;
     private ArrayList<GoodsEntity> allGoods = new ArrayList<GoodsEntity>();
     private ArrayList<String> allType = new ArrayList<String>();
 
+    public void setSessionFactory(SessionFactory sessionFactory){
+        this.sessionFactory = sessionFactory;
+    }
+
     public ArrayList<String> getAllType() {
 
-        allType.clear();
-        Configuration cfg = new Configuration().configure();
-        SessionFactory factory = cfg.buildSessionFactory();
         Session session = null;
         try {
-            session = factory.openSession();
+            session = this.sessionFactory.openSession();
             //��������
             session.beginTransaction();
 
@@ -60,11 +62,9 @@ public class SearchDao {
     public ArrayList<GoodsEntity> loadAllGoods() {
 
         allGoods.clear();
-        Configuration cfg = new Configuration().configure();
-        SessionFactory factory = cfg.buildSessionFactory();
         Session session = null;
         try {
-            session = factory.openSession();
+            session = this.sessionFactory.openSession();
             //��������
             session.beginTransaction();
 

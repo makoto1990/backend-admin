@@ -19,7 +19,7 @@ import="com.backend.buyerEnd.service.*"
 <body>
 <%
     Cart cart = (Cart)request.getSession().getAttribute("scart"); 
-    String flag=(String)request.getParameter("flag");
+    String flag=(String)request.getSession().getAttribute("flag");
     HttpSession sess=request.getSession();
     String goodsId=(String)sess.getAttribute("goodsId"+flag);
     String goodsType=(String)sess.getAttribute("goodsType"+flag);
@@ -63,7 +63,7 @@ import="com.backend.buyerEnd.service.*"
             <div class="row clearfix">
                 <div class="col-md-6 column">
                     <div class="main-img">
-                        <%String picPath="../resources/images/"+goodsName+".jpg";
+                        <%String picPath="/resources/images/"+goodsName+".jpg";
                         %>
                         <img src=<%=picPath %> width="100%">
                     </div>

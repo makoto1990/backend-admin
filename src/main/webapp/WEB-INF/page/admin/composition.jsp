@@ -27,7 +27,7 @@
 <tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="compositionID=''" ng-init="sellerID=''">
 
-    <c:url var="addAction" value="/admin/CompositionControl/FindCompositionBySellerID/${composition.orderGoodsId}" ></c:url>
+    <c:url var="addAction" value="/admin/CompositionControl/FindCompositionBySellerID/${composition.orderGoodsId}" />
     <button ng-click="toggle()">隐藏/显示</button>
 
     <form:form action="${addAction}" commandName="composition">
@@ -59,7 +59,7 @@
                     <td>${composition.orderGoodsId}</td>
                     <td>${composition.goodsAmount}</td>
                     <td>${composition.sellerId}</td>
-                    <td>${composition.goodsID}</td>
+                    <td>${composition.goodsId}</td>
                     <td>${composition.orderId}</td>
                     <td><a href="<c:url value='/admin/CompositionControl/RemoveComposition/${composition.orderGoodsId}' />" >Delete</a></td>
 

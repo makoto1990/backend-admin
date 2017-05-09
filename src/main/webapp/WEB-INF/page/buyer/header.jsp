@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" import="java.util.*" import="com.backend.model.*"
-         import="javax.servlet.http.*" pageEncoding="utf-8" %>
-
+         import="com.backend.buyerEnd.service.*" pageEncoding="utf-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <script>
     $(document).ready(function() {
     // put all your jQuery goodness in here.
@@ -47,15 +49,15 @@
                         </div>
                         <div class="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <jsp:useBean id="goodsTypeX" class="com.backend.buyerEnd.service.SearchService" />
-                                    <%  ArrayList<String> allType=new ArrayList<String>(); 
-                                        allType=goodsTypeX.getAllType();
-                                        int cntType=allType.size();
-                                        for (int i=0;i<cntType;i++) {
-                                            String typeName=allType.get(i);
-                                    %>
-                                        <li><a href="#"><%=typeName%></a></li>
-                                    <%} %>
+                                <%
+                                    ArrayList<String> typeList = (ArrayList)request.getSession().getAttribute("goodsTypes");
+                                    int size = typeList.size();
+                                    String[] typeNames = (String[])typeList.toArray(new String[size]);
+                                    for (String typeName:typeNames) {
+                                %>
+                                    <li><a href="#"><%=typeName%></a></li>
+                                <%}%>
+
                             </ul>
                             <form class="navbar-form navbar-right" role="search" action="/buyer/Search" method="post">
                                 <div class="form-group">

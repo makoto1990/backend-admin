@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" import="com.backend.model.*"
-         import="com.backend.sellerEnd.*"
+         import="com.backend.sellerEnd.*" import="javax.servlet.http.*"
          pageEncoding="utf-8" %>
 <%@page import="java.util.ArrayList" %>
+<%@ page import="org.springframework.http.HttpRequest" %>
+<%@ page import="com.backend.sellerEnd.service.SellerService" %>
+<%@ page import="com.backend.sellerEnd.service.SearchService" %>
+<%@ page import="com.backend.sellerEnd.dao.GoodsDao" %>
+<%@ page import="com.backend.sellerEnd.service.GoodsService" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@page errorPage="saleError.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,7 +21,7 @@
     <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <link href="/resources/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
-
+<% String sellerName = (String)request.getSession().getAttribute("sname");%>
     <script>
         function doclick() {
             document.getElementById("saveinfor").style.display = "block";
@@ -144,7 +152,6 @@
     </script>
 </head>
 <body>
-<%String sellerName = (String) request.getSession().getAttribute("sname"); %>
 <div id="myCarousel" class="carousel slide">
     <!-- 轮播（Carousel）指标 -->
     <ol class="carousel-indicators">
@@ -178,7 +185,7 @@
 </script>
 <div class="container">
     <nav class="navbar navbar-default" style="padding:20px">
-        <a href="../index.jsp" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>
+        <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>
 
         <ul id="myTab" class="nav nav-tabs" style="padding:20px">
 
@@ -191,7 +198,7 @@
                     class="glyphicon glyphicon-folder-close">商品管理<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2">
                     <li><a href="#releaseofgoods" tabindex="-1" data-toggle="tab">
-                        <form action="${pageContext.request.contextPath}/GoodsControServlet?value=release&sellerName=<%=sellerName %>"
+                        <form action="${pageContext.request.contextPath}/Goods/SaleRelease?sellerName=<%=sellerName %>"
                               method="post">
                             <button style="border:none;background-color:#FFFFFF" type="submit">已发布商品</button>
                         </form>
@@ -228,16 +235,14 @@
             <div class="tab-pane fade in active" id="sellerinfo">
                 <div class="container">
 
-                    <%!
-                        SellerInfo info = new SellerInfo();
-                        String[] sellerinfo = new String[13];
-                    %>
                     <%
-                        sellerinfo = info.SellerInfo(sellerName);
+                        String[] sellerinfo = new String[13];
+                        SellerService sellerService = (SellerService)request.getSession().getAttribute("sellerService");
+                        sellerinfo = sellerService.sellerInfo(sellerName);
                     %>
                     <p id="warning">卖家信息 可进行编辑</p>
                     <form onsubmit="return validate_form(this)"
-                          action="${pageContext.request.contextPath}/EditSellerInfoServlet?userName=<%=sellerinfo[2] %>"
+                          action="${pageContext.request.contextPath}/Seller/Edit?userName=<%=sellerinfo[2] %>"
                           method="post" align="center">
 
                         <table border="0" cellspacing="0" style="border-collapse:collapse">
@@ -332,12 +337,12 @@
                         String addGoodsID;
                     %>
                     <%
-                        GoodsID id = new GoodsID();
-                        addGoodsID = id.GoodsID();
+                        GoodsService goodsService =(GoodsService)request.getSession().getAttribute("goodsService");
+                        addGoodsID = goodsService.GoodsID();
                     %>
 
                     <form onsubmit="return validate_form2(this)" id="goodsinforform" method="post"
-                          action="${pageContext.request.contextPath}/GoodsControServlet?value=add&sellerName=<%=sellerName%>&addGoodsID=<%=addGoodsID %>">
+                          action="${pageContext.request.contextPath}/Goods/Add?sellerName=<%=sellerName%>&&addGoodsID=<%=addGoodsID%>">
 
                         <table border="4">
                             <tr>
@@ -437,8 +442,8 @@
                                 <td>订单状态</td>
                             </tr>
                             <%
-                                OrderSearch all = new OrderSearch();
-                                list = all.SearchAllOrder(sellerName);
+                                SearchService searchService = (SearchService) request.getSession().getAttribute("searchService");
+                                list = searchService.SearchAllOrder(sellerName);
 
                                 for (i = 0; i < list.size(); i++) {
                                     order = (OrderEntity) list.get(i);
@@ -449,7 +454,7 @@
                             <tr>
                                 <%} %>
                                 <td>
-                                    <a href="saleOrderDetails.jsp?id=<%=order.getOrderId() %>" target="_blank"
+                                    <a href="${pageContext.request.contextPath}/Order/Detail/<%=order.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
                                        title="点击查看订单详情"><%=order.getOrderId() %>
                                     </a></td>
@@ -484,16 +489,14 @@
                                 <td>订单状态</td>
                             </tr>
                             <%
-
-                                OrderSearch pay = new OrderSearch();
-                                list = pay.SearchWaitPayOrder(sellerName);
+                                list = searchService.SearchWaitPayOrder(sellerName);
 
                                 for (i = 0; i < list.size(); i++) {
                                     order = (OrderEntity) list.get(i);
                             %>
                             <tr>
                                 <td>
-                                    <a href="saleOrderDetails.jsp?id=<%=order.getOrderId() %>" target="_blank"
+                                    <a href="${pageContext.request.contextPath}/Order/Detail/<%=order.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
                                        title="点击查看订单详情"><%=order.getOrderId() %>
                                     </a></td>
@@ -529,15 +532,14 @@
                                 <td>订单状态</td>
                             </tr>
                             <%
-                                OrderSearch wait = new OrderSearch();
-                                list = wait.SearchWaitSendOrder(sellerName);
+                                list = searchService.SearchWaitSendOrder(sellerName);
                                 int i;
                                 for (i = 0; i < list.size(); i++) {
                                     order = (OrderEntity) list.get(i);
                             %>
                             <tr>
                                 <td>
-                                    <a href="saleOrderDetails.jsp?id=<%=order.getOrderId() %>" target="_blank"
+                                    <a href="${pageContext.request.contextPath}/Order/Detail/<%=order.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
                                        title="点击查看订单详情"><%=order.getOrderId() %>
                                     </a></td>
@@ -574,14 +576,13 @@
                                 <td>订单状态</td>
                             </tr>
                             <%
-                                OrderSearch send = new OrderSearch();
-                                list = send.SearchSendOrder(sellerName);
+                                list = searchService.SearchSendOrder(sellerName);
                                 for (i = 0; i < list.size(); i++) {
                                     order = (OrderEntity) list.get(i);
                             %>
                             <tr>
                                 <td>
-                                    <a href="saleOrderDetails.jsp?id=<%=order.getOrderId() %>" target="_blank"
+                                    <a href="${pageContext.request.contextPath}/Order/Detail/<%=order.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
                                        title="点击查看订单详情"><%=order.getOrderId() %>
                                     </a></td>
@@ -618,14 +619,13 @@
                                 <td>订单状态</td>
                             </tr>
                             <%
-                                OrderSearch cancel = new OrderSearch();
-                                list = cancel.SearchCancelOrder(sellerName);
+                                list = searchService.SearchCancelOrder(sellerName);
                                 for (i = 0; i < list.size(); i++) {
                                     order = (OrderEntity) list.get(i);
                             %>
                             <tr>
                                 <td>
-                                    <a href="saleOrderDetails.jsp?id=<%=order.getOrderId() %>" target="_blank"
+                                    <a href="${pageContext.request.contextPath}/Order/Detail/<%=order.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
                                        title="点击查看订单详情"><%=order.getOrderId() %>
                                     </a></td>
@@ -651,7 +651,7 @@
             <div class="tab-pane fade " id="ordersearch">
 
                 <div class="container">
-                    <form action="${pageContext.request.contextPath}/SearchOrderServlet" method="post"
+                    <form action="${pageContext.request.contextPath}/Search/Order" method="post"
                           style="height:400px">
                         <div class="input-prepend input-append">
                             <span class="add-on">

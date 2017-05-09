@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" import="com.demo.supermarket.*"
-         import="com.demo.supermarketSale.*"
+<%@ page language="java" contentType="text/html; charset=utf-8" import="com.backend.model.*"
+         import="com.backend.sellerEnd.*"
          pageEncoding="utf-8" %>
 <%@page errorPage="saleError.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,9 +7,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; utf-8">
     <title>支农网上生鲜超市</title>
-    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-    <link href="../bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/resources/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
+    <link href="/resources/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
     <style>
         input::-webkit-input-placeholder {
@@ -137,64 +137,64 @@
 <nav class="navbar navbar-default" style="padding:20px">
 
     <form style="padding:10px"
-          action="${pageContext.request.contextPath}/GoodsControServlet?value=release&sellerName=<%=request.getSession().getAttribute("sname") %>"
+          action="${pageContext.request.contextPath}/Goods/SaleRelease?sellerName=<%=request.getSession().getAttribute("sname") %>"
           method="post">
-        <a href="../index.jsp" class=navbar-brand" style="padding:20px"><span class="glyphicon glyphicon-home">首页</a>
+        <a href="/" class=navbar-brand" style="padding:20px"><span class="glyphicon glyphicon-home">首页</a>
         <input type="submit" class="btn btn-default" value="返回">
     </form>
 </nav>
 
 <div class="container" style="padding-bottom:100px">
     <%!
-        Goods goods = new Goods();
+        GoodsEntity goods = new GoodsEntity();
         String goodsname;
     %>
     <%
-        goods = (Goods) request.getSession().getAttribute("goods");
+        goods = (GoodsEntity) request.getSession().getAttribute("goods");
     %>
     <form onsubmit="return validate_form(this)"
-          action="${pageContext.request.contextPath}/GoodsControServlet?value=saveedit&goodsID=<%=goods.getgoodsID() %>"
+          action="${pageContext.request.contextPath}/Goods/SaveEdit?goodsID=<%=goods.getGoodsId() %>"
           method="post">
 
         <table border="4">
             <tr>
                 <td style="padding:20px" class="col-sm-3 col-md-2">商品编号:</td>
-                <td class="col-sm-3 col-md-2"><input type="text" disabled value="<%=goods.getgoodsID() %>"></td>
+                <td class="col-sm-3 col-md-2"><input type="text" disabled value="<%=goods.getGoodsId() %>"></td>
 
                 <td style="padding:20px" class="col-sm-3 col-md-2">商品名称：</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="name" readOnly id="infor_1"
-                                                     value="<%=goods.getgoodsName().trim()%>"></td>
+                                                     value="<%=goods.getGoodsName().trim()%>"></td>
             </tr>
 
             <tr>
                 <td style="padding:20px" class="col-sm-3 col-md-2">商品数量：</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="count" readOnly id="infor_2"
-                                                     value="<%=goods.getgoodsCount()%>"></td>
+                                                     value="<%=goods.getGoodsCount()%>"></td>
 
                 <td style="padding:20px" class="col-sm-3 col-md-2">商品单价:</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="price" readOnly id="infor_3"
-                                                     value="<%=goods.getgoodsPrice() %>"></td>
+                                                     value="<%=goods.getGoodsPrice() %>"></td>
             </tr>
 
             <tr>
                 <td style="padding:20px" class="col-sm-3 col-md-2">运输中存储：</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="storeWay" readOnly id="infor_4"
-                                                     value="<%=goods.getstoreWay().trim()%>"></td>
+                                                     value="<%=goods.getStoreWay().trim()%>"></td>
 
                 <td style="padding:20px" class="col-sm-3 col-md-2">原产地：</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="sourceArea" readOnly id="infor_5"
-                                                     value="<%=goods.getsourceArea().trim()%>"></td>
+                                                     value="<%=goods.getSourceArea().trim()%>"></td>
             </tr>
 
             <tr>
                 <td style="padding:20px" class="col-sm-3 col-md-2">商品类别:</td>
                 <td class="col-sm-3 col-md-2"><input type="text" readOnly id="infor_6"
-                                                     value="<%=goods.getgoodsType().trim() %>">
+                                                     value="<%=goods.getGoodsType().trim() %>">
 
 
                     <select name="type" id="selecttype" class="selectpicker"
                             style="width:150px ;height:40px;display:none">
-                        <option value="<%=goods.getgoodsType()%>">原类别：<%=goods.getgoodsType()%>
+                        <option value="<%=goods.getGoodsType()%>">原类别：<%=goods.getGoodsType()%>
                         </option>
                         <option value="蔬菜">蔬菜</option>
                         <option value="水果">水果</option>
@@ -207,27 +207,27 @@
 
                 <td style="padding:20px" class="col-sm-3 col-md-2">起送量：</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="leastAmount" readOnly id="infor_7"
-                                                     value="<%=goods.getleastAmount()%>"></td>
+                                                     value="<%=goods.getLeastAmount()%>"></td>
             </tr>
 
             <tr>
                 <td style="padding:20px" class="col-sm-3 col-md-2">大量采购起送量：</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="largeAmount" readOnly id="infor_8"
-                                                     value="<%=goods.getlargeAmount()%>"></td>
+                                                     value="<%=goods.getLargeAmount()%>"></td>
 
                 <td style="padding:20px" class="col-sm-3 col-md-2">大量采购价：</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="largePrice" readOnly id="infor_9"
-                                                     value="<%=goods.getlargePrice()%>"></td>
+                                                     value="<%=goods.getLargePrice()%>"></td>
             </tr>
 
             <tr>
                 <td style="padding:20px" class="col-sm-3 col-md-2">商品规格：</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="goodsSize" readOnly id="infor_10"
-                                                     value="<%=goods.getgoodsSize().trim()%>"></td>
+                                                     value="<%=goods.getGoodsSize().trim()%>"></td>
 
                 <td style="padding:20px" class="col-sm-3 col-md-2">商品简介：</td>
                 <td class="col-sm-3 col-md-2"><input type="text" name="goodsIntro" readOnly id="infor_11"
-                                                     value="<%=goods.getgoodsIntro().trim()%>"></td>
+                                                     value="<%=goods.getGoodsIntro().trim()%>"></td>
             </tr>
         </table>
 
@@ -246,13 +246,13 @@
     </form>
 
     <form onsubmit="return validate_form2(this)" method="post"
-          action="${pageContext.request.contextPath}/ImgUploadServlet?goodsID=<%=goods.getgoodsID() %>"
+          action="${pageContext.request.contextPath}/Goods/UploadImage?goodsID=<%=goods.getGoodsId() %>"
           enctype="multipart/form-data">
         <div>
             <h4>商品图片：</h4>
             <div class="thumbnail" style="height:220px;width:310px">
                 <div style="height:220px;width:310px overflow:hidden; text-align:center; border:none">
-                    <img src="../resources/images/<%=goods.getPicture() %>"
+                    <img src="/resources/images/<%=goods.getPicture() %>"
                          class="img-responsive center-block"
                          style="display:inline-block; vertical-align:middle; max-height:220px; max-width:300px;">
                 </div>

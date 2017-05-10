@@ -184,7 +184,7 @@
 </script>
 <div class="container">
     <nav class="navbar navbar-default" style="padding:20px">
-        <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>
+        <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</span></a>
 
         <ul id="myTab" class="nav nav-tabs" style="padding:20px">
 
@@ -215,7 +215,7 @@
 
 
             <li class="dropdown"><a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown"><span
-                    class="glyphicon glyphicon-th">订单管理<span class="caret"></span></a>
+                    class="glyphicon glyphicon-th">订单管理<span class="caret"></span></span></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
                     <li><a href="#allorder" tabindex="-1" data-toggle="tab">全部订单</a></li>
                     <li><a href="#waitpayorder" tabindex="-1" data-toggle="tab">待付款订单</a></li>
@@ -673,6 +673,8 @@
                                         <span class="glyphicon glyphicon-search">查询</span>
                                     </button>&nbsp;&nbsp;
                                     <span id="tip" style="color:#6E6E6E">查询格式如：201704020001</span>
+                                </span>
+                        </div>
                     </form>
                 </div>
                 <div id="search">

@@ -10,7 +10,6 @@ import java.util.*;
  * Created by kevin on 2017/5/8.
  */
 public class SearchDao {
-    String s;
     ArrayList list = new ArrayList();
 
     public ArrayList SearchAllOrder(String sellerName) { //全部订单

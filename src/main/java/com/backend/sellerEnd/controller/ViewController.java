@@ -84,7 +84,7 @@ public class ViewController {
             System.out.println(info[i]);
         }
         this.sellerService.saveEdit(name, info);
-        return "redirect:/";
+        return "redirect:/seller";
     }
 
     @RequestMapping("/Search/Order")
@@ -161,13 +161,13 @@ public class ViewController {
     @RequestMapping("/Goods/UploadImage")
     public String uploadPicture(@ModelAttribute("goodsID") String goodsID, @RequestParam(value = "uploadFile", required = false) MultipartFile file, HttpServletRequest request, Model model) {
         this.pictureUploadService.uploadPicture(goodsID, file, request);
-        return "redirect:/Goods/Edit/" + goodsID;
+        return "redirect:/seller/Goods/Edit/" + goodsID;
     }
 
     @RequestMapping("/Order/Update")
     public String updateOrderStatus(@ModelAttribute("contro") String contro, @ModelAttribute("id") String id) {
         this.orderService.updateOrderStatus(contro, id);
-        return "redirect:/Order/Details/" + id;
+        return "redirect:/seller/Order/Details/" + id;
     }
 
     @RequestMapping("/Order/Detail/{id}")

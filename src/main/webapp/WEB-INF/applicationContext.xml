@@ -40,6 +40,10 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2012Dialect</prop>
                 <prop key="dialect">org.hibernate.dialect.SQLServer2012Dialect</prop>
                 <prop key="show_sql">true</prop>
+                <prop key="hibernate.connection.url">
+                    jdbc:sqlserver://123.206.116.122\MSSQLSERVER:1433;databaseName=onlineMarket
+                </prop>
+                <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
             </props>
         </property>
     </bean>

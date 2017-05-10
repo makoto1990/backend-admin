@@ -4,7 +4,7 @@
 <%@page import="java.util.ArrayList" %>
 <%@ page import="com.backend.sellerEnd.service.SearchService" %>
 <%@page errorPage="saleError.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -188,7 +188,7 @@
         </table>
         <div>
             <%if (!status.equals("¶©µ¥ÒÑÈ¡Ïû")) {%>
-            <form action="${pageContext.request.contextPath}/Order/Update" align="right">
+            <form action="/seller/Order/Update" align="right">
                 <input type="text" name="contro" value="0" style="display:none">
                 <input type="text" name="id" value="<%=order.getOrderId() %>" style="display:none">
                 <input type="submit" style="width:150px;height:50px" class="btn btn-warning" onclick="cancelinfor()"
@@ -197,7 +197,7 @@
             <%} %>
             <p></p>
             <%if (status.equals("µÈ´ýÂô¼ÒÈ·ÈÏ")) {%>
-            <form action="${pageContext.request.contextPath}/Order/Update" align="right">
+            <form action="/seller/Order/Update" align="right">
                 <input type="text" name="contro" value="1" style="display:none">
                 <input type="text" name="id" value="<%=order.getOrderId() %>" style="display:none">
                 <input type="submit" style="width:150px;height:50px" class="btn btn-primary" onclick="confirminfor()"
@@ -208,7 +208,7 @@
                 if (status.equals("µÈ´ýÂô¼Ò·¢»õ")) {
             %>
             <p></p>
-            <form action="${pageContext.request.contextPath}/Order/Update" align="right">
+            <form action="/seller/Order/Update" align="right">
                 <input type="text" name="contro" value="2" style="display:none">
                 <input type="text" name="id" value="<%=order.getOrderId() %>" style="display:none">
                 <input type="submit" style="width:150px;height:50px" class="btn btn-primary" onclick="sendinfor()"

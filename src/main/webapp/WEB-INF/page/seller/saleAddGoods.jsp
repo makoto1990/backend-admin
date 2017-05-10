@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" import="com.backend.model.*"
          import="com.backend.sellerEnd.*"
          pageEncoding="utf-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -15,7 +15,7 @@
 <body>
 <nav class="navbar navbar-default" style="padding:20px">
     <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>
-    <form action="${pageContext.request.contextPath}/GoodsControServlet?value=release" method="post">
+    <form action="/seller/GoodsControServlet?value=release" method="post">
         <input type="submit" class="btn btn-default" value="返回">
     </form>
 </nav>
@@ -28,7 +28,7 @@
     <%
         goods = (GoodsEntity) request.getSession().getAttribute("goods");
     %>
-    <form action="${pageContext.request.contextPath}/Goods/SaveEdit?goodsID=<%=goods.getGoodsId() %>"
+    <form action="/seller/Goods/SaveEdit?goodsID=<%=goods.getGoodsId() %>"
           method="post">
 
         <table border="4">

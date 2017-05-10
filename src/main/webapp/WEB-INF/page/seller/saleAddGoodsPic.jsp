@@ -2,7 +2,7 @@
          import="com.backend.sellerEnd.*"
          pageEncoding="utf-8" %>
 <%@page errorPage="saleError.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -35,7 +35,7 @@
 </nav>
 
 <div class="container" style="background-color:#CCCCCC">
-    <form method="post" action="${pageContext.request.contextPath}/Goods/UploadImage?goodsID=<%=addGoodsID %>"
+    <form method="post" action="/seller/Goods/UploadImage?goodsID=<%=addGoodsID %>"
           enctype="multipart/form-data">
         <div>
             <h4>商品添加成功，请为您的商品添加一张图片：</h4>

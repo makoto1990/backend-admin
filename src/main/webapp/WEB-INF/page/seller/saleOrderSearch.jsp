@@ -2,7 +2,7 @@
          contentType="text/html; charset=GBK"
          pageEncoding="GBK" %>
 <%@page errorPage="saleError.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -44,7 +44,7 @@
 
 
 <div class="container" id="">
-    <form action="${pageContext.request.contextPath}/Search/Order" method="post">
+    <form action="/seller/Search/Order" method="post">
         <div class="input-prepend input-append">
             <span class="add-on">
                 <select name="select" id="selectsearchoption" onclick="searchbyselect()" class="selectpicker" style="width:150px ;height:40px">
@@ -89,7 +89,7 @@
         %>
         <tr>
             <td>
-                <a href="${pageContext.request.contextPath}/Order/Detail/<%=order.getOrderId() %>" target="_blank">
+                <a href="/seller/Order/Detail/<%=order.getOrderId() %>" target="_blank">
                     <%=order.getOrderId() %>
                 </a>
             </td>

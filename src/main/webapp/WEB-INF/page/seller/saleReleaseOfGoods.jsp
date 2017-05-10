@@ -3,7 +3,7 @@
          pageEncoding="utf-8" %>
 <%@page import="java.util.ArrayList" %>
 <%@page errorPage="saleError.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -34,7 +34,7 @@
     <h1 style="color:#A3A3A3">已发布商品</h1>
     <div class="styled-select">
         <form style="padding-top:20px"
-              action="${pageContext.request.contextPath}/Goods/Search?name=<%=sellerName%>"
+              action="/seller/Goods/Search?name=<%=sellerName%>"
               method="post">
             <span style="font-size:20px;color:#FF8C00">商品类别</span>
             <select name="goodstype" id="selecttype" class="selectpicker"
@@ -74,13 +74,13 @@
                     <table>
                         <tr>
                             <td style="padding:20px">
-                                <form action="${pageContext.request.contextPath}/Goods/Edit/<%=goods.getGoodsId() %>"
+                                <form action="/seller/Goods/Edit/<%=goods.getGoodsId() %>"
                                       method="post">
                                     <button type="submit" class="btn btn-primary" role="button">编辑商品</button>
                                 </form>
                             </td>
                             <td>
-                                <form action="${pageContext.request.contextPath}/Goods/Delete/<%=goods.getGoodsId() %>"
+                                <form action="/seller/Goods/Delete/<%=goods.getGoodsId() %>"
                                       method="post">
                                     <button type="submit" class="btn btn-default" role="button">删除商品</button>
                                 </form>

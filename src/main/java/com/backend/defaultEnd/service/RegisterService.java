@@ -33,7 +33,8 @@ public class RegisterService {
             n = 1;
             oldDay = dateNowStr;
         }
-        String userID = dateNowStr +"00" + n++;
+        n = this.dao.getTopID();
+        String userID = dateNowStr+n;
         user.setUserId(userID);
         try{
             addUser(user);

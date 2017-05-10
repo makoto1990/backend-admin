@@ -2,7 +2,7 @@
          import="com.backend.sellerEnd.*"
          pageEncoding="utf-8" %>
 <%@page errorPage="saleError.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; utf-8">
@@ -137,7 +137,7 @@
 <nav class="navbar navbar-default" style="padding:20px">
 
     <form style="padding:10px"
-          action="${pageContext.request.contextPath}/Goods/SaleRelease?sellerName=<%=request.getSession().getAttribute("sname") %>"
+          action="/seller/Goods/SaleRelease?sellerName=<%=request.getSession().getAttribute("sname") %>"
           method="post">
         <a href="/" class=navbar-brand" style="padding:20px"><span class="glyphicon glyphicon-home">首页</a>
         <input type="submit" class="btn btn-default" value="返回">
@@ -153,7 +153,7 @@
         goods = (GoodsEntity) request.getSession().getAttribute("goods");
     %>
     <form onsubmit="return validate_form(this)"
-          action="${pageContext.request.contextPath}/Goods/SaveEdit?goodsID=<%=goods.getGoodsId() %>"
+          action="/seller/Goods/SaveEdit?goodsID=<%=goods.getGoodsId() %>"
           method="post">
 
         <table border="4">
@@ -246,7 +246,7 @@
     </form>
 
     <form onsubmit="return validate_form2(this)" method="post"
-          action="${pageContext.request.contextPath}/Goods/UploadImage?goodsID=<%=goods.getGoodsId() %>"
+          action="/seller/Goods/UploadImage?goodsID=<%=goods.getGoodsId() %>"
           enctype="multipart/form-data">
         <div>
             <h4>商品图片：</h4>

@@ -29,7 +29,7 @@ public class UserEntity {
 
     @Id
     @Column(name = "userID", nullable = false, length = 12)
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    //(strategy=GenerationType.IDENTITY)
     public String getUserId() {
         return userId;
     }

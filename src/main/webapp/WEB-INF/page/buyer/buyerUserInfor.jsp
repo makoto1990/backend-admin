@@ -1,103 +1,116 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ page import="com.backend.buyerEnd.dao.*,com.backend.model.*,java.util.*" %>
+         pageEncoding="utf-8" %>
+<%@ page import="com.backend.model.UserEntity" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>用户页面</title>
-  <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>用户页面</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <% 
-      String name = request.getSession().getAttribute("sname").toString(); 
-    %> 
-    <%@ include file="header.jsp" %>
+<%
+    String name = request.getSession().getAttribute("sname").toString();
+%>
+<%@ include file="header.jsp" %>
 
-    <form class="form-horizontal" role="form">
-    	<%
-     		UserEntity userEntity = (UserEntity) request.getSession().getAttribute("userEntity");
-     		{%>
-     		<div class="form-group">
-        		<label class="col-sm-5 control-label">用户ID</label>
-        		<div class="col-sm-7">
-          			<p class="form-control-static"><%=userEntity.getUserId() %></p>
-        		</div>
-      		</div>
-     		<div class="form-group">
-        		<label class="col-sm-5 control-label">用户姓名</label>
-        		<div class="col-sm-7">
-          			<p class="form-control-static"><%=userEntity.getUserName() %></p>
-        		</div>
-      		</div>
-     		<div class="form-group">
-        		<label class="col-sm-5 control-label">密码</label>
-        		<div class="col-sm-7">
-          			<p class="form-control-static"><%=userEntity.getPassword() %></p>
-        		</div>
-      		</div>		
-     		<div class="form-group">
-        		<label class="col-sm-5 control-label">真实姓名</label>
-        		<div class="col-sm-7">
-          			<p class="form-control-static"><%=userEntity.getRealName() %></p>
-        		</div>
-      		</div>	
-      		<div class="form-group">
-        		<label class="col-sm-5 control-label">身份证号</label>
-        		<div class="col-sm-7">
-          			<p class="form-control-static"><%=userEntity.getiDnumber() %></p>
-        		</div>
-      		</div>
-      		<div class="form-group">
-        		<label class="col-sm-5 control-label">联系电话</label>
-        		<div class="col-sm-7">
-          			<p class="form-control-static"><%=userEntity.getPhone() %></p>
-        		</div>
-      		</div>
-      		<div class="form-group">
-        		<label class="col-sm-5 control-label">邮编</label>
-        		<div class="col-sm-7">
-          			<p class="form-control-static"><%=userEntity.getPostcode() %></p>
-        		</div>
-      		</div>
-      		<div class="form-group">
-        		<label class="col-sm-5 control-label">省</label>
-        		<div class="col-sm-7">
-          			<p class="form-control-static"><%=userEntity.getProvince() %></p>
-        		</div>
-      		</div>
-      		<div class="form-group">
-        		<label class="col-sm-5 control-label">市</label>
-        		<div class="col-sm-7">
-          			<p class="form-control-static"><%=userEntity.getCity() %></p>
-        		</div>
-      		</div>
-      		<div class="form-group">
-        		<label class="col-sm-5 control-label">区/县</label>
-        		<div class="col-sm-7">
-          			<p class="form-control-static"><%=userEntity.getDistrict() %></p>
-        		</div>
-      		</div>
-      		<div class="form-group">
-        		<label class="col-sm-5 control-label">街道</label>
-        		<div class="col-sm-7">
-          			<p class="form-control-static"><%=userEntity.getStreet() %></p>
-        		</div>
-      		</div>
-      		<div class="form-group">
-        		<label class="col-sm-5 control-label">详细地址</label>
-        		<div class="col-sm-7">
-          			<p class="form-control-static"><%=userEntity.getAddress() %></p>
-        		</div>
-      		</div>
+<form class="form-horizontal" role="form">
+    <%
+        UserEntity userEntity = (UserEntity) request.getSession().getAttribute("userEntity");
+        {%>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">用户ID</label>
+        <div class="col-sm-7">
+            <p class="form-control-static"><%=userEntity.getUserId() %>
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">用户姓名</label>
+        <div class="col-sm-7">
+            <p class="form-control-static"><%=userEntity.getUserName() %>
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">密码</label>
+        <div class="col-sm-7">
+            <p class="form-control-static"><%=userEntity.getPassword() %>
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">真实姓名</label>
+        <div class="col-sm-7">
+            <p class="form-control-static"><%=userEntity.getRealName() %>
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">身份证号</label>
+        <div class="col-sm-7">
+            <p class="form-control-static"><%=userEntity.getiDnumber() %>
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">联系电话</label>
+        <div class="col-sm-7">
+            <p class="form-control-static"><%=userEntity.getPhone() %>
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">邮编</label>
+        <div class="col-sm-7">
+            <p class="form-control-static"><%=userEntity.getPostcode() %>
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">省</label>
+        <div class="col-sm-7">
+            <p class="form-control-static"><%=userEntity.getProvince() %>
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">市</label>
+        <div class="col-sm-7">
+            <p class="form-control-static"><%=userEntity.getCity() %>
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">区/县</label>
+        <div class="col-sm-7">
+            <p class="form-control-static"><%=userEntity.getDistrict() %>
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">街道</label>
+        <div class="col-sm-7">
+            <p class="form-control-static"><%=userEntity.getStreet() %>
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">详细地址</label>
+        <div class="col-sm-7">
+            <p class="form-control-static"><%=userEntity.getAddress() %>
+            </p>
+        </div>
+    </div>
 
-     		<%}
-     	%>
+    <%
+        }
+    %>
 
-    </form>	 
+</form>
 
 </body>
 </html>

@@ -10,8 +10,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@page errorPage="saleError.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -190,20 +189,27 @@
         <ul id="myTab" class="nav nav-tabs" style="padding:20px">
 
             <li class="active">
-                <a href="#sellerinfo" tabindex="-1" data-toggle="tab"><span class="glyphicon glyphicon-user"></span>
-                    我的信息</a>
+                <a href="#sellerinfo" tabindex="-1" data-toggle="tab">
+                    <span class="glyphicon glyphicon-user">我的信息</span>
+                </a>
             </li>
 
-            <li class="dropdown"><a href="#" id="myTabDrop2" class="dropdown-toggle" data-toggle="dropdown"><span
-                    class="glyphicon glyphicon-folder-close">商品管理<span class="caret"></span></a>
+            <li class="dropdown">
+                <a href="#" id="myTabDrop2" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-folder-close">商品管理</span>
+                        <span class="caret"></span>
+                </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2">
-                    <li><a href="#releaseofgoods" tabindex="-1" data-toggle="tab">
-                        <form action="${pageContext.request.contextPath}/Goods/SaleRelease?sellerName=<%=sellerName %>"
-                              method="post">
-                            <button style="border:none;background-color:#FFFFFF" type="submit">已发布商品</button>
-                        </form>
-                    </a></li>
-                    <li><a href="#addgoods" tabindex="-1" data-toggle="tab">添加商品</a></li>
+                    <li>
+                        <a href="#releaseofgoods" tabindex="-1" data-toggle="tab">
+                            <form action="/seller/Goods/SaleRelease?sellerName=<%=sellerName %>" method="post">
+                                <button style="border:none;background-color:#FFFFFF" type="submit">已发布商品</button>
+                            </form>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#addgoods" tabindex="-1" data-toggle="tab">添加商品</a>
+                    </li>
                 </ul>
             </li>
 
@@ -242,8 +248,8 @@
                     %>
                     <p id="warning">卖家信息 可进行编辑</p>
                     <form onsubmit="return validate_form(this)"
-                          action="${pageContext.request.contextPath}/Seller/Edit?userName=<%=sellerinfo[2] %>"
-                          method="post" align="center">
+                          action="/seller/Seller/Edit?userName=<%=sellerinfo[2] %>"
+                          method="post" data-align="center">
 
                         <table border="0" cellspacing="0" style="border-collapse:collapse">
                             <tr>
@@ -342,7 +348,7 @@
                     %>
 
                     <form onsubmit="return validate_form2(this)" id="goodsinforform" method="post"
-                          action="${pageContext.request.contextPath}/Goods/Add?sellerName=<%=sellerName%>&&addGoodsID=<%=addGoodsID%>">
+                          action="/seller/Goods/Add?sellerName=<%=sellerName%>&&addGoodsID=<%=addGoodsID%>">
 
                         <table border="4">
                             <tr>
@@ -454,7 +460,7 @@
                             <tr>
                                 <%} %>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/Order/Detail/<%=order.getOrderId() %>" target="_blank"
+                                    <a href="/seller/Order/Detail/<%=order.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
                                        title="点击查看订单详情"><%=order.getOrderId() %>
                                     </a></td>
@@ -496,7 +502,7 @@
                             %>
                             <tr>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/Order/Detail/<%=order.getOrderId() %>" target="_blank"
+                                    <a href="/seller/Order/Detail/<%=order.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
                                        title="点击查看订单详情"><%=order.getOrderId() %>
                                     </a></td>
@@ -539,7 +545,7 @@
                             %>
                             <tr>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/Order/Detail/<%=order.getOrderId() %>" target="_blank"
+                                    <a href="/seller/Order/Detail/<%=order.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
                                        title="点击查看订单详情"><%=order.getOrderId() %>
                                     </a></td>
@@ -582,7 +588,7 @@
                             %>
                             <tr>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/Order/Detail/<%=order.getOrderId() %>" target="_blank"
+                                    <a href="/seller/Order/Detail/<%=order.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
                                        title="点击查看订单详情"><%=order.getOrderId() %>
                                     </a></td>
@@ -625,7 +631,7 @@
                             %>
                             <tr>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/Order/Detail/<%=order.getOrderId() %>" target="_blank"
+                                    <a href="/seller/Order/Detail/<%=order.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
                                        title="点击查看订单详情"><%=order.getOrderId() %>
                                     </a></td>
@@ -651,7 +657,7 @@
             <div class="tab-pane fade " id="ordersearch">
 
                 <div class="container">
-                    <form action="${pageContext.request.contextPath}/Search/Order" method="post"
+                    <form action="/seller/Search/Order" method="post"
                           style="height:400px">
                         <div class="input-prepend input-append">
                             <span class="add-on">

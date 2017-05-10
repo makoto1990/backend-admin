@@ -4,6 +4,9 @@ import com.backend.model.UserEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.SQLQuery;
+import org.hibernate.type.StandardBasicTypes;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -25,6 +28,17 @@ public class Dao {
         UserEntity result = session.createQuery(criteria).getSingleResult();
         session.close();
         return result;
+    }
+
+    public int getTopID(){
+        int n=1;
+        Session session = this.sessionFactory.getCurrentSession();
+        SQLQuery query = session.createSQLQuery("select top 1 userID from [User] order by userID desc");
+        query.addScalar("userID", StandardBasicTypes.STRING);
+        for (Object item : query.list()) {
+            n = Integer.parseInt(((String)item).substring(8, ((String)item).length()).trim());
+        }
+        return n;
     }
 
     public void addUser(UserEntity user) {

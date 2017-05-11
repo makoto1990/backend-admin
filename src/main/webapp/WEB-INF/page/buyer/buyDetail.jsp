@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          import="com.backend.buyerEnd.service.DetailService"
-         import="com.backend.model.Cart" pageEncoding="utf-8"
+         import="com.backend.model.CartEntity" pageEncoding="utf-8"
          import="com.backend.model.GoodsEntity"
 %>
 <%@ page import="com.backend.model.SellerEntity" %>

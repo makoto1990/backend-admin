@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
-<%@ page import="com.backend.model.Cart" %>
+<%@ page import="com.backend.model.CartEntity" %>
 <%@ page import="com.backend.model.GoodsEntity" %>
 
 
@@ -35,8 +35,8 @@
     <tbody>
     <tr>
         <%
-            Cart cart = (Cart) request.getSession().getAttribute("scart");
-            if (cart == null) cart = new Cart();
+            CartEntity cart = (CartEntity) request.getSession().getAttribute("scart");
+            if (cart == null) cart = new CartEntity();
             for (GoodsEntity goods : cart.cart.keySet()) {%>
         <td><%=goods.getGoodsName() %>
         </td>

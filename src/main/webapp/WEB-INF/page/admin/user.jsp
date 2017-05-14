@@ -72,33 +72,33 @@
     <table ng-hide="myVar">
 
         <tr>
-            <td>
+            <td>*
                     <form:label path="userId">
                         <spring:message text="ID"/>
                     </form:label>
             </td>
             <td>
-                <form:input path="userId"     />
+                <form:input path="userId"  ng-model="uId"   />
             </td>
         </tr>
         <tr>
-            <td>
+            <td>*
                 <form:label path="userName">
                     <spring:message text="Name"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="userName" />
+                <form:input path="userName" ng-model="uName"/>
             </td>
         </tr>
         <tr>
-            <td>
+            <td>*
                 <form:label path="password">
                     <spring:message text="Password"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="password" />
+                <form:input path="password" ng-model="uPass"/>
             </td>
         </tr>
         <tr>
@@ -114,11 +114,11 @@
         <tr>
             <td>
                 <form:label path="iDnumber">
-                    <spring:message text="iDNumber"/>
+                    <spring:message text="iDNumber" />
                 </form:label>
             </td>
             <td>
-                <form:input path="iDnumber" />
+                <form:input path="iDnumber" ng-model="id" />
             </td>
         </tr>
         <tr>
@@ -128,7 +128,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="phone" />
+                <form:input path="phone" ng-model="phone"/>
             </td>
         </tr>
         <tr>
@@ -221,7 +221,7 @@
                 <form:checkbox path="manager" />
             </td>
         </tr>
-        <tr>
+        <tr ng-if="uName!=NULL&&uName!=''&&uPass!=''&&uPass!=NULL&&uId>100000000000&&uId<999999999999&&(id>100000000000000000&&id<999999999999999999||id==0)&&(phone>10000000000&&phone<9999999999||phone==0)">
             <td colspan="2">
                 <c:if test="${!empty user.userName}">
                     <input type="submit"
@@ -239,7 +239,7 @@
 </form:form>
 
 </div>
-<script>
+<script >
 
     var app = angular.module("myApp2", []);
 
@@ -256,7 +256,11 @@
         };
         var now1=new Date();
         $scope.Now=now1.getUTCFullYear()+'-'+now1.getUTCMonth()+'-'+now1.getUTCDate()+' '+now1.getHours()+':'+now1.getMinutes()+':'+now1.getSeconds();
-
+        $scope.uId="${user.userId}";
+        $scope.id="${user.iDnumber}";
+        $scope.phone="${user.phone}";
+        $scope.uName="${user.userName}";
+        $scope.uPass="${user.password}";
     });
 
 </script>

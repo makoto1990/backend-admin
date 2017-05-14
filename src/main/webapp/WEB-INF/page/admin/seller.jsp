@@ -31,25 +31,25 @@
     <table ng-hide="myVar">
         <c:if test="${empty seller.userId}">
             <tr>
-                <td>
+                <td>*
                     <form:label path="sellerId">
                         <spring:message text="Seller ID"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="sellerId" />
+                    <form:input path="sellerId" ng-model="sId"/>
                     <%--<form:hidden path="sellerId" />--%>
                 </td>
             </tr>
         </c:if>
         <tr>
-            <td>
+            <td>*
                 <form:label path="userId">
-                    <spring:message text="User ID"/>
+                    <spring:message text="User ID" />
                 </form:label>
             </td>
             <td>
-                <form:input path="userId" />
+                <form:input path="userId" ng-model="uId"/>
             </td>
         </tr>
         <tr>
@@ -72,7 +72,7 @@
                 <form:input path="sellerIntro" />
             </td>
         </tr>
-        <tr>
+        <tr ng-if="uId>100000000000&&uId<999999999999&&sId>100000000000&&sId<999999999999">
             <td colspan="2">
                 <c:if test="${!empty seller.userId}">
                     <input type="submit"
@@ -106,6 +106,8 @@
         };
         var now1=new Date();
         $scope.Now=now1.getUTCFullYear()+'-'+now1.getUTCMonth()+'-'+now1.getUTCDate()+' '+now1.getHours()+':'+now1.getMinutes()+':'+now1.getSeconds();
+        $scope.sId="${seller.sellerId}";
+        $scope.uId="${seller.userId}";
 
     });
 

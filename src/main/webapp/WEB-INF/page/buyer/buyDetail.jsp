@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"
          import="com.backend.buyerEnd.service.DetailService"
-         import="com.backend.model.CartEntity" pageEncoding="utf-8"
+         import="com.backend.model.CartEntity"
          import="com.backend.model.GoodsEntity"
+         import="com.backend.model.SellerEntity"
+         import="com.backend.model.Cart"
 %>
-<%@ page import="com.backend.model.SellerEntity" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,12 +31,12 @@
 </head>
 <body>
 <%
-    CartEntity cart = (CartEntity) request.getSession().getAttribute("scart");
-    String flag = (String) request.getSession().getAttribute("flag");
     HttpSession sess = request.getSession();
-    String goodsId = (String) sess.getAttribute("goodsId" + flag);
-    String goodsType = (String) sess.getAttribute("goodsType" + flag);
-    String sellerId = (String) sess.getAttribute("sellerId" + flag);
+
+    Cart cart = (Cart) sess.getAttribute("scart");
+    String goodsId = (String) sess.getAttribute("goodsId");
+    String goodsType = (String) sess.getAttribute("goodsType");
+    String sellerId = (String) sess.getAttribute("sellerId");
     String userName = (String) sess.getAttribute("userName");
     String name = userName.trim();
     DetailService svc = (DetailService)sess.getAttribute("svc");
@@ -134,30 +135,35 @@
                                         </div>
                                     </div>
 
+                                    <form action="/buyer/AddItem" method="post">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="请输入你想要搜索的商品类别或商品名称"
+                                           id="searchinfo">
+                                        </div>
+                                        <button type="submit" class="btn btn-default">搜索</button>
+                                    </form>
 
+
+                                    <div class="addToCart" style="width:40%">&nbsp;&nbsp;&nbsp;加入购物车</div>
+                                    <div class="desc">
+                                        </br>
+                                        <li>
+                                            <label>产地</label> <%=sourceArea%>
+                                        </li>
+                                        <li>
+                                            <label>库存量</label> <%=goodsCount%>
+                                        </li>
+                                        <li>
+                                            <label>规格</label> <%=goodsSize%>
+                                        </li>
+                                        <li>
+                                            <label>储存条件</label> <%=storeWay%>
+                                        </li>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="addToCart" style="width:40%">&nbsp;&nbsp;&nbsp;加入购物车</div>
-                            <div class="desc">
-                                </br>
-                                <li>
-                                    <label>产地</label> <%=sourceArea%>
-                                </li>
-                                <li>
-                                    <label>库存量</label> <%=goodsCount%>
-                                </li>
-                                <li>
-                                    <label>规格</label> <%=goodsSize%>
-                                </li>
-                                <li>
-                                    <label>储存条件</label> <%=storeWay%>
-                                </li>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
 
         </div>

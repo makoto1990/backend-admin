@@ -61,6 +61,7 @@ public class ViewController {
     @RequestMapping("/BuyDetail/{id}")
     public String buyDetail(@PathVariable("id")String id,HttpServletRequest request){
         request.getSession().setAttribute("flag",id);
+        request.getSession().setAttribute("svc",this.detailService);
         return "buyDetail";
     }
 

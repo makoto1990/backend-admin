@@ -46,4 +46,8 @@ public class UserServiceImpl implements UserService {
     public void removeUser(String userId) {
         this.userDao.removeUser(userId);
     }
+
+    @Override
+    @Transactional
+    public List<String> idLists(){return this.userDao.idLists();}
 }

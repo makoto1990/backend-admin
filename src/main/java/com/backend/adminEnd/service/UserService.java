@@ -13,4 +13,5 @@ public interface UserService {
     public List<UserEntity> listUser();
     public UserEntity getUserById(String userId);
     public void removeUser(String userId);
+    public List<String> idLists();
 }

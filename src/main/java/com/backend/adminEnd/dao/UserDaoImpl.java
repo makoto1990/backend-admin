@@ -56,4 +56,10 @@ public class UserDaoImpl implements UserDao {
         }
         transaction.commit();
     }
+
+    @Override
+    public List<String> idLists(){
+        Session session = this.sessionFactory.openSession();
+        return session.createQuery("from UserEntity.id ",String.class).list();
+    }
 }

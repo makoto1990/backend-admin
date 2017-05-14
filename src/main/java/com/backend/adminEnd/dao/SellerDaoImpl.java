@@ -56,4 +56,11 @@ public class SellerDaoImpl implements SellerDao {
         }
         transaction.commit();
     }
+
+    @Override
+    public List<String> idLists(){
+        Session session = this.sessionFactory.openSession();
+        return session.createQuery("from SellerEntity.id",String.class).list();
+    }
+
 }

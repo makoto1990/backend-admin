@@ -46,4 +46,11 @@ public class SellerServiceImpl implements SellerService {
     public void removeSeller(String sellerId) {
         this.sellerDao.removeSeller(sellerId);
     }
+
+    @Override
+    @Transactional
+    public List<String> idLists(){
+        return this.sellerDao.idLists();
+    }
+
 }

@@ -30,7 +30,7 @@
 </head>
 <body>
 <%
-    Cart cart = (Cart) request.getSession().getAttribute("scart");
+    CartEntity cart = (CartEntity) request.getSession().getAttribute("scart");
     String flag = (String) request.getSession().getAttribute("flag");
     HttpSession sess = request.getSession();
     String goodsId = (String) sess.getAttribute("goodsId" + flag);
@@ -38,7 +38,7 @@
     String sellerId = (String) sess.getAttribute("sellerId" + flag);
     String userName = (String) sess.getAttribute("userName");
     String name = userName.trim();
-    DetailService svc = new DetailService();
+    DetailService svc = (DetailService)sess.getAttribute("svc");
     GoodsEntity goods = svc.getGoodsByGoodsId(goodsId);
     String goodsName = goods.getGoodsName().trim();
     String goodsIntro = goods.getGoodsIntro();

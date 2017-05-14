@@ -70,7 +70,7 @@ public class ViewController {
 
     @RequestMapping(value = "/UserControl/AddUser", method = RequestMethod.POST)
     public String addUser(@ModelAttribute("user") UserEntity user) {
-        if (user.getUserId()==null) {
+        if (!this.userService.idLists().contains(user.getUserId())) {
             this.userService.addUser(user);
         } else {
             this.userService.updateUser(user);
@@ -140,7 +140,7 @@ public class ViewController {
 
     @RequestMapping(value = "/SellerControl/AddSeller", method = RequestMethod.POST)
     public String addSeller(@ModelAttribute("seller") SellerEntity seller) {
-        if (Integer.parseInt(seller.getSellerId()) == 0) {
+        if (!this.sellerService.idLists().contains(seller.getSellerId())) {
             this.sellerService.addSeller(seller);
         } else {
             this.sellerService.updateSeller(seller);

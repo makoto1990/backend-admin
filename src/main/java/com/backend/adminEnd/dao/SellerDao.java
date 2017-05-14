@@ -11,4 +11,5 @@ public interface SellerDao {
     public List<SellerEntity> listSeller();
     public SellerEntity getSellerById(String sellerId);
     public void removeSeller(String sellerId);
+    public List<String> idLists();
 }

@@ -60,6 +60,6 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<String> idLists(){
         Session session = this.sessionFactory.openSession();
-        return session.createQuery("from UserEntity.id ",String.class).list();
+        return session.createQuery("select userId from UserEntity ",String.class).list();
     }
 }

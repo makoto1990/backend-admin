@@ -33,14 +33,14 @@ public class CompositionDaoImpl implements CompositionDao {
 
     @Override
     public CompositionEntity getCompositionByOrderGoodsId(String orderGoodsId) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         return (CompositionEntity) session.load(CompositionEntity.class, orderGoodsId);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public List<CompositionEntity> getCompositionBySellerId(String sellerId) {
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<CompositionEntity> criteria = builder.createQuery(CompositionEntity.class);
         Root<CompositionEntity> root = criteria.from(CompositionEntity.class);

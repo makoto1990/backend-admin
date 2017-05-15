@@ -60,7 +60,7 @@ public class SellerDaoImpl implements SellerDao {
     @Override
     public List<String> idLists(){
         Session session = this.sessionFactory.openSession();
-        return session.createQuery("from SellerEntity.id",String.class).list();
+        return session.createQuery("select sellerId from SellerEntity",String.class).list();
     }
 
 }

@@ -7,46 +7,29 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>支农网上生鲜超市</title>
-
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="resources/bootstrap/css/Login.css" />
 </head>
 <body>
 ${sessionScope.message}
 <br>
-<form:form action="/" method="post" commandName="user">
 
-    请输入用户名和口令：
-    <table>
-        <tr>
-            <td>用户名:</td>
-            <td><form:input path="userName" type="text" name="username"/></td>
-        </tr>
-        <tr>
-            <td>口 令:</td>
-            <td><form:input path="password" type="password" name="password"/></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="radio" name="style" value="1">我来买
-                <input type="radio" name="style" value="2">我来卖
-                <input type="radio" name="style" value="3">后台管理
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="checkbox" name="check" value="check"/>自动登录
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" value="提交"/>
-            </td>
-            <td>
-                <input type="reset" value="重置"/>
-                <input type="button" onclick="window.location.href='/register';" value="注册"/>
-            </td>
-        </tr>
-    </table>
-</form:form>
+<div id="login">
+    <h1>欢迎，从这里登录</h1>
+    <form:form action="/" method="post" commandName="user">
+        <form:input path="userName" type="text" class="loginInput" required="required" placeholder="用户名"  name="username"></form:input>
+        <form:input path="password" type="password" class="loginInput" required="required" placeholder="密码" name="password"></form:input>
+        <label class="checkbox-inline">
+            <input type="radio" name="style" id="op1" value="1" >我是卖家
+            <input type="radio" name="style" id="op2"  value="2">我是买家
+            <input type="radio" name="style"  id="op3" value="3">管理员
+        </label>
+        <button class="button" type="submit">登录</button>
+    </form:form>
+</div>
+
+
+
+
 </body>
 </html>

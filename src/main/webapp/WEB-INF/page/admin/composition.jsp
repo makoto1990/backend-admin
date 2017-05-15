@@ -101,7 +101,7 @@
                 <td>${composition.orderGoodsId}</td>
                 <td>${composition.goodsAmount}</td>
                 <td>${composition.sellerId}</td>
-                <td>${composition.goodsID}</td>
+                <td>${composition.goodsId}</td>
                 <td>${composition.orderId}</td>
 
                 <td><a href="<c:url value='/admin/CompositionControl/RemoveComposition/${composition.orderGoodsId}' />" >Delete</a></td>

@@ -13,6 +13,9 @@
         .tg .tg-4eph{background-color:#f9f9f9}
     </style>
     <script src=/resources/angular/angular.min.js></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="/resources/jquery/jquery.min.js"></script>
+    <script src="/resources/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <h1>
@@ -37,7 +40,7 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="sellerId" ng-model="sId"/>
+                    <form:input path="sellerId" ng-model="sId" class="form-control" />
                     <%--<form:hidden path="sellerId" />--%>
                 </td>
             </tr>
@@ -49,7 +52,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="userId" ng-model="uId"/>
+                <form:input path="userId" ng-model="uId" class="form-control" />
             </td>
         </tr>
         <tr>
@@ -59,7 +62,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="registerDate" ng-model="Now" disabled="true" />
+                <form:input path="registerDate" ng-model="Now" disabled="true" class="form-control"  />
             </td>
         </tr>
         <tr>
@@ -69,7 +72,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="sellerIntro" />
+                <form:input path="sellerIntro"  class="form-control" />
             </td>
         </tr>
         <tr ng-if="uId>100000000&&uId<999999999999&&sId>100000000&&sId<999999999999">

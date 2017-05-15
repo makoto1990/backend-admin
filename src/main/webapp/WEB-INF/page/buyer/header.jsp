@@ -19,7 +19,7 @@
         <td>
             <ul class="nav nav-pills">
                 <li class="active"><a href="/buyer/">主页</a></li>
-                <li><a href="/buyer/UserInfo">我的信息</a></li>
+                <li><a href="/buyer/User/Info">我的信息</a></li>
                 <li><a href="/buyer/Cart">购物车</a></li>
                 <li><a href="/buyer/DeliveryInfo">我的快递</a></li>
                 <li class="navbar-right"><a href="/">退出</a>

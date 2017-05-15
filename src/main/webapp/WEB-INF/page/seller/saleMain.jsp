@@ -1,12 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" import="com.backend.model.*"
-         import="com.backend.sellerEnd.*" import="javax.servlet.http.*"
+<%@ page language="java" contentType="text/html; charset=utf-8" import="com.backend.model.OrderEntity"
+         import="com.backend.sellerEnd.service.GoodsService" import="com.backend.sellerEnd.service.SearchService"
          pageEncoding="utf-8" %>
-<%@page import="java.util.ArrayList" %>
-<%@ page import="org.springframework.http.HttpRequest" %>
-<%@ page import="com.backend.sellerEnd.service.SellerService" %>
-<%@ page import="com.backend.sellerEnd.service.SearchService" %>
-<%@ page import="com.backend.sellerEnd.dao.GoodsDao" %>
-<%@ page import="com.backend.sellerEnd.service.GoodsService" %>
+<%@page import="com.backend.sellerEnd.service.SellerService" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
@@ -20,7 +16,7 @@
     <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <link href="/resources/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
-<% String sellerName = (String)request.getSession().getAttribute("sname");%>
+    <% String sellerName = (String) request.getSession().getAttribute("sname");%>
     <script>
         function doclick() {
             document.getElementById("saveinfor").style.display = "block";
@@ -197,7 +193,7 @@
             <li class="dropdown">
                 <a href="#" id="myTabDrop2" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-folder-close">商品管理</span>
-                        <span class="caret"></span>
+                    <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2">
                     <li>
@@ -214,16 +210,22 @@
             </li>
 
 
-            <li class="dropdown"><a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown"><span
-                    class="glyphicon glyphicon-th">订单管理<span class="caret"></span></span></a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                    <li><a href="#allorder" tabindex="-1" data-toggle="tab">全部订单</a></li>
-                    <li><a href="#waitpayorder" tabindex="-1" data-toggle="tab">待付款订单</a></li>
-                    <li><a href="#waitsendorder" tabindex="-1" data-toggle="tab">待发货订单</a></li>
-                    <li><a href="#sendorder" tabindex="-1" data-toggle="tab">已发货订单</a></li>
-                    <li><a href="#cancelorder" tabindex="-1" data-toggle="tab">已取消订单</a></li>
-                    <li><a href="#ordersearch" tabindex="-1" data-toggle="tab">订单查询</a></li>
-                </ul>
+            <li class="dropdown">
+                <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-th">订单管理
+                    <span class="caret">
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                            <li><a href="#allorder" tabindex="-1" data-toggle="tab">全部订单</a></li>
+                            <li><a href="#waitpayorder" tabindex="-1" data-toggle="tab">待付款订单</a></li>
+                            <li><a href="#waitsendorder" tabindex="-1" data-toggle="tab">待发货订单</a></li>
+                            <li><a href="#sendorder" tabindex="-1" data-toggle="tab">已发货订单</a></li>
+                            <li><a href="#cancelorder" tabindex="-1" data-toggle="tab">已取消订单</a></li>
+                            <li><a href="#ordersearch" tabindex="-1" data-toggle="tab">订单查询</a></li>
+                        </ul>
+                    </span>
+                </span>
+                </a>
+
             </li>
         </ul>
 
@@ -243,7 +245,7 @@
 
                     <%
                         String[] sellerinfo = new String[13];
-                        SellerService sellerService = (SellerService)request.getSession().getAttribute("sellerService");
+                        SellerService sellerService = (SellerService) request.getSession().getAttribute("sellerService");
                         sellerinfo = sellerService.sellerInfo(sellerName);
                     %>
                     <p id="warning">卖家信息 可进行编辑</p>
@@ -343,7 +345,7 @@
                         String addGoodsID;
                     %>
                     <%
-                        GoodsService goodsService =(GoodsService)request.getSession().getAttribute("goodsService");
+                        GoodsService goodsService = (GoodsService) request.getSession().getAttribute("goodsService");
                         addGoodsID = goodsService.GoodsID();
                     %>
 
@@ -661,14 +663,16 @@
                           style="height:400px">
                         <div class="input-prepend input-append">
                             <span class="add-on">
-                                <select name="select" id="selectsearchoption" onclick="searchbyselect()" class="selectpicker" style="width:150px ;height:40px">
+                                <select name="select" id="selectsearchoption" onclick="searchbyselect()"
+                                        class="selectpicker" style="width:150px ;height:40px">
                                     <option value="id">订单编号</option>
                                     <option value="date">下单日期</option>
                                     <option value="name">商品标题</option>
                                 </select>
                             </span>
-                            <input type="text" style="width:300px" name="input" placeholder="输入查询内容,支持模糊查询" class="span2 search-query input-lg">
-                                <span class="add-on">
+                            <input type="text" style="width:300px" name="input" placeholder="输入查询内容,支持模糊查询"
+                                   class="span2 search-query input-lg">
+                            <span class="add-on">
                                     <button type="submit" class="btn btn-success" style="width:100px;height:50px">
                                         <span class="glyphicon glyphicon-search">查询</span>
                                     </button>&nbsp;&nbsp;

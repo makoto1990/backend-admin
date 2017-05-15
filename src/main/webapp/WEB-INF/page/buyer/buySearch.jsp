@@ -20,7 +20,7 @@
     <!-- 商品展示 -->
 
     <div class="row">
-        <% List<GoodsEntity> allGoods = new List<GoodsEntity>();
+        <% List<GoodsEntity> allGoods = new ArrayList<>();
             allGoods.clear();
             allGoods = (List) request.getSession().getAttribute("allGoods");
             int l = allGoods.size();

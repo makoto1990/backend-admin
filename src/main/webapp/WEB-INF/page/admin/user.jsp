@@ -53,6 +53,9 @@
         }
     </style>
     <script src=/resources/angular/angular.min.js></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="/resources/jquery/jquery.min.js"></script>
+    <script src="/resources/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <h1>
@@ -78,7 +81,7 @@
                     </form:label>
             </td>
             <td>
-                <form:input path="userId"  ng-model="uId"   />
+                <form:input path="userId"  ng-model="uId"  class="form-control" />
             </td>
         </tr>
         <tr>
@@ -88,7 +91,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="userName" ng-model="uName"/>
+                <form:input path="userName" ng-model="uName" class="form-control"/>
             </td>
         </tr>
         <tr>
@@ -98,7 +101,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="password" ng-model="uPass"/>
+                <form:input path="password" ng-model="uPass" class="form-control"/>
             </td>
         </tr>
         <tr>
@@ -108,7 +111,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="realName" />
+                <form:input path="realName" class="form-control" />
             </td>
         </tr>
         <tr>
@@ -118,7 +121,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="iDnumber" ng-model="id" />
+                <form:input path="iDnumber" ng-model="id" class="form-control" />
             </td>
         </tr>
         <tr>
@@ -128,7 +131,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="phone" ng-model="phone"/>
+                <form:input path="phone" ng-model="phone" class="form-control" />
             </td>
         </tr>
         <tr>
@@ -138,7 +141,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="userStatus" />
+                <form:input path="userStatus"  class="form-control" />
             </td>
         </tr>
         <tr>
@@ -148,7 +151,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="postcode" />
+                <form:input path="postcode" class="form-control"  />
             </td>
         </tr>
         <tr>
@@ -158,7 +161,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="province" />
+                <form:input path="province" class="form-control"  />
             </td>
         </tr>
         <tr>
@@ -168,7 +171,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="city" />
+                <form:input path="city" class="form-control"  />
             </td>
         </tr>
         <tr>
@@ -178,7 +181,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="district" />
+                <form:input path="district"  class="form-control" />
             </td>
         </tr>
         <tr>
@@ -188,7 +191,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="street" />
+                <form:input path="street" class="form-control"  />
             </td>
         </tr>
         <tr>
@@ -198,7 +201,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="address" />
+                <form:input path="address"  class="form-control" />
             </td>
         </tr>
         <tr>
@@ -208,7 +211,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="registerDate" ng-model="Now" disabled="true" />
+                <form:input path="registerDate" ng-model="Now" disabled="true" class="form-control"  />
             </td>
         </tr>
         <tr>
@@ -218,7 +221,7 @@
                 </form:label>
             </td>
             <td>
-                <form:checkbox path="manager" />
+                <form:checkbox path="manager" class="form-control"  />
             </td>
         </tr>
         <tr ng-if="uName!=NULL&&uName!=''&&uPass!=''&&uPass!=NULL&&uId>100000000&&uId<999999999999&&(id>100000000000000000&&id<999999999999999999||id==0)&&(phone>10000000000&&phone<9999999999||phone==0)">

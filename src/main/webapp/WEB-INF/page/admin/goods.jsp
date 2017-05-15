@@ -20,6 +20,9 @@
         .tg .tg-4eph{background-color:#f9f9f9}
     </style>
     <script src=/resources/angular/angular.min.js></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="/resources/jquery/jquery.min.js"></script>
+    <script src="/resources/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <h1>
@@ -30,23 +33,12 @@
 <c:url var="findAction" value="/admin/GoodsControl/FindGoods/${goods.goodsId}" ></c:url>
 
 <form:form action="${findAction}" commandName="goods">
-    <table>
-        <tr>
-            <%--
-            <td>
-                <form:label path="goodsID">
-                    <spring:message text="Goods ID"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="goodsId" readonly="true" size="8"  />
-                <form:hidden path="goodsId" />
-            </td>
-            <td><a href="<c:url value='/admin/GoodsControl/FindGoods/${goods.goodsId}' />" >Find</a></td>
-            --%>
-            <td><input type="text" ng-model="ID"></td>
-            <td><a href="/admin/GoodsControl/FindGoods/{{ID}}">Find</a></td>
-        </tr>
+    <tr>
+        <td><input type="text" ng-model="ID" ></td>
+        <td><a href="/admin/GoodsControl/FindGoods/{{ID}}">Find</a></td>
+    </tr>
+    <table class="tg">
+
 
         <c:if test="${!empty goods.goodsName}">
             <tr>

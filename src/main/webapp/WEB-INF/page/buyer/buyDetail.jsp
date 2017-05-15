@@ -135,16 +135,13 @@
                                         </div>
                                     </div>
 
-                                    <form action="/buyer/AddItem" method="post">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="请输入你想要搜索的商品类别或商品名称"
-                                           id="searchinfo">
-                                        </div>
-                                        <button type="submit" class="btn btn-default">搜索</button>
+                                    <%--!!!!!!!!!!!!!--%>
+                                    <form action="/buyer/AddItem/<%=goodsId%>/123" method="post">
+                                        <button type="submit" class="addToCart" style="width:40%">&nbsp;&nbsp;&nbsp;加入购物车</button>
                                     </form>
 
 
-                                    <div class="addToCart" style="width:40%">&nbsp;&nbsp;&nbsp;加入购物车</div>
+
                                     <div class="desc">
                                         </br>
                                         <li>

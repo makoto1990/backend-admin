@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>登录</title>
+    <title>账号登录</title>
     <link rel="stylesheet" type="text/css" href="resources/bootstrap/css/Login.css" />
 </head>
 <body>
@@ -20,11 +20,15 @@ ${sessionScope.message}
         <form:input path="userName" type="text" class="loginInput" required="required" placeholder="用户名"  name="username"></form:input>
         <form:input path="password" type="password" class="loginInput" required="required" placeholder="密码" name="password"></form:input>
         <label class="checkbox-inline">
-            <input type="radio" name="style" id="op1" value="1" >我是卖家
-            <input type="radio" name="style" id="op2"  value="2">我是买家
+            <input type="radio" name="style" id="op1" value="1" >我是买家
+            <input type="radio" name="style" id="op2"  value="2">我是卖家
             <input type="radio" name="style"  id="op3" value="3">管理员
         </label>
-        <button class="button" type="submit">登录</button>
+        <div>
+            <button class="button" type="submit">登录</button>
+            <button class="button"  onclick="window.location.href='/register';">注册</button>
+        </div>
+
     </form:form>
 </div>
 

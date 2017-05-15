@@ -7,26 +7,24 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>支农网上生鲜超市</title>
+    <link rel="stylesheet" type="text/css" href="resources/bootstrap/css/register.css" />
+    <title>账号注册</title>
 </head>
 <body>
-<form:form action="/register" method="post" commandName="user">
 
-    用户注册：
-    <table>
-        <tr>
-            <td>用户名:</td>
-            <td><form:input path="userName" type="text" name="username"/></td>
-        </tr>
-        <tr>
-            <td>密码:</td>
-            <td><form:input path="password" type="password" name="password"/></td>
-        </tr>
-        <tr>
-            <td><input type="submit" value="提交"/></td>
-            <td><input type="reset" value="重置"/></td>
-        </tr>
-    </table>
-</form:form>
+<div id="login">
+    <h1>欢迎，从这里注册</h1>
+    <form:form action="/register" method="post" commandName="user">
+        <form:input path="userName" type="text" class="loginInput" required="required" placeholder="用户名"  name="username"></form:input>
+        <form:input path="password" type="password" class="loginInput" required="required" placeholder="密码" name="password"></form:input>
+
+        <div class="btnDiv">
+            <button class="button" type="submit">注册</button>
+            <button class="button" type="reset">重置</button>
+        </div>
+
+    </form:form>
+</div>
+
 </body>
 </html>

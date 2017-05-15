@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" import="com.backend.model.CartEntity" import="com.backend.model.GoodsEntity"
          import="javax.servlet.http.HttpSession" pageEncoding="utf-8" %>
 <%@ page import="java.util.ArrayList" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -23,8 +23,8 @@
 
 
     <!-- 轮播框 -->
-    <center>
-        <div id="myCarousel" class="carousel slide">
+
+        <div id="myCarousel" class="carousel slide" style="text-align: center">
             <!-- 轮播（Carousel）指标 -->
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -52,7 +52,6 @@
             <a class="carousel-control right" href="#myCarousel"
                data-slide="next">&rsaquo;</a>
         </div>
-    </center>
 
     <br/>
 
@@ -119,6 +118,8 @@
             </div>
         </div>
     </div>
+    <%@ include file="footer.jsp" %>
 </div>
+
 </body>
 </html>

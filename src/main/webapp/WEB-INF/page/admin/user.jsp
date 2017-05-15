@@ -221,7 +221,7 @@
                 <form:checkbox path="manager" />
             </td>
         </tr>
-        <tr ng-if="uName!=NULL&&uName!=''&&uPass!=''&&uPass!=NULL&&uId>100000000000&&uId<999999999999&&(id>100000000000000000&&id<999999999999999999||id==0)&&(phone>10000000000&&phone<9999999999||phone==0)">
+        <tr ng-if="uName!=NULL&&uName!=''&&uPass!=''&&uPass!=NULL&&uId>100000000&&uId<999999999999&&(id>100000000000000000&&id<999999999999999999||id==0)&&(phone>10000000000&&phone<9999999999||phone==0)">
             <td colspan="2">
                 <c:if test="${!empty user.userName}">
                     <input type="submit"

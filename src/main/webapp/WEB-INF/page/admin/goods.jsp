@@ -45,7 +45,7 @@
             <td><a href="<c:url value='/admin/GoodsControl/FindGoods/${goods.goodsId}' />" >Find</a></td>
             --%>
             <td><input type="text" ng-model="ID"></td>
-            <td><a href="/admin/admin/GoodsControl/FindGoods/{{ID}}">Find</a></td>
+            <td><a href="/admin/GoodsControl/FindGoods/{{ID}}">Find</a></td>
         </tr>
 
         <c:if test="${!empty goods.goodsName}">

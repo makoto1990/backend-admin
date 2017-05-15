@@ -72,7 +72,7 @@
                 <form:input path="sellerIntro" />
             </td>
         </tr>
-        <tr ng-if="uId>100000000000&&uId<999999999999&&sId>100000000000&&sId<999999999999">
+        <tr ng-if="uId>100000000&&uId<999999999999&&sId>100000000&&sId<999999999999">
             <td colspan="2">
                 <c:if test="${!empty seller.userId}">
                     <input type="submit"

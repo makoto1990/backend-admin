@@ -58,6 +58,16 @@ public class ViewController {
         return "buyCart";
     }
 
+    @RequestMapping("/BuyDetail/AddItem/{itemId}/{number}")
+    public String addItem(@PathVariable("itemId")String itemId,
+                        @PathVariable("number")int number,HttpServletRequest request){
+        Cart cart= (Cart) request.getSession().getAttribute("scart");
+        GoodsEntity goods=detailService.getGoodsByGoodsId(itemId);
+        cart.addGoods(goods,number);
+        request.getSession().setAttribute("scart",cart);
+        return "buyDetail";
+    }
+
     @RequestMapping("/BuyDetail/{id}")
     public String buyDetail(@PathVariable("id")String id,HttpServletRequest request){
         request.getSession().setAttribute("flag",id);

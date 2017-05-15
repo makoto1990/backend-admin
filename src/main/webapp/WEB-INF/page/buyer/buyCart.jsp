@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8" %>
-<%@ page import="com.backend.model.CartEntity" %>
-<%@ page import="com.backend.model.GoodsEntity" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"
+         import="com.backend.model.CartEntity"
+         import="com.backend.model.GoodsEntity"
+         import="com.backend.model.Cart" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -35,8 +35,7 @@
     <tbody>
     <tr>
         <%
-            CartEntity cart = (CartEntity) request.getSession().getAttribute("scart");
-            if (cart == null) cart = new CartEntity();
+            Cart cart = (Cart) request.getSession().getAttribute("scart");
             for (GoodsEntity goods : cart.cart.keySet()) {%>
         <td><%=goods.getGoodsName() %>
         </td>

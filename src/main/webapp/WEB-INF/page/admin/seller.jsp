@@ -28,7 +28,7 @@
         <button ng-click="toggle()">EDIT</button>
     </c:if>
     <c:if test="${empty seller.userId}">
-        <button ng-click="toggle2()">ADD</button><p>{{myVar2}}{{Now}}</p>
+        <button ng-click="toggle2()">ADD</button>
     </c:if>
 <form:form action="${addAction}" commandName="seller">
     <table ng-hide="myVar">

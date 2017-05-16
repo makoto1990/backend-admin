@@ -33,6 +33,7 @@
                 <value>com.backend.model.SellerEntity</value>
                 <value>com.backend.model.GoodsEntity</value>
                 <value>com.backend.model.CompositionEntity</value>
+                <value>com.backend.model.CartEntity</value>
             </list>
         </property>
         <property name="hibernateProperties">

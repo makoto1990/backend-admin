@@ -13,21 +13,21 @@
 * 后台管理方  
 三部分 ,三组负责买家方（工作分别为：个人信息管理以及购买物品管理宣传的照片，）、二组负责卖家方、一组负责后台管理、一组负责注册与登录的实现
 ## 三组负责买家方,工作分别为
-1. 个人信息管理以及购买物品管理宣传的照片,见`/src/webapp/buy/buyMain.jsp` 第一部分
-2. 按照类别搜索、按照具体东西搜索见 `/src/webapp/buy/buyMain.jsp` 第二部分 
-3. 显示产品介绍，包括类别，定价等，以及进行购买  见 `/src/webapp/buy/buyMain.jsp` 
+1. 个人信息管理以及购买物品管理宣传的照片,见`/src/webapp/buyer/buyMain.jsp` 第一部分
+2. 按照类别搜索、按照具体东西搜索见 `/src/webapp/buyer/buyMain.jsp` 第二部分 
+3. 显示产品介绍，包括类别，定价等，以及进行购买  见 `/src/webapp/buyer/buyMain.jsp` 
 ### 第三部分
 二组负责卖家方,工作分别为：
 1. 商品的管理，发布，删除，修改  见`/src/webapp/sale/saleMain.jsp` 第一部分
 2. 新的订单，进行发货处理，订单查询  见`/src/webapp/sale/saleMain.jsp` 第一部分
 一组负责后台管理：对总的数据进行汇总
 ### 最后一组：
-* 负责注册与登录的实现以及一些网站介绍与友情链接  `/src/webapp/buy/buyMain.jsp` 
+* 负责注册与登录的实现以及一些网站介绍与友情链接  `/src/webapp/buyer/buyMain.jsp` 
 ### 第四部分                                              
 #### 目录说明 ：
 1.    * `onlineMarket-backend/src/webapp/WEB-INF/index.jsp` 为登录首页
       * `onlineMarket-backend/src/webapp/buy` 为买家部分`jsp`代码目录，所用到的jsp
-      * `onlineMarket-backend/src/webapp/buy/buyMain.jsp` 为买家登录后的首页
+      * `onlineMarket-backend/src/webapp/buyer/buyMain.jsp` 为买家登录后的首页
       * `onlineMarket-backend/src/webapp/sale` 为卖家部分`jsp`代码目录
       * `onlineMarket-backend/src/webapp/sale/saleMain.jsp` 为卖家登录后的首页
       * `onlineMarket-backend/src/webapp/manage` 为后台管理部分`jsp`代码目录

@@ -8,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletRequest;
 import com.backend.buyerEnd.service.*;
 import com.backend.model.*;
@@ -72,15 +70,16 @@ public class ViewController {
 
     @RequestMapping("/Cart")
     public String buyerCart(HttpServletRequest request){
+        request.getSession().setAttribute("cartService",this.cartService);
+        request.getSession().setAttribute("svc",this.detailService);
         return "buyCart";
     }
 
     @RequestMapping("/BuyDetail/AddItem")
-    public String addItem(@ModelAttribute("out")int number,HttpServletRequest request){
+    public String addItem(@ModelAttribute("out")int number, HttpServletRequest request){
         String goodsId=(String) request.getSession().getAttribute("goodsId");
-        CartService cart= (CartService) request.getSession().getAttribute("cartService");
-        cart.addGoods(goodsId,number);
-        request.getSession().setAttribute("cartService",cart);
+        this.cartService.addGoods(goodsId,number);
+        request.getSession().setAttribute("cartService",this.cartService);
         return "buyDetail";
     }
 

@@ -3,7 +3,7 @@
          import="com.backend.model.*"
 %>
 <%@ page import="com.backend.buyerEnd.service.CartService" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <style type="text/css">
@@ -30,12 +30,13 @@
 <body>
 <%
     HttpSession sess = request.getSession();
-
+    String flag = (String)sess.getAttribute("flag");
     CartService cart = (CartService) sess.getAttribute("cartService");
-    String goodsId = (String) sess.getAttribute("goodsId");
-    String goodsType = (String) sess.getAttribute("goodsType");
-    String sellerId = (String) sess.getAttribute("sellerId");
-    String userName = (String) sess.getAttribute("userName");
+    String goodsId = (String) sess.getAttribute("goodsId"+flag);
+    sess.setAttribute("goodsId",goodsId);
+    String goodsType = (String) sess.getAttribute("goodsType"+flag);
+    String sellerId = (String) sess.getAttribute("sellerId"+flag);
+    String userName = (String) sess.getAttribute("sname");
     String name = userName.trim();
     DetailService svc = (DetailService)sess.getAttribute("svc");
     GoodsEntity goods = svc.getGoodsByGoodsId(goodsId);
@@ -103,30 +104,32 @@
                             <div class="desc">
                                 <div class="container">
 
-                                    <form action="/buyer/AddItem" method="post">
+                                    <form action="/buyer/BuyDetail/AddItem" method="post">
                                         <div class="row clearfix">
                                             <div class="col-md-1 column">
                                                 <div class="desc" style="padding-top:20px">数量</div>
                                             </div>
                                             <div class="col-md-5 column">
                                                 <div class="desc">
-                                                    <script type="text/javascript">
-                                                        var out = document.getElementById('out');
-                                                        out.innerHTML = 1;
+                                                    <script language="javascript">
+                                                        var out=1;
+                                                        $("#out").val(out);
                                                         function minus() {
-                                                            var out = document.getElementById('out');
-                                                            if (out.innerHTML > 0) out.innerHTML--;
+                                                            var out = $("#out").val();
+                                                            if (out > 0) out--;
+                                                            $("#out").val(out);
                                                         }
                                                         function plus() {
-                                                            var out = document.getElementById('out');
+                                                            var out = $("#out").val()
                                                             var maxValue = <%=goodsCount%>
-                                                            if (out.innerHTML < maxValue - 1) out.innerHTML++;
+                                                            if (out < maxValue - 1) out++;
+                                                            $("#out").val(out);
                                                         }
                                                     </script>
                                                     <input type="button" id="btn1" value="-" onclick="minus()"
                                                            style="out-line:none;"/>
                                                     <!-- <img src="/Content/img/minus.png"> -->
-
+                                                    <input id="out" name="out"/>
                                                     <input type="button" id="btn2" value="+" onclick="plus()"
                                                            style="out-line:none;"/>
                                                     <!-- <img src="/Content/img/plus.png"> -->

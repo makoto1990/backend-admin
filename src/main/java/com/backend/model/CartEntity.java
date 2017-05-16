@@ -1,21 +1,23 @@
 package com.backend.model;
 
 import javax.persistence.Basic;
+import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
+import java.io.Serializable;
 /**
  * Created by kevin on 2017/5/10.
  */
 @Entity
 @Table(name = "[Cart]", schema = "dbo", catalog = "onlineMarket")
-public class CartEntity {
+public class CartEntity implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String userId;
     private String goodsId;
     private Integer count;
 
-    @Basic
+    @Id
     @Column(name = "userID", nullable = false, length = 12)
     public String getUserId() {
         return userId;
@@ -25,7 +27,7 @@ public class CartEntity {
         this.userId = userId;
     }
 
-    @Basic
+    @Id
     @Column(name = "goodsID", nullable = true, length = 12)
     public String getGoodsId() {
         return goodsId;

@@ -31,7 +31,7 @@ public class CartDao {
         CriteriaQuery<CartEntity> criteria = builder.createQuery(CartEntity.class);
         Root<CartEntity> root = criteria.from(CartEntity.class);
         criteria.select(root);
-        criteria.where(builder.equal(root.get("userID"),userId));
+        criteria.where(builder.equal(root.get("userId"),userId));
         ArrayList<CartEntity> cartlist = (ArrayList<CartEntity>) session.createQuery(criteria).list();
         return cartlist;
     }

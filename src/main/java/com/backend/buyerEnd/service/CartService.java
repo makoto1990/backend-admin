@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import javax.transaction.Transactional;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -18,7 +19,7 @@ public class CartService {
     public void setCartDao(CartDao cartDao){
         this.cartDao=cartDao;
     }
-    private Map<String, Integer> cart ;
+    private Map<String, Integer> cart = new HashMap<String, Integer>();
 
     public void setCart(Map<String,Integer> cart){
         this.cart = cart;

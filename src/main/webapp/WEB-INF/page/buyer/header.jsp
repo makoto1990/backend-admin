@@ -13,7 +13,7 @@
         <div class="col-md-12 column" style="background: #ffffff">
             <table>
                 <tr>
-                    <td><img alt="" src="images/logo.jpg"/>
+                    <td><img alt="" src="/resources/images/logo.jpg"/>
         </div>
         </td>
         <td>

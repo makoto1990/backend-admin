@@ -31,7 +31,7 @@
                 GoodsEntity tmp = allGoods.get(i);
                 String goodsName = tmp.getGoodsName().trim();
                 String picPath = str + goodsName + ".jpg";
-                String detailPath = "../buy/buyDetail.jsp?flag=" + i;
+                String detailPath = "../buyer/buyDetail.jsp?flag=" + i;
                 sess.setAttribute("goodsName" + i, tmp.getGoodsName());
                 sess.setAttribute("goodsId" + i, tmp.getGoodsId());
                 sess.setAttribute("goodsType" + i, tmp.getGoodsType());

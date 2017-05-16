@@ -2,6 +2,8 @@
          import="com.backend.model.*" %>
 <%@ page import="com.backend.buyerEnd.service.DetailService" %>
 <%@ page import="com.backend.buyerEnd.service.CartService" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -37,6 +39,9 @@
         <%
             DetailService svc = (DetailService)request.getSession().getAttribute("svc");
             CartService cart = (CartService) request.getSession().getAttribute("cartService");
+            if(cart.getCart()==null){
+                cart.setCart(new HashMap<>());
+            }
             for (String goodsId : cart.getCart().keySet()) {
                 GoodsEntity goods=svc.getGoodsByGoodsId(goodsId);
         %>

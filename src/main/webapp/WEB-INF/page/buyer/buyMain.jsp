@@ -67,7 +67,7 @@
             for (GoodsEntity tmp : allGoods) {
                 String goodsName = tmp.getGoodsName().trim();
                 String picPath = str + goodsName + ".jpg";
-                String detailPath = "/buy/BuyDetail/" + i;
+                String detailPath = "/buyer/BuyDetail/" + i;
                 sess.setAttribute("goodsName" + i, tmp.getGoodsName());
                 sess.setAttribute("goodsId" + i, tmp.getGoodsId());
                 sess.setAttribute("goodsType" + i, tmp.getGoodsType());

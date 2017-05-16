@@ -35,7 +35,7 @@
 <form:form action="${findAction}" commandName="goods">
     <tr>
         <td><input type="text" ng-model="ID" ></td>
-        <td><a href="/admin/GoodsControl/FindGoods/{{ID}}">Find</a></td>
+        <td><a href="/admin/GoodsControl/FindGoods/{{ID}}"class="btn">Find</a></td>
     </tr>
     <table class="tg">
 
@@ -48,13 +48,13 @@
                 <th width="120">Goods Price</th>
                 <th width="120">Goods Store way</th>
                 <th width="120">Goods Source</th>
+                <th width="120">Set Time</th>
                 <th width="120">Seller ID</th>
                 <th width="120">Goods Type</th>
                 <th width="120">Least Amount</th>
                 <th width="120">Large Amount</th>
                 <th width="120">Goods Large Price</th>
                 <th width="120">Goods Pricture</th>
-                <th width="60">Edit</th>
                 <th width="60">Delete</th>
             </tr>
             <tr>
@@ -226,7 +226,7 @@
 
 </script>
 <br>
-<h3>User List</h3>
+<h3>Goods List</h3>
 <c:if test="${!empty listGoods}">
     <table class="tg">
         <tr>
@@ -236,14 +236,13 @@
             <th width="120">Goods Price</th>
             <th width="120">Goods Store way</th>
             <th width="120">Goods Source</th>
+            <th width="120">Set Time</th>
             <th width="120">Seller ID</th>
             <th width="120">Goods Type</th>
             <th width="120">Least Amount</th>
             <th width="120">Large Amount</th>
             <th width="120">Goods Large Price</th>
             <th width="120">Goods Pricture</th>
-
-            <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
         <c:forEach items="${listGoods}" var="goods">

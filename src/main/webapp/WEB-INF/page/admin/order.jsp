@@ -28,7 +28,7 @@
 <form:form action="${addAction}" commandName="order">
     <tr>
         <td><input type="text" ng-model="ID" ></td>
-        <td><a href="/admin/OrderControl/FindOrder/{{ID}}">Find</a></td>
+        <td><a href="/admin/OrderControl/FindOrder/{{ID}}" class="btn">Find</a></td>
     </tr>
     <table class="tg">
 
@@ -110,7 +110,7 @@
 
 </script>
 <br>
-<h3>User List</h3>
+<h3>Order List</h3>
 <c:if test="${!empty listOrder}">
     <table class="tg">
         <tr>
@@ -158,7 +158,7 @@
                 <td>${order.userId}</td>
                 <td>${order.sellerId}</td>
 
-                <td><a href="<c:url value='/admin/OrderControl/RemoveOrder/${order.orderId}' />" >Delete</a></td>
+                <td><a href="<c:url value='/admin/OrderControl/RemoveOrder/${order.orderId}' />" class="btn">Delete</a></td>
             </tr>
         </c:forEach>
     </table>

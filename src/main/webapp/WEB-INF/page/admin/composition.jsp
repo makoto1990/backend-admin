@@ -31,7 +31,7 @@
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="compositionID=''" ng-init="sellerID=''">
 
     <c:url var="addAction" value="/admin/CompositionControl/FindCompositionBySellerID/${composition.orderGoodsId}" />
-    <button ng-click="toggle()">隐藏/显示</button>
+    <button ng-click="toggle()"class="btn">隐藏/显示</button>
 
     <form:form action="${addAction}" commandName="composition">
         <div ng-hide="myVar">
@@ -40,13 +40,13 @@
                     <input type="text" ng-model="sellerID">
 
                 </td>
-                <td><a href="/admin/CompositionControl/FindCompositionBySellerID/{{sellerID}}">FindSeller</a></td>
+                <td><a href="/admin/CompositionControl/FindCompositionBySellerID/{{sellerID}}"class="btn">FindSeller</a></td>
             </tr>
             <tr>
                 <td>
                     <input type="text" ng-model="compositionID" >
                 </td>
-                <td><a href="/admin/CompositionControl/FindSingleComposition/{{compositionID}}">FindId</a></td>
+                <td><a href="/admin/CompositionControl/FindSingleComposition/{{compositionID}}"class="btn">FindId</a></td>
             </tr>
         </div>
         <table  class="tg">

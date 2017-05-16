@@ -58,13 +58,12 @@
     <script src="/resources/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<h1>
+    Add a Person
+</h1>
 <tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
 <div ng-app="myApp2" ng-controller="myCtrl" ng-init="ID=''" style="text-align: center">
-    <div ng-include="'topPart.jsp'"></div>
-    <h1>
-        Add a Person
-    </h1>
+
 
 <c:url var="addAction" value="/admin/UserControl/AddUser" ></c:url>
     <c:if test="${!empty user.userId}">

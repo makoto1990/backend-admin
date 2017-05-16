@@ -10,13 +10,13 @@
     <script src="/resources/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<table class="table">
+<table style="text-align: center" class="table">
     <tr>
-    <td><a href="<c:url value="/admin/UserControl" />" >UserControl</a></td>
-    <td><a href="<c:url value='/admin/GoodsControl' />" >GoodsControl</a></td>
-    <td><a href="<c:url value='/admin/OrderControl' />" >OrderControl</a></td>
-    <td><a href="<c:url value='/admin/SellerControl' />" >SellerControl</a></td>
-    <td><a href="<c:url value='/admin/CompositionControl' />" >CompositionControl</a></td>
+    <td><a href="<c:url value="/admin/UserControl" />" class="btn" >UserControl</a></td>
+    <td><a href="<c:url value='/admin/GoodsControl' />"class="btn"  >GoodsControl</a></td>
+    <td><a href="<c:url value='/admin/OrderControl' />" class="btn" >OrderControl</a></td>
+    <td><a href="<c:url value='/admin/SellerControl' />" class="btn" >SellerControl</a></td>
+    <td><a href="<c:url value='/admin/CompositionControl' />" class="btn" >CompositionControl</a></td>
 
     </tr>
 </table>

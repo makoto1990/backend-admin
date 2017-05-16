@@ -58,21 +58,23 @@
     <script src="/resources/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>
-    Add a Person
-</h1>
+
 <tr><td><a href="<c:url value='/admin/' />" >back</a></td></tr>
-<div ng-app="myApp2" ng-controller="myCtrl" ng-init="ID=''" >
+<div ng-app="myApp2" ng-controller="myCtrl" ng-init="ID=''" style="text-align: center">
+    <div ng-include="'topPart.jsp'"></div>
+    <h1>
+        Add a Person
+    </h1>
 
 <c:url var="addAction" value="/admin/UserControl/AddUser" ></c:url>
     <c:if test="${!empty user.userId}">
-        <button ng-click="toggle()">EDIT</button>
+        <button ng-click="toggle()" class="btn">EDIT</button>
     </c:if>
     <c:if test="${empty user.userId}">
-        <button ng-click="toggle2()">ADD</button><p>{{myVar2}}{{Now}}</p>
+        <button ng-click="toggle2()"class="btn">ADD</button>
     </c:if>
-<form:form action="${addAction}" commandName="user">
-    <table ng-hide="myVar">
+<form:form action="${addAction}" commandName="user" >
+    <table ng-hide="myVar" >
 
         <tr>
             <td>*
@@ -224,7 +226,7 @@
                 <form:checkbox path="manager" class="form-control"  />
             </td>
         </tr>
-        <tr ng-if="uName!=NULL&&uName!=''&&uPass!=''&&uPass!=NULL&&uId>100000000&&uId<999999999999&&(id>100000000000000000&&id<999999999999999999||id==0)&&(phone>10000000000&&phone<9999999999||phone==0)">
+        <tr ng-if="uName!=NULL&&uName!=''&&uPass!=''&&uPass!=NULL&&uId>100000000&&uId<999999999999&&(id>100000000000000000&&id<999999999999999999||id==0)&&(phone>10000000000&&phone<9999999999999||phone==0)">
             <td colspan="2">
                 <c:if test="${!empty user.userName}">
                     <input type="submit"
@@ -270,7 +272,7 @@
 <br>
 <h3>User List</h3>
 <c:if test="${!empty listUsers}">
-    <table class="tg">
+    <table class="tg" style="text-align: center">
             <th width="80">User ID</th>
             <th width="120">User Name</th>
             <th width="120">User RegisterDate</th>

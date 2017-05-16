@@ -66,12 +66,11 @@ public class ViewController {
         return "buyCart";
     }
 
-    @RequestMapping("/BuyDetail/AddItem/{itemId}/{number}")
-    public String addItem(@PathVariable("itemId")String itemId,
-                        @PathVariable("number")int number,HttpServletRequest request){
+    @RequestMapping("/BuyDetail/AddItem")
+    public String addItem(@ModelAttribute("out")int number,HttpServletRequest request){
+        String goodsId=(String) request.getSession().getAttribute("goodsId");
         Cart cart= (Cart) request.getSession().getAttribute("scart");
-        GoodsEntity goods=detailService.getGoodsByGoodsId(itemId);
-        cart.addGoods(goods,number);
+        cart.addGoods(goodsId,number);
         request.getSession().setAttribute("scart",cart);
         return "buyDetail";
     }

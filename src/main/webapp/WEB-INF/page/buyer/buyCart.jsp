@@ -2,6 +2,7 @@
          import="com.backend.model.CartEntity"
          import="com.backend.model.GoodsEntity"
          import="com.backend.model.Cart" %>
+<%@ page import="com.backend.buyerEnd.service.DetailService" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -35,13 +36,16 @@
     <tbody>
     <tr>
         <%
+            DetailService svc = (DetailService)request.getSession().getAttribute("svc");
             Cart cart = (Cart) request.getSession().getAttribute("scart");
-            for (GoodsEntity goods : cart.cart.keySet()) {%>
+            for (String goodsId : cart.cart.keySet()) {
+                GoodsEntity goods=svc.getGoodsByGoodsId(goodsId);
+        %>
         <td><%=goods.getGoodsName() %>
         </td>
         <td><%=goods.getGoodsPrice() %>
         </td>
-        <td><%=cart.cart.get(goods) %>
+        <td><%=cart.cart.get(goodsId) %>
         </td>
         <td><%=cart.getCost(goods) %>
         </td>

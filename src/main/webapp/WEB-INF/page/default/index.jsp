@@ -28,11 +28,7 @@ ${sessionScope.message}
             <button class="button" type="submit">登录</button>
             <button class="button"  onclick="window.location.href='/register';">注册</button>
         </div>
-
     </form:form>
 </div>
-
-
-
 </body>
 </html>

@@ -39,7 +39,7 @@ public class ViewController {
     public void setSearchService(SearchService ss){this.searchService=ss;}
 
     @RequestMapping("/")
-    public String buyerIndex(HttpServletRequest request,Model model){
+    public String buyerIndex(HttpServletRequest request){
         if(request.getSession().getAttribute("sname")==null){
             return "saleError";
         }

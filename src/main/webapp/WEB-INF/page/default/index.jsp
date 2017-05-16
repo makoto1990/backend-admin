@@ -25,8 +25,8 @@ ${sessionScope.message}
             <input type="radio" name="style"  id="op3" value="3">管理员
         </label>
         <div>
-            <button class="button" type="submit">登录</button>
-            <button class="button" onclick="window.location.href='/register'">注册</button>
+            <input value="登录" class="button" type="submit"/>
+            <input value="注册" class="button" type="button" onclick="window.location.href='/register'"/>
         </div>
 
     </form:form>

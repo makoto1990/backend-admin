@@ -43,7 +43,7 @@ public class ViewController {
     }
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String register(@ModelAttribute("user")UserEntity userEntity){
-        if(this.registerService.registerUser(userEntity)){
+        if(!this.registerService.registerUser(userEntity)){
             return "success";
         }else{
             return "error";

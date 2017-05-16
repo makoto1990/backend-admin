@@ -75,7 +75,7 @@ public class ViewController {
         return "buyDetail";
     }
 
-    @RequestMapping("/UserInfo")
+    @RequestMapping("/User/Info")
     public String userInfo(HttpServletRequest request){
         String name = request.getSession().getAttribute("sname").toString();
         UserEntity userEntity = this.userService.getUserByUserName(name);
@@ -92,6 +92,45 @@ public class ViewController {
     public String searchGoods(@ModelAttribute("searchinfo")String searchInfo,HttpServletRequest request){
         request.getSession().setAttribute("allgoods",this.searchService.loadAllGoods(searchInfo));
         return "buySearch";
+    }
+
+    @RequestMapping(value = "/User/Update",method = RequestMethod.POST)
+    public String updateUser(@PathVariable("username")String username1,HttpServletRequest request){
+        boolean relogin = false;
+        boolean resure = false;
+        UserEntity user = (UserEntity) request.getSession().getAttribute("user");
+        String username = request.getParameter("username");//用户昵称
+        String password = request.getParameter("password");//密码
+        String password2 = request.getParameter("password2");//确认密码
+        String realname = request.getParameter("realname");//真实姓名
+        String idnumber = request.getParameter("idnumber");//身份证号
+        String phone = request.getParameter("phone");//联系电话
+        String postcode = request.getParameter("postcode");//邮编
+        String province = request.getParameter("province");//省
+        String city = request.getParameter("city");//市
+        String district = request.getParameter("district");//区/县
+        String street = request.getParameter("street");//街道
+        String address = request.getParameter("address");//地址
+        if(!username.equals("")){ user.setUserName(username); relogin=true; }//修改昵称，需重新登录
+        if(!password.equals(password2)){
+            //System.out.println("两次输入不一致");
+            resure = true;
+        }
+        else if(!password.equals("")){ user.setPassword(password); relogin=true; }//修改密码，需重新登录
+        if(!realname.equals(""))user.setRealName(realname);
+        if(!idnumber.equals(""))user.setiDnumber(idnumber);
+        if(!phone.equals(""))user.setPhone(phone);
+        if(!postcode.equals(""))user.setPostcode(postcode);
+        if(!province.equals(""))user.setProvince(province);
+        if(!city.equals(""))user.setCity(city);
+        if(!district.equals(""))user.setDistrict(district);
+        if(!street.equals(""))user.setStreet(street);
+        if(!address.equals(""))user.setAddress(address);
+        this.userService.updateUser(user);
+        request.getSession().setAttribute("sname", user.getUserName());
+        if(resure)return "userInforAlter";
+        else if(!relogin)return "redirect:/buyer/User/Info";
+        else return "redirect:/buyer/";
     }
 
 

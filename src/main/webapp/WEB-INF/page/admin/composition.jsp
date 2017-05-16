@@ -8,7 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page pageEncoding="UTF-8" session="false" %>
+<%@ page pageEncoding="UTF-8"  %>
 <html>
 <head>
     <title>Composition Page</title>
@@ -19,6 +19,9 @@
         .tg .tg-4eph{background-color:#f9f9f9}
     </style>
     <script src=/resources/angular/angular.min.js></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="/resources/jquery/jquery.min.js"></script>
+    <script src="/resources/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <h1>
@@ -31,7 +34,7 @@
     <button ng-click="toggle()">隐藏/显示</button>
 
     <form:form action="${addAction}" commandName="composition">
-        <table ng-show="myVar">
+        <div ng-hide="myVar">
             <tr>
                 <td>
                     <input type="text" ng-model="sellerID">
@@ -41,10 +44,13 @@
             </tr>
             <tr>
                 <td>
-                    <input type="text" ng-model="compositionID">
+                    <input type="text" ng-model="compositionID" >
                 </td>
                 <td><a href="/admin/CompositionControl/FindSingleComposition/{{compositionID}}">FindId</a></td>
             </tr>
+        </div>
+        <table  class="tg">
+
             <c:if test="${!empty composition.goodsAmount}">
                 <tr>
                     <th width="80">Composition ID</th>

@@ -25,10 +25,10 @@
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="ID=''" >
 <c:url var="addAction" value="/admin/SellerControl/AddSeller" ></c:url>
     <c:if test="${!empty seller.userId}">
-        <button ng-click="toggle()">EDIT</button>
+        <button ng-click="toggle()"class="btn">EDIT</button>
     </c:if>
     <c:if test="${empty seller.userId}">
-        <button ng-click="toggle2()">ADD</button>
+        <button ng-click="toggle2()"class="btn">ADD</button>
     </c:if>
 <form:form action="${addAction}" commandName="seller">
     <table ng-hide="myVar">

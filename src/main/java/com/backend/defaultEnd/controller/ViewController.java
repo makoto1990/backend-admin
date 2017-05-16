@@ -60,8 +60,13 @@ public class ViewController {
                 passwordTemp=passwordTemp.trim();
                 if (passwordTemp.equals(user.getPassword())) {
                     request.getSession().setAttribute("sname",user.getUserName());
+                    request.getSession().setAttribute("sid",user.getUserId());
                     switch (style) {
                         case 1:
+                            Cart cart = new Cart();
+                            //cart.init();
+                            request.getSession().setAttribute("scart",cart);
+
                             return "redirect:/buyer/";
                         case 2:
                             return "redirect:/seller/";

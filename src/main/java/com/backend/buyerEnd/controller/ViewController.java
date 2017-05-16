@@ -62,7 +62,7 @@ public class ViewController {
     }
 
     @RequestMapping("/Cart")
-    public String buyerCart(){
+    public String buyerCart(HttpServletRequest request){
         return "buyCart";
     }
 
@@ -94,6 +94,7 @@ public class ViewController {
     @RequestMapping("/DeliveryInfo")
     public String deliveryInfo(HttpServletRequest request){
         request.getSession().setAttribute("orderService",this.orderService);
+        request.getSession().setAttribute("userService",this.userService);
         return "buyUser";
     }
 

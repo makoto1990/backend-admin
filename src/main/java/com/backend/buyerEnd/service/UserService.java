@@ -27,7 +27,7 @@ public class UserService {
     }
     @Transactional
     public void updateUser(UserEntity user){
-        this.updateUser(user);
+        this.userDao.updateUser(user);
     }
 
 }

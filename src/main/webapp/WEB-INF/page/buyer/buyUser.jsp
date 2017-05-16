@@ -34,7 +34,8 @@
     <tr>
         <%
             OrderService service = (OrderService)request.getSession().getAttribute("orderService");
-            List<OrderEntity> list = service.getOrderByUserID(name);
+            UserService userService = (UserService)request.getSession().getAttribute("userService");
+            List<OrderEntity> list = service.getOrderByUserID(userService.getUserByUserName(name).getUserId());
             for (OrderEntity o1 : list) {%>
         <td><%=o1.getOrderId() %>
         </td>

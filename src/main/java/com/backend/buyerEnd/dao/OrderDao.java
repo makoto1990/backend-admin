@@ -23,7 +23,7 @@ public class OrderDao {
         CriteriaQuery<OrderEntity> criteria = builder.createQuery(OrderEntity.class);
         Root<OrderEntity> root = criteria.from(OrderEntity.class);
         criteria.select(root);
-        criteria.where(builder.equal(root.get("userID"),userId));
+        criteria.where(builder.equal(root.get("userId"),userId));
         return session.createQuery(criteria).getResultList();
     }
 

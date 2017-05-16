@@ -57,7 +57,7 @@
     String sellerIntro = seller.getSellerIntro();
     if (sellerIntro == null) sellerIntro = "暂无商家简介";
     //String name = request.getSession().getAttribute("sname").toString();//name即为由login传值的登录名
-    //String presearchinfo = request.getSession().getAttribute("searchinfo").toString();  //搜索的信息  
+    //String presearchinfo = request.getSession().getAttribute("searchinfo").toString();  //搜索的信息
 %>
 <div class="container">
 
@@ -139,8 +139,6 @@
                                     <form action="/buyer/AddItem/<%=goodsId%>/123" method="post">
                                         <button type="submit" class="addToCart" style="width:40%">&nbsp;&nbsp;&nbsp;加入购物车</button>
                                     </form>
-
-
 
                                     <div class="desc">
                                         </br>

@@ -35,11 +35,9 @@ public class GoodsDao {
         //��ȡ�����ļ�
         allGoods.clear();
         sellerName.clear();
-        Configuration cfg = new Configuration().configure();
-        SessionFactory factory = cfg.buildSessionFactory();
         Session session = null;
         try {
-            session = factory.openSession();
+            session = this.sessionFactory.openSession();
             //��������
             session.beginTransaction();
 
@@ -69,7 +67,7 @@ public class GoodsDao {
 
         session = null;
         try {
-            session = factory.openSession();
+            session = this.sessionFactory.openSession();
             //��������
             session.beginTransaction();
 

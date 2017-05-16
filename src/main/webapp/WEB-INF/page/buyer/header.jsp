@@ -68,7 +68,7 @@
                         <form class="navbar-form navbar-right" role="search" action="/buyer/Search" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="请输入你想要搜索的商品类别或商品名称"
-                                       id="searchinfo">
+                                       name="searchinfo">
                             </div>
                             <button type="submit" class="btn btn-default">搜索</button>
                         </form>

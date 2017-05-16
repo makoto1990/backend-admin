@@ -10,9 +10,10 @@ import java.util.*;
  * Created by kevin on 2017/5/8.
  */
 public class SearchDao {
-    ArrayList list = new ArrayList();
+
 
     public ArrayList SearchAllOrder(String sellerName) { //全部订单
+        ArrayList list = new ArrayList();
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -42,6 +43,7 @@ public class SearchDao {
 
 
     public ArrayList SearchWaitPayOrder(String sellerName) { //等待买家付款的订单
+        ArrayList list = new ArrayList();
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -72,6 +74,7 @@ public class SearchDao {
 
 
     public ArrayList SearchWaitConfirmOrder(String sellerName) { //等待卖家确认的订单
+        ArrayList list = new ArrayList();
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -102,6 +105,7 @@ public class SearchDao {
 
 
     public ArrayList SearchWaitSendOrder(String sellerName) { //等待卖家发货的订单
+        ArrayList list = new ArrayList();
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -132,6 +136,7 @@ public class SearchDao {
 
 
     public ArrayList SearchSendOrder(String sellerName) { //已发货的订单
+        ArrayList list = new ArrayList();
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -161,6 +166,7 @@ public class SearchDao {
     }
 
     public ArrayList SearchCancelOrder(String sellerName) { //等待卖家发货的订单
+        ArrayList list = new ArrayList();
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -190,6 +196,7 @@ public class SearchDao {
 
 
     public ArrayList SearchOrderDetails(String ID) { //订单详情
+        ArrayList list = new ArrayList();
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -236,6 +243,7 @@ public class SearchDao {
 
 
     public ArrayList SearchAOrder(String value, String searchvalue, String sellerName) { //查询订单
+        ArrayList list = new ArrayList();
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -269,6 +277,7 @@ public class SearchDao {
 
 
     public ArrayList SearchOrderGood(String id) { //查询订单中包含的商品
+        ArrayList list = new ArrayList();
         //ArrayList list=new ArrayList();
         String ID = id.trim();
         Connection conn = null;
@@ -302,11 +311,11 @@ public class SearchDao {
     }
 
     public List<OrderEntity> searchOrder(String searchType,String searchValue){
+        ArrayList list = new ArrayList();
         Connection conn;
         PreparedStatement pstmt;
         ResultSet rs;
         String sqlstr = null;
-        ArrayList list = new ArrayList();
         int i = 0;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss E");
 

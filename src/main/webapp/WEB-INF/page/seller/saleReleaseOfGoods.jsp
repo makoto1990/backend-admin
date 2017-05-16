@@ -34,10 +34,13 @@
     <h1 style="color:#A3A3A3">已发布商品</h1>
     <div class="styled-select">
         <form style="padding-top:20px"
-              action="/seller/Goods/Search?name=<%=sellerName%>"
+              action="/seller/Goods/SaleRelease/Search/<%=sellerName%>"
               method="post">
             <span style="font-size:20px;color:#FF8C00">商品类别</span>
-            <select name="goodstype" id="selecttype" class="selectpicker"
+            <%
+                request.getSession().setAttribute("sellerName",sellerName);
+            %>
+            <select name="goodsType" id="selecttype" class="selectpicker"
                     style="width:250px ;height:30px;font-size:20px">
                 <option value="全部">全部</option>
                 <option value="蔬菜">蔬菜</option>

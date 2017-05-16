@@ -12,7 +12,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>支农网上生鲜超市</title>
-    <script type="text/javascript" src="/resources/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/resources/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <link href="/resources/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
@@ -193,46 +193,50 @@
 
             <li class="dropdown">
                 <a href="#" id="myTabDrop2" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-folder-close"></span>商品管理
+                    <span class="glyphicon glyphicon-folder-close"></span>
+                    商品管理
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2">
-                    <li>
-                        <a href="#releaseofgoods" tabindex="-1" data-toggle="tab">
-                            <form action="/seller/Goods/SaleRelease?sellerName=<%=sellerName %>" method="post">
-                                <button style="border:none;background-color:#FFFFFF" type="submit">已发布商品</button>
-                            </form>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#addgoods" tabindex="-1" data-toggle="tab">添加商品</a>
-                    </li>
+                    <li><a href="#releaseofgoods" tabindex="-1" data-toggle="tab">
+                        <form action="/seller/Goods/SaleRelease?sellerName=<%=sellerName %>"
+                              method="post">
+                            <button style="border:none;background-color:#FFFFFF" type="submit">已发布商品</button>
+                        </form>
+                    </a></li>
+                    <li><a href="#addgoods" tabindex="-1" data-toggle="tab">添加商品</a></li>
                 </ul>
             </li>
 
 
             <li class="dropdown">
                 <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-th">订单管理
+                <span class="glyphicon glyphicon-th">订单管理
                     <span class="caret"></span>
                 </a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                            <li><a href="#allorder" tabindex="-1" data-toggle="tab">全部订单</a></li>
-                            <li><a href="#waitpayorder" tabindex="-1" data-toggle="tab">待付款订单</a></li>
-                            <li><a href="#waitsendorder" tabindex="-1" data-toggle="tab">待发货订单</a></li>
-                            <li><a href="#sendorder" tabindex="-1" data-toggle="tab">已发货订单</a></li>
-                            <li><a href="#cancelorder" tabindex="-1" data-toggle="tab">已取消订单</a></li>
-                            <li><a href="#ordersearch" tabindex="-1" data-toggle="tab">订单查询</a></li>
-                        </ul>
-
-
+                <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                    <li><a href="#allorder" tabindex="-1" data-toggle="tab">全部订单</a></li>
+                    <li><a href="#waitpayorder" tabindex="-1" data-toggle="tab">待付款订单</a></li>
+                    <li><a href="#waitsendorder" tabindex="-1" data-toggle="tab">待发货订单</a></li>
+                    <li><a href="#sendorder" tabindex="-1" data-toggle="tab">已发货订单</a></li>
+                    <li><a href="#cancelorder" tabindex="-1" data-toggle="tab">已取消订单</a></li>
+                    <li><a href="#ordersearch" tabindex="-1" data-toggle="tab">订单查询</a></li>
+                </ul>
             </li>
         </ul>
 
 
         <%!
-            OrderEntity order = new OrderEntity();
-            ArrayList list = new ArrayList();
+            OrderEntity order1 = new OrderEntity();
+            ArrayList list1 = new ArrayList();
+            OrderEntity order2 = new OrderEntity();
+            ArrayList list2 = new ArrayList();
+            OrderEntity order3 = new OrderEntity();
+            ArrayList list3 = new ArrayList();
+            OrderEntity order4 = new OrderEntity();
+            ArrayList list4 = new ArrayList();
+            OrderEntity order5 = new OrderEntity();
+            ArrayList list5 = new ArrayList();
             int i;
         %>
 
@@ -442,7 +446,7 @@
                 <div class="container">
                     <div class="table-responsive">
                         <table class="table table-striped table-hover">
-                            <caption>待发货订单</caption>
+                            <caption>全部订单</caption>
                             <tr class="active">
                                 <td>订单编号</td>
                                 <td>收货人姓名</td>
@@ -451,26 +455,26 @@
                             </tr>
                             <%
                                 SearchService searchService = (SearchService) request.getSession().getAttribute("searchService");
-                                list = searchService.SearchAllOrder(sellerName);
+                                list1 = searchService.SearchAllOrder(sellerName);
 
-                                for (i = 0; i < list.size(); i++) {
-                                    order = (OrderEntity) list.get(i);
-                                    if (order.getOrderStatus() == "卖家已发货") {
+                                for (i = 0; i < list1.size(); i++) {
+                                    order1 = (OrderEntity) list1.get(i);
+                                    if (order1.getOrderStatus() == "卖家已发货") {
                             %>
                             <tr class="success">
                                     <%}else{ %>
                             <tr>
                                 <%} %>
                                 <td>
-                                    <a href="/seller/Order/Detail/<%=order.getOrderId() %>" target="_blank"
+                                    <a href="/seller/Order/Detail/<%=order1.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
-                                       title="点击查看订单详情"><%=order.getOrderId() %>
+                                       title="点击查看订单详情"><%=order1.getOrderId() %>
                                     </a></td>
-                                <td><%=order.getReceiverName() %>
+                                <td><%=order1.getReceiverName() %>
                                 </td>
-                                <td><%=order.getCreatTime()%>
+                                <td><%=order1.getCreatTime()%>
                                 </td>
-                                <td><%=order.getOrderStatus()%>
+                                <td><%=order1.getOrderStatus()%>
                                 </td>
 
                             </tr>
@@ -497,22 +501,22 @@
                                 <td>订单状态</td>
                             </tr>
                             <%
-                                list = searchService.SearchWaitPayOrder(sellerName);
+                                list2 = searchService.SearchWaitPayOrder(sellerName);
 
-                                for (i = 0; i < list.size(); i++) {
-                                    order = (OrderEntity) list.get(i);
+                                for (i = 0; i < list2.size(); i++) {
+                                    order2 = (OrderEntity) list2.get(i);
                             %>
                             <tr>
                                 <td>
-                                    <a href="/seller/Order/Detail/<%=order.getOrderId() %>" target="_blank"
+                                    <a href="/seller/Order/Detail/<%=order2.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
-                                       title="点击查看订单详情"><%=order.getOrderId() %>
+                                       title="点击查看订单详情"><%=order2.getOrderId() %>
                                     </a></td>
-                                <td><%=order.getReceiverName() %>
+                                <td><%=order2.getReceiverName() %>
                                 </td>
-                                <td><%=order.getCreatTime()%>
+                                <td><%=order2.getCreatTime()%>
                                 </td>
-                                <td><%=order.getOrderStatus()%>
+                                <td><%=order2.getOrderStatus()%>
                                 </td>
 
                             </tr>
@@ -540,22 +544,22 @@
                                 <td>订单状态</td>
                             </tr>
                             <%
-                                list = searchService.SearchWaitSendOrder(sellerName);
+                                list3 = searchService.SearchWaitSendOrder(sellerName);
                                 int i;
-                                for (i = 0; i < list.size(); i++) {
-                                    order = (OrderEntity) list.get(i);
+                                for (i = 0; i < list3.size(); i++) {
+                                    order3 = (OrderEntity) list3.get(i);
                             %>
                             <tr>
                                 <td>
-                                    <a href="/seller/Order/Detail/<%=order.getOrderId() %>" target="_blank"
+                                    <a href="/seller/Order/Detail/<%=order3.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
-                                       title="点击查看订单详情"><%=order.getOrderId() %>
+                                       title="点击查看订单详情"><%=order3.getOrderId() %>
                                     </a></td>
-                                <td><%=order.getReceiverName() %>
+                                <td><%=order3.getReceiverName() %>
                                 </td>
-                                <td><%=order.getCreatTime()%>
+                                <td><%=order3.getCreatTime()%>
                                 </td>
-                                <td><%=order.getOrderStatus()%>
+                                <td><%=order3.getOrderStatus()%>
                                 </td>
 
                             </tr>
@@ -584,21 +588,21 @@
                                 <td>订单状态</td>
                             </tr>
                             <%
-                                list = searchService.SearchSendOrder(sellerName);
-                                for (i = 0; i < list.size(); i++) {
-                                    order = (OrderEntity) list.get(i);
+                                list4 = searchService.SearchSendOrder(sellerName);
+                                for (i = 0; i < list4.size(); i++) {
+                                    order4 = (OrderEntity) list4.get(i);
                             %>
                             <tr>
                                 <td>
-                                    <a href="/seller/Order/Detail/<%=order.getOrderId() %>" target="_blank"
+                                    <a href="/seller/Order/Detail/<%=order4.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
-                                       title="点击查看订单详情"><%=order.getOrderId() %>
+                                       title="点击查看订单详情"><%=order4.getOrderId() %>
                                     </a></td>
-                                <td><%=order.getReceiverName() %>
+                                <td><%=order4.getReceiverName() %>
                                 </td>
-                                <td><%=order.getCreatTime()%>
+                                <td><%=order4.getCreatTime()%>
                                 </td>
-                                <td><%=order.getOrderStatus()%>
+                                <td><%=order4.getOrderStatus()%>
                                 </td>
 
                             </tr>
@@ -627,21 +631,21 @@
                                 <td>订单状态</td>
                             </tr>
                             <%
-                                list = searchService.SearchCancelOrder(sellerName);
-                                for (i = 0; i < list.size(); i++) {
-                                    order = (OrderEntity) list.get(i);
+                                list5 = searchService.SearchCancelOrder(sellerName);
+                                for (i = 0; i < list5.size(); i++) {
+                                    order5 = (OrderEntity) list5.get(i);
                             %>
                             <tr>
                                 <td>
-                                    <a href="/seller/Order/Detail/<%=order.getOrderId() %>" target="_blank"
+                                    <a href="/seller/Order/Detail/<%=order5.getOrderId() %>" target="_blank"
                                        class="tooltip-test" data-toggle="tooltip"
-                                       title="点击查看订单详情"><%=order.getOrderId() %>
+                                       title="点击查看订单详情"><%=order5.getOrderId() %>
                                     </a></td>
-                                <td><%=order.getReceiverName() %>
+                                <td><%=order5.getReceiverName() %>
                                 </td>
-                                <td><%=order.getCreatTime()%>
+                                <td><%=order5.getCreatTime()%>
                                 </td>
-                                <td><%=order.getOrderStatus()%>
+                                <td><%=order5.getOrderStatus()%>
                                 </td>
 
                             </tr>

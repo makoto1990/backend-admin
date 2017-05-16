@@ -70,7 +70,7 @@
                 <td>${goods.leastAmount}</td>
                 <td>${goods.largeAmount}</td>
                 <td>${goods.largePrice}</td>
-                <td><img src=${goods.picture}/></td>
+                <td><img src="/resources/images/${goods.picture}"/></td>
                 <td><a href="<c:url value='/admin/GoodsControl/RemoveGoods/${goods.goodsId}' />" >Delete</a></td>
             </tr>
         </c:if>
@@ -259,7 +259,7 @@
                 <td>${goods.leastAmount}</td>
                 <td>${goods.largeAmount}</td>
                 <td>${goods.largePrice}</td>
-                <td><img src=${goods.picture}/></td>
+                <td><img src="/resources/images/${goods.picture}"/></td>
 
             <%-- <td><a href="<c:url value='/edit/${goods.goodsID}' />" >Edit</a></td>--%>
             <td><a href="<c:url value='/admin/GoodsControl/RemoveGoods/${goods.goodsId}' />" >Delete</a></td>

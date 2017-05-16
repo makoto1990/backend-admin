@@ -99,9 +99,9 @@ public class ViewController {
         return "saleReleaseOfGoods";
     }
 
-    @RequestMapping("/Goods/Search")
-    public String searchGoods(@ModelAttribute("goodsType") String goodsType, @ModelAttribute("name") String goodsName, HttpServletRequest request) {
-        request.getSession().setAttribute("goodslist", this.goodsService.searchGoods(goodsType, goodsName));
+    @RequestMapping(value = "/Goods/SaleRelease/Search/{sellerName}",method = RequestMethod.POST)
+    public String searchGoods(@ModelAttribute("goodsType") String goodsType, @PathVariable("sellerName") String sellerName, HttpServletRequest request) {
+        request.getSession().setAttribute("goodslist", this.goodsService.searchGoods(goodsType, sellerName));
         return "saleReleaseOfGoods";
     }
 

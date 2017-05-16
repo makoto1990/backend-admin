@@ -45,11 +45,11 @@ public class GoodsService extends HttpServlet {
         return goodslist;
     }
 
-    public ArrayList<GoodsEntity> searchGoods(String goodsType,String goodsName) {
+    public ArrayList<GoodsEntity> searchGoods(String goodsType,String sellerName) {
         ArrayList<GoodsEntity> goodslist = new ArrayList<GoodsEntity>();
         if (goodsType.equals("全部")) {
-            goodslist = this.goodsDao.releaseOfGoods(goodsName);
-        } else goodslist = this.goodsDao.searchGoods(goodsName, goodsType);
+            goodslist = this.goodsDao.releaseOfGoods(sellerName);
+        } else goodslist = this.goodsDao.searchGoods(sellerName, goodsType);
         GoodsEntity a = new GoodsEntity();
         for (int j = 0; j < goodslist.size(); j++) {
             a = (GoodsEntity) goodslist.get(j);

@@ -107,7 +107,7 @@ public class ViewController {
 
     @RequestMapping(value = "/Search",method = RequestMethod.POST)
     public String searchGoods(@ModelAttribute("searchinfo")String searchInfo,HttpServletRequest request){
-        request.getSession().setAttribute("allgoods",this.searchService.loadAllGoods(searchInfo));
+        request.getSession().setAttribute("searchGoods",this.searchService.loadAllGoods(searchInfo));
         return "buySearch";
     }
 

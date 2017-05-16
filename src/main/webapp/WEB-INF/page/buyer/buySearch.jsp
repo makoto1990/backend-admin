@@ -22,16 +22,16 @@
     <div class="row">
         <% List<GoodsEntity> allGoods = new ArrayList<>();
             allGoods.clear();
-            allGoods = (List) request.getSession().getAttribute("allGoods");
+            allGoods = (List) request.getSession().getAttribute("searchGoods");
             int l = allGoods.size();
             HttpSession sess = request.getSession();
             sess.setAttribute("userName", name);
-            String str = "../resources/images/";
-            for (int i = 0; i < l; i++) {
+            String str = "/resources/images/";
+            for (i = 0; i < l; i++) {
                 GoodsEntity tmp = allGoods.get(i);
                 String goodsName = tmp.getGoodsName().trim();
                 String picPath = str + goodsName + ".jpg";
-                String detailPath = "../buyer/buyDetail.jsp?flag=" + i;
+                String detailPath = "/buyer/BuyDetail/" + i;
                 sess.setAttribute("goodsName" + i, tmp.getGoodsName());
                 sess.setAttribute("goodsId" + i, tmp.getGoodsId());
                 sess.setAttribute("goodsType" + i, tmp.getGoodsType());
@@ -49,7 +49,7 @@
                         </h5>
                         <h6>类别：<%=tmp.getGoodsType() %>
                         </h6>
-                        <h6>商家：<%=s %>
+                        <h6>商家：<%=tmp.getSellerId() %>
                         </h6>
 
                     </a>

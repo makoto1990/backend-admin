@@ -64,7 +64,7 @@ public class ViewController {
                     switch (style) {
                         case 1:
                             Cart cart = new Cart();
-                            //cart.init();
+                            cart.init(user.getUserId());
                             request.getSession().setAttribute("scart",cart);
 
                             return "redirect:/buyer/";

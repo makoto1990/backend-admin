@@ -104,39 +104,37 @@
                             </div>
                             <div class="desc">
                                 <div class="container">
-                                    <div class="row clearfix">
-                                        <div class="col-md-1 column">
-                                            <div class="desc" style="padding-top:20px">数量</div>
-                                        </div>
-                                        <div class="col-md-5 column">
-                                            <div class="desc">
-                                                <script type="text/javascript">
-                                                    var out = document.getElementById('out');
-                                                    out.innerHTML = 1;
-                                                    function minus() {
+
+                                    <form action="/buyer/AddItem" method="post">
+                                        <div class="row clearfix">
+                                            <div class="col-md-1 column">
+                                                <div class="desc" style="padding-top:20px">数量</div>
+                                            </div>
+                                            <div class="col-md-5 column">
+                                                <div class="desc">
+                                                    <script type="text/javascript">
                                                         var out = document.getElementById('out');
-                                                        if (out.innerHTML > 0) out.innerHTML--;
-                                                    }
-                                                    function plus() {
-                                                        var out = document.getElementById('out');
-                                                        var maxValue =
-                                                        <%=goodsCount%>
-                                                        if (out.innerHTML < maxValue - 1) out.innerHTML++;
-                                                    }
-                                                </script>
-                                                <input type="button" id="btn1" value="-" onclick="minus()"
-                                                       style="out-line:none;"/>
-                                                <!-- <img src="/Content/img/minus.png"> -->
-                                                <a id="out" value=1></a>
-                                                <input type="button" id="btn2" value="+" onclick="plus()"
-                                                       style="out-line:none;"/>
-                                                <!-- <img src="/Content/img/plus.png"> -->
+                                                        out.innerHTML = 1;
+                                                        function minus() {
+                                                            var out = document.getElementById('out');
+                                                            if (out.innerHTML > 0) out.innerHTML--;
+                                                        }
+                                                        function plus() {
+                                                            var out = document.getElementById('out');
+                                                            var maxValue = <%=goodsCount%>
+                                                            if (out.innerHTML < maxValue - 1) out.innerHTML++;
+                                                        }
+                                                    </script>
+                                                    <input type="button" id="btn1" value="-" onclick="minus()"
+                                                           style="out-line:none;"/>
+                                                    <!-- <img src="/Content/img/minus.png"> -->
+
+                                                    <input type="button" id="btn2" value="+" onclick="plus()"
+                                                           style="out-line:none;"/>
+                                                    <!-- <img src="/Content/img/plus.png"> -->
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <%--!!!!!!!!!!!!!--%>
-                                    <form action="/buyer/AddItem/<%=goodsId%>/123" method="post">
                                         <button type="submit" class="addToCart" style="width:40%">&nbsp;&nbsp;&nbsp;加入购物车</button>
                                     </form>
 
@@ -159,11 +157,12 @@
                             </div>
                         </div>
                     </div>
-
-
+                </div>
+            </div>
         </div>
 
         </br>
+
         <div class="bt-content">
             <ul class="nav nav-tabs">
                 <li class="active"><a style="font-size: 25px">商家简介</a></li>
@@ -174,6 +173,7 @@
             </div>
             </br></br></br></br></br></br></br>
         </div>
+
     </div>
 
 
@@ -185,7 +185,6 @@
             </div>
         </div>
     </div>
-
 
 </div>
 </body>

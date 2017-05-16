@@ -1,44 +1,31 @@
 package com.backend.model;
 
+import com.backend.buyerEnd.dao.GoodsDao;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Cart {
 
-    public Map<GoodsEntity, Integer> cart = new HashMap();
+    public Map<String, Integer> cart = new HashMap();
 
-    public void addGoods(GoodsEntity goods, int num) {
-        if (cart.containsKey(goods))
-            cart.put(goods, cart.get(goods) + num);
+    public void addGoods(String goodsId, int num) {
+        if (cart.containsKey(goodsId))
+            cart.put(goodsId, cart.get(goodsId) + num);
         else
-            cart.put(goods, num);
-    }
-
-    public void removeGoods(GoodsEntity goods) {
-        if (cart.containsKey(goods))
-            cart.remove(goods);
-    }
-
-    public void reduceGoods(GoodsEntity goods) {
-        if (cart.containsKey(goods))
-            if (cart.get(goods) > 0)
-                cart.put(goods, cart.get(goods) - 1);
-    }
-
-    public void increaseGoods(GoodsEntity goods) {
-        if (cart.containsKey(goods))
-            cart.put(goods, cart.get(goods) + 1);
-    }
-
-    public double getTotalCost() {
-        double sum = 0;
-        for (GoodsEntity goods : cart.keySet()) {
-            sum += cart.get(goods) * goods.getGoodsPrice();
-        }
-        return sum;
+            cart.put(goodsId, num);
     }
 
     public double getCost(GoodsEntity goods) {
         return cart.get(goods) * goods.getGoodsPrice();
+    }
+
+    public void init(String userId) {
+        ArrayList<CartEntity> cartlist = new ArrayList<CartEntity>();
+        //get cartlist
+        for(CartEntity cartEntity : cartlist){
+            cart.put(cartEntity.getGoodsId(),cartEntity.getCount());
+        }
     }
 }

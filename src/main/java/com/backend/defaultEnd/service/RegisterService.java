@@ -4,6 +4,7 @@ import com.backend.defaultEnd.dao.Dao;
 import com.backend.model.UserEntity;
 
 import javax.transaction.Transactional;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -45,13 +46,13 @@ public class RegisterService {
         else userID+="";
         userID += n;
         user.setUserId(userID);
+        user.setRegisterDate(new Timestamp(System.currentTimeMillis()));
         try{
             addUser(user);
         }catch (Exception e){
-            if(e.toString().contains("该语句没有返回结果集"))
-                return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
 }

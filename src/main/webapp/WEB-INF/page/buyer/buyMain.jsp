@@ -13,8 +13,8 @@
 <body>
 <%
     String name = request.getSession().getAttribute("sname").toString();//name即为由login传值的登录名
-    Cart cart = (Cart) request.getSession().getAttribute("scart");
-    if (cart == null) cart = new Cart();
+    CartEntity cart = (CartEntity) request.getSession().getAttribute("scart");
+    if (cart == null) cart = new CartEntity();
 %>
 
 <div class="container">

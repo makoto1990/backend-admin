@@ -105,6 +105,6 @@ public class SearchDao {
 
     public String getPicture(int index) {
         GoodsEntity good = allGoods.get(index);
-        return good.getSourceArea();
+        return good.getPicture();
     }
 }

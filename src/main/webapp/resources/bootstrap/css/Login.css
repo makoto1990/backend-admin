@@ -10,8 +10,8 @@ body {
     height: 100%;
     font-family: 'Open Sans', sans-serif;
     margin: 0;
-    /*background-color: #3399FF;*/
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#54D4D7), to(#A4D4D7));
+    background-color:whitesmoke;
+   /* background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#54D4D7), to(#A4D4D7));*/
 }
 
 #login {
@@ -28,7 +28,7 @@ label {
 }
 
 #login h1 {
-    color: whitesmoke;
+    color: black;
     /*text-shadow: 0 0 10px;*/
     letter-spacing: 1px;
     text-align: center;
@@ -46,14 +46,14 @@ h1 {
     outline: none;
     padding: 10px;
     font-size: 13px;
-    color: #fff;
+    color: black;
     /*text-shadow: 1px 1px 1px;*/
     border-top: 1px solid #312E3D;
     border-left: 1px solid #312E3D;
     border-right: 1px solid #312E3D;
     border-bottom: 1px solid #56536A;
     border-radius: 4px;
-    background-color: #2D2D3F;
+    background-color: #ffffff;
 }
 
 .button {

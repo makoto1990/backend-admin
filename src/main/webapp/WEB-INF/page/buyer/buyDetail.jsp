@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"
          import="com.backend.buyerEnd.service.DetailService"
-         import="com.backend.model.CartEntity"
-         import="com.backend.model.GoodsEntity"
-         import="com.backend.model.SellerEntity"
-         import="com.backend.model.Cart"
+         import="com.backend.model.*"
 %>
+<%@ page import="com.backend.buyerEnd.service.CartService" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,7 +31,7 @@
 <%
     HttpSession sess = request.getSession();
 
-    Cart cart = (Cart) sess.getAttribute("scart");
+    CartService cart = (CartService) sess.getAttribute("cartService");
     String goodsId = (String) sess.getAttribute("goodsId");
     String goodsType = (String) sess.getAttribute("goodsType");
     String sellerId = (String) sess.getAttribute("sellerId");

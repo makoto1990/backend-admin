@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import com.backend.model.*;
 import com.backend.defaultEnd.service.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by kevin on 2017/4/29.
  */
@@ -60,13 +64,9 @@ public class ViewController {
                 passwordTemp=passwordTemp.trim();
                 if (passwordTemp.equals(user.getPassword())) {
                     request.getSession().setAttribute("sname",user.getUserName());
-                    request.getSession().setAttribute("sid",user.getUserId());
+                    request.getSession().setAttribute("sid",this.loginService.findUser(user.getUserName()).getUserId());
                     switch (style) {
                         case 1:
-                            Cart cart = new Cart();
-                            cart.init(user.getUserId());
-                            request.getSession().setAttribute("scart",cart);
-
                             return "redirect:/buyer/";
                         case 2:
                             return "redirect:/seller/";

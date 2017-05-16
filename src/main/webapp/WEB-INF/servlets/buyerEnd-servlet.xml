@@ -59,6 +59,14 @@ http://www.springframework.org/schema/aop
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <bean id="buyerCartDao" class="com.backend.buyerEnd.dao.CartDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="buyerCartService" class="com.backend.buyerEnd.service.CartService">
+        <property name="cartDao" ref="buyerCartDao"/>
+    </bean>
+
     <bean id="detailService" class="com.backend.buyerEnd.service.DetailService">
         <property name="goodsDao" ref="buyerGoodsDao"/>
         <property name="sellerDao" ref="buyerSellerDao"/>

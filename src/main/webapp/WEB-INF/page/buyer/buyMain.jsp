@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" import="com.backend.model.*" import="com.backend.model.GoodsEntity"
          import="javax.servlet.http.HttpSession" pageEncoding="utf-8" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.backend.buyerEnd.service.CartService" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,8 +14,7 @@
 <body>
 <%
     String name = request.getSession().getAttribute("sname").toString();//name即为由login传值的登录名
-    CartEntity cart = (CartEntity) request.getSession().getAttribute("scart");
-    if (cart == null) cart = new CartEntity();
+    CartService cart = (CartService) request.getSession().getAttribute("cartService");
 %>
 
 <div class="container">

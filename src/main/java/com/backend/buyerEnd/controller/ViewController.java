@@ -23,6 +23,7 @@ public class ViewController {
     private UserService userService;
     private SearchService searchService;
     private OrderService orderService;
+    private CartService cartService;
 
     @Autowired(required = true)
     @Qualifier(value = "detailService")
@@ -46,6 +47,12 @@ public class ViewController {
         this.orderService=os;
     }
 
+    @Autowired(required = true)
+    @Qualifier(value = "buyerCartService")
+    public void setCartService(CartService cs){
+        this.cartService=cs;
+    }
+
     @RequestMapping("/")
     public String buyerIndex(HttpServletRequest request){
         if(request.getSession().getAttribute("sname")==null){
@@ -58,6 +65,8 @@ public class ViewController {
         allGoods=this.searchService.loadAllGoods();
         request.getSession().setAttribute("username",request.getSession().getAttribute("sname"));
         request.getSession().setAttribute("allGoods",allGoods);
+        this.cartService.initCart((String)request.getSession().getAttribute("sid"));
+        request.getSession().setAttribute("cartSevice",this.cartService);
         return "buyMain";
     }
 
@@ -69,9 +78,9 @@ public class ViewController {
     @RequestMapping("/BuyDetail/AddItem")
     public String addItem(@ModelAttribute("out")int number,HttpServletRequest request){
         String goodsId=(String) request.getSession().getAttribute("goodsId");
-        Cart cart= (Cart) request.getSession().getAttribute("scart");
+        CartService cart= (CartService) request.getSession().getAttribute("cartService");
         cart.addGoods(goodsId,number);
-        request.getSession().setAttribute("scart",cart);
+        request.getSession().setAttribute("cartService",cart);
         return "buyDetail";
     }
 

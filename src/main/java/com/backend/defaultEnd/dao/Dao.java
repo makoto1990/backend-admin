@@ -1,5 +1,6 @@
 package com.backend.defaultEnd.dao;
 
+import com.backend.model.CartEntity;
 import com.backend.model.UserEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,6 +11,9 @@ import org.hibernate.type.StandardBasicTypes;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Dao {
     private SessionFactory sessionFactory;
@@ -29,6 +33,8 @@ public class Dao {
         session.close();
         return result;
     }
+
+
 
     public int getTopID(){
         int n=1;

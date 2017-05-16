@@ -180,19 +180,20 @@
 </script>
 <div class="container">
     <nav class="navbar navbar-default" style="padding:20px">
-        <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</span></a>
+        <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>
 
         <ul id="myTab" class="nav nav-tabs" style="padding:20px">
 
             <li class="active">
                 <a href="#sellerinfo" tabindex="-1" data-toggle="tab">
-                    <span class="glyphicon glyphicon-user">我的信息</span>
+                    <span class="glyphicon glyphicon-user"></span>
+                    我的信息
                 </a>
             </li>
 
             <li class="dropdown">
                 <a href="#" id="myTabDrop2" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-folder-close">商品管理</span>
+                    <span class="glyphicon glyphicon-folder-close"></span>商品管理
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2">
@@ -212,8 +213,9 @@
 
             <li class="dropdown">
                 <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="glyphicon glyphicon-th">订单管理
-                    <span class="caret">
+                    <span class="glyphicon glyphicon-th">订单管理
+                    <span class="caret"></span>
+                </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
                             <li><a href="#allorder" tabindex="-1" data-toggle="tab">全部订单</a></li>
                             <li><a href="#waitpayorder" tabindex="-1" data-toggle="tab">待付款订单</a></li>
@@ -222,9 +224,7 @@
                             <li><a href="#cancelorder" tabindex="-1" data-toggle="tab">已取消订单</a></li>
                             <li><a href="#ordersearch" tabindex="-1" data-toggle="tab">订单查询</a></li>
                         </ul>
-                    </span>
-                </span>
-                </a>
+
 
             </li>
         </ul>
@@ -659,12 +659,10 @@
             <div class="tab-pane fade " id="ordersearch">
 
                 <div class="container">
-                    <form action="/seller/Search/Order" method="post"
-                          style="height:400px">
+                    <form action="/seller/Search/Order" method="post" style="height:400px">
                         <div class="input-prepend input-append">
                             <span class="add-on">
-                                <select name="select" id="selectsearchoption" onclick="searchbyselect()"
-                                        class="selectpicker" style="width:150px ;height:40px">
+                                <select name="select" id="selectsearchoption" onclick="searchbyselect()" class="selectpicker" style="width:150px ;height:40px">
                                     <option value="id">订单编号</option>
                                     <option value="date">下单日期</option>
                                     <option value="name">商品标题</option>
@@ -677,7 +675,7 @@
                                         <span class="glyphicon glyphicon-search">查询</span>
                                     </button>&nbsp;&nbsp;
                                     <span id="tip" style="color:#6E6E6E">查询格式如：201704020001</span>
-                                </span>
+                            </span>
                         </div>
                     </form>
                 </div>

@@ -22,6 +22,8 @@ public class ViewController {
     private GoodsService goodsService;
     private UserService userService;
     private SearchService searchService;
+    private OrderService orderService;
+
     @Autowired(required = true)
     @Qualifier(value = "detailService")
     public void setDetailService(DetailService ds){this.detailService=ds;}
@@ -36,7 +38,13 @@ public class ViewController {
 
     @Autowired(required = true)
     @Qualifier(value = "searchService")
-    public void setSearchService(SearchService ss){this.searchService=ss;}
+    public void setSearchService(SearchService ss){ this.searchService=ss; }
+
+    @Autowired(required = true)
+    @Qualifier(value = "buyerOrderService")
+    public void setOrderService(OrderService os){
+        this.orderService=os;
+    }
 
     @RequestMapping("/")
     public String buyerIndex(HttpServletRequest request){
@@ -84,7 +92,8 @@ public class ViewController {
     }
 
     @RequestMapping("/DeliveryInfo")
-    public String deliveryInfo(){
+    public String deliveryInfo(HttpServletRequest request){
+        request.getSession().setAttribute("orderService",this.orderService);
         return "buyUser";
     }
 

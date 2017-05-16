@@ -43,6 +43,10 @@ http://www.springframework.org/schema/aop
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <bean id="buyerOrderService" class="com.backend.buyerEnd.service.OrderService">
+        <property name="orderDao" ref="buyerOrderDao"/>
+    </bean>
+
     <bean id="buyerUserDao" class="com.backend.buyerEnd.dao.UserDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>

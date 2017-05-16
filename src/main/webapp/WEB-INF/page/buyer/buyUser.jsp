@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
-<%@ page import="com.backend.buyerEnd.dao.OrderDao,com.backend.model.OrderEntity,java.util.List" %>
+<%@ page import="com.backend.buyerEnd.service.*,com.backend.model.OrderEntity,java.util.List" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -33,8 +33,8 @@
     <tbody>
     <tr>
         <%
-            OrderDao dao = new OrderDao();
-            List<OrderEntity> list = dao.getOrderByUserID(name);
+            OrderService service = (OrderService)request.getSession().getAttribute("orderService");
+            List<OrderEntity> list = service.getOrderByUserID(name);
             for (OrderEntity o1 : list) {%>
         <td><%=o1.getOrderId() %>
         </td>

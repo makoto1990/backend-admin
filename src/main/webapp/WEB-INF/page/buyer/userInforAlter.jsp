@@ -99,6 +99,7 @@
         </div>
 
         <input type="submit" value="确认修改"/>
+    </div>
 
 </form>
 <%@ include file="footer.jsp" %>

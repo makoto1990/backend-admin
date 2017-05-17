@@ -6,7 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style type="text/css">
+    <style>
+        html{
+            overflow-x: hidden;
+        }
         .desc {
             font-size: 22px;
             color: #555;
@@ -27,8 +30,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>支农网上生鲜超市</title>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/resources/jquery/jquery.min.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <%
@@ -77,13 +80,13 @@
         </ol>
         <div class="details">
             <div class="container">
-                <div class="row clearfix">
+
                     <div class="col-md-6 column">
                         <div class="main-img">
                             <%
                                 String picPath = "/resources/images/"+goods.getPicture();
                             %>
-                            <img src=<%=picPath %> width="100%">
+                            <img src=<%=picPath %> width="80%">
                         </div>
                     </div>
                     <div class="col-md-6 column">
@@ -160,7 +163,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                 </div>
             </div>
         </div>

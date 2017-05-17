@@ -20,7 +20,7 @@
 <%
     String name = request.getSession().getAttribute("sname").toString();
 %>
-
+<div class="container">
 <%@ include file="header.jsp" %>
 
 <table class="table table-striped">
@@ -61,6 +61,8 @@
     </tbody>
 </table>
 
-
+<!--     第三部分 -->
+<%@ include file="footer.jsp" %>
+</div>
 </body>
 </html>

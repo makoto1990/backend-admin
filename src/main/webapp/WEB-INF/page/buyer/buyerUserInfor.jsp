@@ -15,6 +15,7 @@
 <%
     String name = request.getSession().getAttribute("sname").toString();
 %>
+<div class="container">
 <%@ include file="header.jsp" %>
 
 <form class="form-horizontal" role="form">
@@ -111,6 +112,7 @@
     %>
 
 </form>
-
+    <%@ include file="footer.jsp" %>
+</div>
 </body>
 </html>

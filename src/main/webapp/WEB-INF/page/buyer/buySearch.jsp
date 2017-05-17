@@ -59,31 +59,10 @@
         <% } %>
     </div>
 
+
     <!--     第三部分 -->
-    <div id="content">
-        <div class="row clearfix">
-            <div class="col-md-12 column">
-                <div class="row clearfix">
-                    <div class="col-md-8 column" style="background: blue">
-                        <p>显示更新产品介绍，包括类别，定价等，以及进行购买</p>
-                    </div>
-                    <div class="col-md-4 column" style="background: blue">
-                        <p>最新优秀宣传的产品等</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!--     第四部分 -->
-    <div id="footer">
-        <div class="row clearfix">
-            <div class="col-md-12 column" style="background: red">
-                <p>介绍一下网站基本信息，友情链接等</p>
-            </div>
-        </div>
-    </div>
+    <%@ include file="footer.jsp" %>
 </div>
+
 </body>
 </html>

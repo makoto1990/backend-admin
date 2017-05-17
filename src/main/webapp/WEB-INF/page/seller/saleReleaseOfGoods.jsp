@@ -24,7 +24,7 @@
     ArrayList goodsList = new ArrayList();
     int i1;
 %>
-
+<div class="container">
 <nav class="navbar navbar-default" style="padding:20px">
     <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</span></a>
     <button class="btn btn-default" onclick="ret()">返回</button>
@@ -62,11 +62,11 @@
                     if (goods != null) {
         %>
         <div class="col-sm-6 col-md-3">
-            <div class="thumbnail" style="height:400px;width:310px">
-                <div style="height:220px;width:310px; overflow:hidden; text-align:center;border:none">
+            <div class="thumbnail" style="height:400px;width:270px">
+                <div style="height:220px;width:265px; overflow:hidden; text-align:center;border:none">
                     <img src="/resources/images/<%=goods.getPicture() %>"
-                         class="img-responsive center-block"
-                         style="display:inline-block; vertical-align:middle; max-height:220px; max-width:300px;">
+                         class="img-rounded"
+                         style="display:inline-block; vertical-align:middle; max-height:220px; max-width:265px;">
                 </div>
                 <div class="caption">
                     <h3 style="color:red"><%=goods.getGoodsName() %>&nbsp;&nbsp;￥<%=goods.getGoodsPrice() %>
@@ -102,6 +102,8 @@
     </div>
 
 
+</div>
+    <%@ include file="footer.jsp" %>
 </div>
 </body>
 </html>

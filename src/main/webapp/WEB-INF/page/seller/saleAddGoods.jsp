@@ -6,13 +6,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>支农网上生鲜超市</title>
-    <script type="text/javascript" src="/resources/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/resources/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <link href="/resources/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
 </head>
 
 <body>
+<div class="container">
 <nav class="navbar navbar-default" style="padding:20px">
     <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>
     <form action="/seller/GoodsControServlet?value=release" method="post">
@@ -20,7 +21,7 @@
     </form>
 </nav>
 
-<div class="container" style="background-color:#CCCCCC">
+
     <%!
         GoodsEntity goods = new GoodsEntity();
         String goodsname;
@@ -28,10 +29,11 @@
     <%
         goods = (GoodsEntity) request.getSession().getAttribute("goods");
     %>
+    <div class="container">
     <form action="/seller/Goods/SaveEdit?goodsID=<%=goods.getGoodsId() %>"
           method="post">
 
-        <table border="4">
+        <table width="90%">
             <tr>
                 <td style="padding:20px" class="col-sm-3 col-md-2">商品编号:</td>
                 <td class="col-sm-3 col-md-2"><input type="text" disabled placeholder="<%=goods.getGoodsId() %>"></td>
@@ -98,8 +100,10 @@
 
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button class="btn btn-default btn-lg">取消修改</button>
+        </div>
     </form>
 </div>
+
 </div>
 </body>
 </html>

@@ -353,7 +353,7 @@
                     <form onsubmit="return validate_form2(this)" id="goodsinforform" method="post"
                           action="/seller/Goods/Add?sellerName=<%=sellerName%>&addGoodsID=<%=addGoodsID%>">
 
-                        <table border="4">
+                        <table width="90%">
                             <tr>
                                 <td style="padding:20px" class="col-sm-3 col-md-2">商品编号:</td>
                                 <td class="col-sm-3 col-md-2"><input type="text" disabled placeholder=<%=addGoodsID %>>
@@ -440,9 +440,9 @@
 
 
             <div class="tab-pane fade " id="allorder">
-                <div class="container">
+
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover">
+                        <table width="90%" class="table table-striped table-hover">
                             <caption>全部订单</caption>
                             <tr class="active">
                                 <td>订单编号</td>
@@ -482,12 +482,12 @@
 
                         </table>
                     </div>
-                </div>
+
             </div>
 
 
             <div class="tab-pane fade " id="waitpayorder">
-                <div class="container">
+
                     <div class="table-responsive">
                         <table class="table table-striped table-hover">
                             <caption>待付款订单</caption>
@@ -524,13 +524,13 @@
 
                         </table>
                     </div>
-                </div>
+
             </div>
 
 
             <div class="tab-pane fade " id="waitsendorder">
 
-                <div class="container">
+
                     <div class="table-responsive">
                         <table class="table table-striped table-hover">
                             <caption>待发货订单</caption>
@@ -567,13 +567,13 @@
 
                         </table>
                     </div>
-                </div>
+
             </div>
 
 
             <div class="tab-pane fade " id="sendorder">
 
-                <div class="container">
+
 
                     <div class="table-responsive">
                         <table class="table table-striped table-hover">
@@ -610,13 +610,13 @@
 
                         </table>
                     </div>
-                </div>
+
             </div>
 
 
             <div class="tab-pane fade " id="cancelorder">
 
-                <div class="container">
+
 
                     <div class="table-responsive">
                         <table class="table table-striped table-hover">
@@ -653,13 +653,13 @@
 
                         </table>
                     </div>
-                </div>
+
             </div>
 
 
             <div class="tab-pane fade " id="ordersearch">
 
-                <div class="container">
+
                     <form action="/seller/Search/Order" method="post" style="height:400px">
                         <div class="input-prepend input-append">
                             <span class="add-on">
@@ -679,7 +679,7 @@
                             </span>
                         </div>
                     </form>
-                </div>
+
                 <div id="search">
                 </div>
             </div>
@@ -687,6 +687,7 @@
 
         </div>
     </nav>
+    <%@ include file="footer.jsp" %>
 </div>
 
 

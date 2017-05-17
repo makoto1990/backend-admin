@@ -34,7 +34,7 @@
     <button class="btn btn-default" onclick="ret()">返回</button>
 </nav>
 
-<div class="container" style="background-color:#CCCCCC">
+<div class="container" >
     <form method="post" action="/seller/Goods/UploadImage?goodsID=<%=addGoodsID %>"
           enctype="multipart/form-data">
         <div>

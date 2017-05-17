@@ -48,6 +48,11 @@ public class RegisterService {
         user.setUserId(userID);
         user.setRegisterDate(new Timestamp(System.currentTimeMillis()));
         try{
+            if(this.dao.getUserByUsername(user.getUserName())!=null)return false;
+        } catch (Exception e) {
+            return false;
+        }
+        try{
             addUser(user);
         }catch (Exception e){
             return false;

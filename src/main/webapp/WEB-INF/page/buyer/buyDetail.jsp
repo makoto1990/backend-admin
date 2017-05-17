@@ -20,6 +20,9 @@
             color: #FFF;
             background: #ff9933;
         }
+        input{
+            width: 50px;
+        }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>支农网上生鲜超市</title>
@@ -129,7 +132,7 @@
                                                     <input type="button" id="btn1" value="-" onclick="minus()"
                                                            style="out-line:none;"/>
                                                     <!-- <img src="/Content/img/minus.png"> -->
-                                                    <input id="out" name="out"/>
+                                                    <input id="out" name="out" />
                                                     <input type="button" id="btn2" value="+" onclick="plus()"
                                                            style="out-line:none;"/>
                                                     <!-- <img src="/Content/img/plus.png"> -->
@@ -179,13 +182,8 @@
 
 
     <!--     第四部分 -->
-    <div id="footer">
-        <div class="row clearfix">
-            <div class="col-md-12 column" style="background: red">
-                <p>介绍一下网站基本信息，友情链接等</p>
-            </div>
-        </div>
-    </div>
+    <!--     第三部分 -->
+    <%@ include file="footer.jsp" %>
 
 </div>
 </body>

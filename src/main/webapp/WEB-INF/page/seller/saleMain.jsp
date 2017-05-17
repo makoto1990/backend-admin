@@ -6,6 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@page errorPage="saleError.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -463,8 +464,8 @@
                             <tr>
                                 <%} %>
                                 <td>
-                                    <a href="/seller/Order/Detail/<%=order1.getOrderId() %>" target="_blank"
-                                       class="tooltip-test" data-toggle="tooltip"
+                                    <a href="/seller/Order/Detail/<%=order1.getOrderId() %>"
+                                       class="tooltip-test" data-toggle="tooltip" target="_blank"
                                        title="点击查看订单详情"><%=order1.getOrderId() %>
                                     </a></td>
                                 <td><%=order1.getReceiverName() %>
@@ -505,8 +506,8 @@
                             %>
                             <tr>
                                 <td>
-                                    <a href="/seller/Order/Detail/<%=order2.getOrderId() %>" target="_blank"
-                                       class="tooltip-test" data-toggle="tooltip"
+                                    <a href="/seller/Order/Detail/<%=order2.getOrderId() %>"
+                                       class="tooltip-test" data-toggle="tooltip" target="_blank"
                                        title="点击查看订单详情"><%=order2.getOrderId() %>
                                     </a></td>
                                 <td><%=order2.getReceiverName() %>
@@ -548,8 +549,8 @@
                             %>
                             <tr>
                                 <td>
-                                    <a href="/seller/Order/Detail/<%=order3.getOrderId() %>" target="_blank"
-                                       class="tooltip-test" data-toggle="tooltip"
+                                    <a href="/seller/Order/Detail/<%=order3.getOrderId() %>"
+                                       class="tooltip-test" data-toggle="tooltip" target="_blank"
                                        title="点击查看订单详情"><%=order3.getOrderId() %>
                                     </a></td>
                                 <td><%=order3.getReceiverName() %>
@@ -591,8 +592,8 @@
                             %>
                             <tr>
                                 <td>
-                                    <a href="/seller/Order/Detail/<%=order4.getOrderId() %>" target="_blank"
-                                       class="tooltip-test" data-toggle="tooltip"
+                                    <a href="/seller/Order/Detail/<%=order4.getOrderId() %>"
+                                       class="tooltip-test" data-toggle="tooltip" target="_blank"
                                        title="点击查看订单详情"><%=order4.getOrderId() %>
                                     </a></td>
                                 <td><%=order4.getReceiverName() %>
@@ -634,8 +635,8 @@
                             %>
                             <tr>
                                 <td>
-                                    <a href="/seller/Order/Detail/<%=order5.getOrderId() %>" target="_blank"
-                                       class="tooltip-test" data-toggle="tooltip"
+                                    <a href="/seller/Order/Detail/<%=order5.getOrderId() %>"
+                                       class="tooltip-test" data-toggle="tooltip" target="_blank"
                                        title="点击查看订单详情"><%=order5.getOrderId() %>
                                     </a></td>
                                 <td><%=order5.getReceiverName() %>

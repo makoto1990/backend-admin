@@ -8,7 +8,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>支农网上生鲜超市</title>
-    <script type="text/javascript" src="/resources/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/resources/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <link href="/resources/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script>

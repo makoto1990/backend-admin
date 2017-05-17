@@ -43,14 +43,14 @@ public class SellerDaoImpl implements SellerDao {
     @Override
     public SellerEntity getSellerById(String sellerId) {
         Session session = this.sessionFactory.openSession();
-        return (SellerEntity) session.load(SellerEntity.class, sellerId);
+        return session.load(SellerEntity.class, sellerId);
     }
 
     @Override
     public void removeSeller(String sellerId) {
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        SellerEntity s = (SellerEntity) session.load(SellerEntity.class, sellerId);
+        SellerEntity s = session.load(SellerEntity.class, sellerId);
         if (s != null) {
             session.delete(s);
         }

@@ -34,7 +34,7 @@ public class CompositionDaoImpl implements CompositionDao {
     @Override
     public CompositionEntity getCompositionByOrderGoodsId(String orderGoodsId) {
         Session session = this.sessionFactory.openSession();
-        return (CompositionEntity) session.load(CompositionEntity.class, orderGoodsId);
+        return session.load(CompositionEntity.class, orderGoodsId);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class CompositionDaoImpl implements CompositionDao {
     public void removeComposition(String orderGoodsId) {
         Session session = this.sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        CompositionEntity c = (CompositionEntity) session.load(CompositionEntity.class, orderGoodsId);
+        CompositionEntity c = session.load(CompositionEntity.class, orderGoodsId);
         if (c != null) {
             session.delete(c);
         }

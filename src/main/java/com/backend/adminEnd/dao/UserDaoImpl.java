@@ -43,14 +43,14 @@ public class UserDaoImpl implements UserDao {
     @Override
     public UserEntity getUserById(String userId) {
         Session session = this.sessionFactory.openSession();
-        return (UserEntity) session.load(UserEntity.class, userId);
+        return session.load(UserEntity.class, userId);
     }
 
     @Override
     public void removeUser(String userId) {
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        UserEntity u = (UserEntity) session.load(UserEntity.class, userId);
+        UserEntity u = session.load(UserEntity.class, userId);
         if (u != null) {
             session.delete(u);
         }

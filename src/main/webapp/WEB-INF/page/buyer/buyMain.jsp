@@ -63,7 +63,7 @@
             String str = "/resources/images/";
             ArrayList<GoodsEntity> allGoods = (ArrayList) request.getSession().getAttribute("allGoods");
             HttpSession sess = request.getSession();
-            i = 0;
+            int i = 0;
             for (GoodsEntity tmp : allGoods) {
                 String goodsName = tmp.getGoodsName().trim();
                 String picPath = str + tmp.getPicture();

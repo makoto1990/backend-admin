@@ -27,10 +27,10 @@
             HttpSession sess = request.getSession();
             sess.setAttribute("userName", name);
             String str = "/resources/images/";
-            for (i = 0; i < l; i++) {
+            for (int i = 0; i < l; i++) {
                 GoodsEntity tmp = allGoods.get(i);
                 String goodsName = tmp.getGoodsName().trim();
-                String picPath = str tmp.getPicture();
+                String picPath = str + tmp.getPicture();
                 String detailPath = "/buyer/BuyDetail/" + i;
                 sess.setAttribute("goodsName" + i, tmp.getGoodsName());
                 sess.setAttribute("goodsId" + i, tmp.getGoodsId());

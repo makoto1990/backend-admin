@@ -40,7 +40,7 @@
             DetailService svc = (DetailService)request.getSession().getAttribute("svc");
             CartService cart = (CartService) request.getSession().getAttribute("cartService");
             if(cart.getCart()==null){
-                cart.setCart(new HashMap());
+                cart.setCart(new HashMap<String,Integer>());
             }
             for (String goodsId : cart.getCart().keySet()) {
                 GoodsEntity goods=svc.getGoodsByGoodsId(goodsId);

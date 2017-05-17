@@ -50,21 +50,6 @@
                         <a class="navbar-brand" href="/buyer/">首页</a>
                     </div>
                     <div class="collapse navbar-collapse" id="example-navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <%
-                                ArrayList<String> typeList = (ArrayList) request.getSession().getAttribute("goodsTypes");
-                                int size = typeList.size();
-                                String[] typeNames = (String[]) typeList.toArray(new String[size]);
-                                int i = 0;
-                                for (String typeName : typeNames) {
-                            %>
-                            <li><a href="#"><%=typeName%>
-                            </a></li>
-                            <%
-                                    i++;
-                                }%>
-
-                        </ul>
                         <form class="navbar-form navbar-right" role="search" action="/buyer/Search" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="请输入你想要搜索的商品类别或商品名称"

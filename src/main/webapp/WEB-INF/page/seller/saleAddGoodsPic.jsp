@@ -7,9 +7,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>支农网上生鲜超市</title>
-    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-    <link href="../bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/resources/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
+    <link href="/resources/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
     <script>
         function ret() {
@@ -27,7 +27,7 @@
     String addGoodsID;
 %>
 <%
-    addGoodsID = (String) request.getSession().getAttribute("addgoodsid");
+    addGoodsID = (String) request.getSession().getAttribute("addGoodsID");
 %>
 <nav class="navbar navbar-default" style="padding:20px">
     <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">首页</a>

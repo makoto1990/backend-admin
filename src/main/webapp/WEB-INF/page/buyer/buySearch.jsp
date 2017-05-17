@@ -30,7 +30,7 @@
             for (i = 0; i < l; i++) {
                 GoodsEntity tmp = allGoods.get(i);
                 String goodsName = tmp.getGoodsName().trim();
-                String picPath = str + goodsName + ".jpg";
+                String picPath = str tmp.getPicture();
                 String detailPath = "/buyer/BuyDetail/" + i;
                 sess.setAttribute("goodsName" + i, tmp.getGoodsName());
                 sess.setAttribute("goodsId" + i, tmp.getGoodsId());

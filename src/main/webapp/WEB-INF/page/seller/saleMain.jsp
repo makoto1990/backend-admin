@@ -345,16 +345,13 @@
 
 
                 <div class="container">
-                    <%!
-                        String addGoodsID;
-                    %>
                     <%
                         GoodsService goodsService = (GoodsService) request.getSession().getAttribute("goodsService");
-                        addGoodsID = goodsService.GoodsID();
+                        String addGoodsID = goodsService.GoodsID();
                     %>
 
                     <form onsubmit="return validate_form2(this)" id="goodsinforform" method="post"
-                          action="/seller/Goods/Add?sellerName=<%=sellerName%>&&addGoodsID=<%=addGoodsID%>">
+                          action="/seller/Goods/Add?sellerName=<%=sellerName%>&addGoodsID=<%=addGoodsID%>">
 
                         <table border="4">
                             <tr>

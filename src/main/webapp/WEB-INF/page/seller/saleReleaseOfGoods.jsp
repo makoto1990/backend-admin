@@ -21,7 +21,7 @@
 <%String sellerName = (String) request.getSession().getAttribute("sname"); %>
 <%!
     GoodsEntity goods = new GoodsEntity();
-    ArrayList goodslist = new ArrayList();
+    ArrayList goodsList = new ArrayList();
     int i1;
 %>
 
@@ -55,16 +55,16 @@
     </div>
     <div class="row" style="margin-top:100px">
         <%
-            goodslist = (ArrayList) request.getSession().getAttribute("goodslist");
-            if (goodslist != null) {
-                for (i1 = 0; i1 < goodslist.size(); i1++) {
-                    goods = (GoodsEntity) goodslist.get(i1);
+            goodsList = (ArrayList) request.getSession().getAttribute("goodsList");
+            if (goodsList != null) {
+                for (i1 = 0; i1 < goodsList.size(); i1++) {
+                    goods = (GoodsEntity) goodsList.get(i1);
                     if (goods != null) {
         %>
         <div class="col-sm-6 col-md-3">
             <div class="thumbnail" style="height:400px;width:310px">
                 <div style="height:220px;width:310px; overflow:hidden; text-align:center;border:none">
-                    <img src="../resources/images/<%=goods.getPicture() %>"
+                    <img src="/resources/images/<%=goods.getPicture() %>"
                          class="img-responsive center-block"
                          style="display:inline-block; vertical-align:middle; max-height:220px; max-width:300px;">
                 </div>

@@ -78,7 +78,7 @@
                     <div class="col-md-6 column">
                         <div class="main-img">
                             <%
-                                String picPath = "/resources/images/" + goodsName + ".jpg";
+                                String picPath = "/resources/images/"+goods.getPicture();
                             %>
                             <img src=<%=picPath %> width="100%">
                         </div>

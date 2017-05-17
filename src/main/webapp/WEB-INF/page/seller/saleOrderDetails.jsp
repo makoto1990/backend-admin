@@ -1,6 +1,6 @@
 <%@ page language="java" import="com.backend.model.*" import="com.backend.sellerEnd.*"
-         contentType="text/html; charset=GBK"
-         pageEncoding="GBK" %>
+         contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <%@page import="java.util.ArrayList" %>
 <%@ page import="com.backend.sellerEnd.service.SearchService" %>
 <%@page errorPage="saleError.jsp" %>
@@ -8,20 +8,20 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Ö§Å©ÍøÉÏÉúÏÊ³¬ÊÐ</title>
+    <title>æ”¯å†œç½‘ä¸Šç”Ÿé²œè¶…å¸‚</title>
     <script type="text/javascript" src="/resources/jquery/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <link href="/resources/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
     <script>
         function cancelinfor() {
-            alert("¶©µ¥ÒÑ³É¹¦È¡Ïû£¡")
+            alert("è®¢å•å·²æˆåŠŸå–æ¶ˆï¼")
         }
         function confirminfor() {
-            alert("¶©µ¥ÒÑ³É¹¦È·ÈÏ£¬Çë¾¡¿ì·¢»õ£¡")
+            alert("è®¢å•å·²æˆåŠŸç¡®è®¤ï¼Œè¯·å°½å¿«å‘è´§ï¼")
         }
         function sendinfor() {
-            alert("¶©µ¥ÒÑ³É¹¦·¢»õ£¡")
+            alert("è®¢å•å·²æˆåŠŸå‘è´§ï¼")
         }
     </script>
 
@@ -32,7 +32,7 @@
 <%!
     String id;
     ArrayList list = new ArrayList();
-    ArrayList goodslist = new ArrayList();
+    ArrayList goodsList = new ArrayList();
     OrderEntity order = new OrderEntity();
     GoodsEntity goods = new GoodsEntity();
     CompositionEntity composition = new CompositionEntity();
@@ -43,7 +43,7 @@
     id = request.getParameter("id");
     SearchService searchService = (SearchService) request.getSession().getAttribute("searchService");
     list = searchService.SearchOrderDetails(id);
-    goodslist = searchService.SearchOrderGood(id);
+    goodsList = searchService.SearchOrderGood(id);
     order = (OrderEntity) list.get(0);
     status = order.getOrderStatus().trim();
 
@@ -51,12 +51,12 @@
 <div class="container">
     <div class="table-responsive">
         <table class="table table-striped table-hover">
-            <caption style="font-size:30px;padding:30px;color:#0000FF">¶©µ¥ÏêÇé</caption>
+            <caption style="font-size:30px;padding:30px;color:#0000FF">è®¢å•è¯¦æƒ…</caption>
             <tr style="color:#FF0000;background-color:#D3D3D3">
-                <td>¶©µ¥±àºÅ</td>
-                <td>ÊÕ»õÈËÐÕÃû</td>
-                <td>ÁªÏµ·½Ê½</td>
-                <td>¶©µ¥×´Ì¬</td>
+                <td>è®¢å•ç¼–å·</td>
+                <td>æ”¶è´§äººå§“å</td>
+                <td>è”ç³»æ–¹å¼</td>
+                <td>è®¢å•çŠ¶æ€</td>
             </tr>
 
             <tr>
@@ -71,10 +71,10 @@
             </tr>
 
             <tr style="color:#FF0000;background-color:#D3D3D3">
-                <td>´´½¨Ê±¼ä</td>
-                <td>¸¶¿îÊ±¼ä</td>
-                <td>È·ÈÏÊ±¼ä</td>
-                <td>·¢»õÊ±¼ä</td>
+                <td>åˆ›å»ºæ—¶é—´</td>
+                <td>ä»˜æ¬¾æ—¶é—´</td>
+                <td>ç¡®è®¤æ—¶é—´</td>
+                <td>å‘è´§æ—¶é—´</td>
             </tr>
 
             <tr>
@@ -82,21 +82,21 @@
                 </td>
 
                 <% if (order.getPayTime() == null) { %>
-                <td>Î´¸¶¿î</td>
+                <td>æœªä»˜æ¬¾</td>
                 <%} else { %>
                 <td><%=order.getPayTime() %>
                 </td>
                 <%} %>
 
                 <% if (order.getConfirmTime() == null) { %>
-                <td>Î´È·ÈÏ</td>
+                <td>æœªç¡®è®¤</td>
                 <%} else { %>
                 <td><%=order.getConfirmTime()%>
                 </td>
                 <%} %>
 
                 <% if (order.getDeliveryTime() == null) { %>
-                <td>Î´·¢»õ</td>
+                <td>æœªå‘è´§</td>
                 <%} else { %>
                 <td><%=order.getDeliveryTime() %>
                 </td>
@@ -110,21 +110,21 @@
 <div class="container">
     <div class="table-responsive" style="padding-bottom:20px">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" align="center" style="padding:20px"
-           class="tooltip-test" data-toggle="tooltip" title="µã»÷Õ¹¿ª/ÕÛµþ¶©µ¥ÖÐ°üº¬µÄÉÌÆ·ÁÐ±í">ÉÌÆ·ÁÐ±í</a>
+           class="tooltip-test" data-toggle="tooltip" title="ç‚¹å‡»å±•å¼€/æŠ˜å è®¢å•ä¸­åŒ…å«çš„å•†å“åˆ—è¡¨">å•†å“åˆ—è¡¨</a>
         <div id="collapseOne" class="panel-collapse collapse ">
             <div class="panel-body">
                 <table class="table table-striped table-hover">
                     <tr style="color:#FF0000;background-color:#90EE90">
-                        <td>ÉÌÆ·±àºÅ</td>
-                        <td>ÉÌÆ·Ãû³Æ</td>
-                        <td>ÉÌÆ·Àà±ð</td>
-                        <td>ÉÌÆ·µ¥¼Û</td>
-                        <td>ÉÌÆ·ÊýÁ¿</td>
-                        <td>ÉÌÆ·×Ü¼Û</td>
+                        <td>å•†å“ç¼–å·</td>
+                        <td>å•†å“åç§°</td>
+                        <td>å•†å“ç±»åˆ«</td>
+                        <td>å•†å“å•ä»·</td>
+                        <td>å•†å“æ•°é‡</td>
+                        <td>å•†å“æ€»ä»·</td>
                             <%
-            for(int i=0;i<goodslist.size();i+=2){
-              goods=(GoodsEntity) goodslist.get(i);
-	          composition=(CompositionEntity) goodslist.get(i+1);
+            for(int i=0;i<goodsList.size();i+=2){
+              goods=(GoodsEntity) goodsList.get(i);
+	          composition=(CompositionEntity) goodsList.get(i+1);
             %>
                     <tr>
                         <td><a href="#"><%=goods.getGoodsId() %>
@@ -153,8 +153,8 @@
         <table class="table table-striped table-hover">
 
             <tr style="color:#FF0000;background-color:#D3D3D3">
-                <td>ÔË·Ñ</td>
-                <td>ºÏ¼Æ¼Û¸ñ</td>
+                <td>è¿è´¹</td>
+                <td>åˆè®¡ä»·æ ¼</td>
             </tr>
 
             <tr>
@@ -173,8 +173,8 @@
         <table class="table table-striped table-hover">
 
             <tr style="color:#FF0000;background-color:#D3D3D3">
-                <td>ÊÕ»õµØÖ·</td>
-                <td>ÓÊ±à</td>
+                <td>æ”¶è´§åœ°å€</td>
+                <td>é‚®ç¼–</td>
             </tr>
 
             <tr>
@@ -187,32 +187,32 @@
 
         </table>
         <div>
-            <%if (!status.equals("¶©µ¥ÒÑÈ¡Ïû")) {%>
+            <%if (!status.equals("è®¢å•å·²å–æ¶ˆ")) {%>
             <form action="/seller/Order/Update" align="right">
                 <input type="text" name="contro" value="0" style="display:none">
                 <input type="text" name="id" value="<%=order.getOrderId() %>" style="display:none">
                 <input type="submit" style="width:150px;height:50px" class="btn btn-warning" onclick="cancelinfor()"
-                       value="È¡Ïû¶©µ¥"/>
+                       value="å–æ¶ˆè®¢å•"/>
             </form>
             <%} %>
             <p></p>
-            <%if (status.equals("µÈ´ýÂô¼ÒÈ·ÈÏ")) {%>
+            <%if (status.equals("ç­‰å¾…å–å®¶ç¡®è®¤")) {%>
             <form action="/seller/Order/Update" align="right">
                 <input type="text" name="contro" value="1" style="display:none">
                 <input type="text" name="id" value="<%=order.getOrderId() %>" style="display:none">
                 <input type="submit" style="width:150px;height:50px" class="btn btn-primary" onclick="confirminfor()"
-                       value="È·ÈÏ¶©µ¥"/>
+                       value="ç¡®è®¤è®¢å•"/>
             </form>
             <%
                 }
-                if (status.equals("µÈ´ýÂô¼Ò·¢»õ")) {
+                if (status.equals("ç­‰å¾…å–å®¶å‘è´§")) {
             %>
             <p></p>
             <form action="/seller/Order/Update" align="right">
                 <input type="text" name="contro" value="2" style="display:none">
                 <input type="text" name="id" value="<%=order.getOrderId() %>" style="display:none">
                 <input type="submit" style="width:150px;height:50px" class="btn btn-primary" onclick="sendinfor()"
-                       value="·¢»õ"/>
+                       value="å‘è´§"/>
             </form>
             <%} %>
         </div>

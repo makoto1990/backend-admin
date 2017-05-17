@@ -1,16 +1,16 @@
 <%@ page language="java" import="com.backend.model.OrderEntity" import="java.util.ArrayList"
-         contentType="text/html; charset=GBK"
-         pageEncoding="GBK" %>
+         contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <%@page errorPage="saleError.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Ö§Å©ÍøÉÏÉúÏÊ³¬ÊĞ</title>
-    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-    <link href="../bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <title>æ”¯å†œç½‘ä¸Šç”Ÿé²œè¶…å¸‚</title>
+    <script type="text/javascript" src="/resources/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.min.js"></script>
+    <link href="/resources/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
     <script>
         function ret() {
@@ -19,13 +19,13 @@
 
         function searchbyselect() {
             if (document.getElementById("selectsearchoption").value == "date") {
-                document.getElementById("tip").innerHTML = "²éÑ¯¸ñÊ½Èç£º 2017-04-03"
+                document.getElementById("tip").innerHTML = "æŸ¥è¯¢æ ¼å¼å¦‚ï¼š 2017-04-03"
             }
             else if (document.getElementById("selectsearchoption").value == "id") {
-                document.getElementById("tip").innerHTML = "²éÑ¯¸ñÊ½Èç£º201704020001"
+                document.getElementById("tip").innerHTML = "æŸ¥è¯¢æ ¼å¼å¦‚ï¼š201704020001"
             }
             else {
-                document.getElementById("tip").innerHTML = "²éÑ¯¸ñÊ½Èç£º »Æ¹Ï"
+                document.getElementById("tip").innerHTML = "æŸ¥è¯¢æ ¼å¼å¦‚ï¼š é»„ç“œ"
             }
         }
     </script>
@@ -34,8 +34,8 @@
 </head>
 <body>
 <nav class="navbar navbar-default" style="padding:20px">
-    <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">Ê×Ò³</a>
-    <button class="btn btn-default" onclick="ret()">·µ»Ø</button>
+    <a href="/" class=navbar-brand" style="padding:40px"><span class="glyphicon glyphicon-home">é¦–é¡µ</a>
+    <button class="btn btn-default" onclick="ret()">è¿”å›</button>
 </nav>
 <div class="container">
 
@@ -48,17 +48,17 @@
         <div class="input-prepend input-append">
             <span class="add-on">
                 <select name="select" id="selectsearchoption" onclick="searchbyselect()" class="selectpicker" style="width:150px ;height:40px">
-                    <option value="id">¶©µ¥±àºÅ</option>
-                    <option value="date">ÏÂµ¥ÈÕÆÚ</option>
-                    <option value="name">ÉÌÆ·±êÌâ</option>
+                    <option value="id">è®¢å•ç¼–å·</option>
+                    <option value="date">ä¸‹å•æ—¥æœŸ</option>
+                    <option value="name">å•†å“æ ‡é¢˜</option>
                 </select>
             </span>
-            <input type="text" style="width:300px" name="input" placeholder="ÊäÈë²éÑ¯ÄÚÈİ£¬Ö§³ÖÄ£ºı²éÑ¯" class="span2 search-query input-lg">
+            <input type="text" style="width:300px" name="input" placeholder="è¾“å…¥æŸ¥è¯¢å†…å®¹ï¼Œæ”¯æŒæ¨¡ç³ŠæŸ¥è¯¢" class="span2 search-query input-lg">
             <span class="add-on">
                 <button type="submit" class="btn btn-success" style="width:100px;height:50px">
-                    <span class="glyphicon glyphicon-search">²éÑ¯</span>
+                    <span class="glyphicon glyphicon-search">æŸ¥è¯¢</span>
                 </button>&nbsp;&nbsp;
-                <span id="tip" style="color:#6E6E6E">²éÑ¯¸ñÊ½Èç£º201704020001</span>
+                <span id="tip" style="color:#6E6E6E">æŸ¥è¯¢æ ¼å¼å¦‚ï¼š201704020001</span>
             </span>
         </div>
     </form>
@@ -69,12 +69,12 @@
 %>
 <div class="table-responsive">
     <table class="table table-striped table-hover">
-        <caption>²éÑ¯½á¹û</caption>
+        <caption>æŸ¥è¯¢ç»“æœ</caption>
         <tr>
-            <td>¶©µ¥±àºÅ</td>
-            <td>ÊÕ»õÈËĞÕÃû</td>
-            <td>´´½¨Ê±¼ä</td>
-            <td>¶©µ¥×´Ì¬</td>
+            <td>è®¢å•ç¼–å·</td>
+            <td>æ”¶è´§äººå§“å</td>
+            <td>åˆ›å»ºæ—¶é—´</td>
+            <td>è®¢å•çŠ¶æ€</td>
         </tr>
 
         <%

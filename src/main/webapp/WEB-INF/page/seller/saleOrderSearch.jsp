@@ -89,7 +89,7 @@
         %>
         <tr>
             <td>
-                <a href="/seller/Order/Detail/<%=order.getOrderId() %>" target="_blank">
+                <a href="/seller/Order/Detail/<%=order.getOrderId() %>" >
                     <%=order.getOrderId() %>
                 </a>
             </td>

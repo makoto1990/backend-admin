@@ -26,14 +26,14 @@
     <div class="form-group">
         <label class="col-sm-5 control-label">用户ID</label>
         <div class="col-sm-7">
-            <p class="form-control-static"><%=userEntity.getUserId() %>
+            <p class="form-control-static"><%=(userEntity.getUserId()==null?"暂未填写":userEntity.getUserId()) %>
             </p>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label">用户姓名</label>
         <div class="col-sm-7">
-            <p class="form-control-static"><%=userEntity.getUserName() %>
+            <p class="form-control-static"><%=(userEntity.getUserName()==null?"暂未填写":userEntity.getUserName()) %>
             </p>
         </div>
     </div>
@@ -47,63 +47,63 @@
     <div class="form-group">
         <label class="col-sm-5 control-label">真实姓名</label>
         <div class="col-sm-7">
-            <p class="form-control-static"><%=userEntity.getRealName() %>
+            <p class="form-control-static"><%=(userEntity.getRealName()==null?"暂未填写": userEntity.getRealName())%>
             </p>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label">身份证号</label>
         <div class="col-sm-7">
-            <p class="form-control-static"><%=userEntity.getiDnumber() %>
+            <p class="form-control-static"><%=(userEntity.getiDnumber()==null?"暂未填写":userEntity.getiDnumber()) %>
             </p>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label">联系电话</label>
         <div class="col-sm-7">
-            <p class="form-control-static"><%=userEntity.getPhone() %>
+            <p class="form-control-static"><%=(userEntity.getPhone()==null?"暂未填写":userEntity.getPhone()) %>
             </p>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label">邮编</label>
         <div class="col-sm-7">
-            <p class="form-control-static"><%=userEntity.getPostcode() %>
+            <p class="form-control-static"><%=(userEntity.getPostcode()==null?"暂未填写":userEntity.getPostcode() )%>
             </p>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label">省</label>
         <div class="col-sm-7">
-            <p class="form-control-static"><%=userEntity.getProvince() %>
+            <p class="form-control-static"><%=(userEntity.getProvince()==null?"暂未填写":userEntity.getProvince() )%>
             </p>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label">市</label>
         <div class="col-sm-7">
-            <p class="form-control-static"><%=userEntity.getCity() %>
+            <p class="form-control-static"><%=(userEntity.getCity()==null?"暂未填写":userEntity.getCity()) %>
             </p>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label">区/县</label>
         <div class="col-sm-7">
-            <p class="form-control-static"><%=userEntity.getDistrict() %>
+            <p class="form-control-static"><%=(userEntity.getDistrict()==null?"暂未填写":userEntity.getDistrict() )%>
             </p>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label">街道</label>
         <div class="col-sm-7">
-            <p class="form-control-static"><%=userEntity.getStreet() %>
+            <p class="form-control-static"><%=(userEntity.getStreet()==null?"暂未填写":userEntity.getStreet()) %>
             </p>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label">详细地址</label>
         <div class="col-sm-7">
-            <p class="form-control-static"><%=userEntity.getAddress() %>
+            <p class="form-control-static"><%=(userEntity.getAddress()==null?"暂未填写":userEntity.getAddress()) %>
             </p>
         </div>
     </div>

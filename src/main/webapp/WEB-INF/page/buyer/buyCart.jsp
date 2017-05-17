@@ -15,7 +15,6 @@
     <script src="/resources/jquery/jquery.min.js"></script>
     <script src="/resources/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-
 <body>
 <%
     String name = request.getSession().getAttribute("sname").toString();
@@ -45,7 +44,6 @@
             GoodsEntity goods=svc.getGoodsByGoodsId(goodsId);
     %>
     <tr>
-
         <td><%=goods.getGoodsName() %>
         </td>
         <td><%=goods.getGoodsPrice() %>

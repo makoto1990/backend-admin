@@ -22,7 +22,7 @@
     <%
         UserEntity userEntity = (UserEntity) request.getSession().getAttribute("userEntity");
         {%>
-    <li class="navbar-middle"><a href="/User/Update">修改信息<% request.getSession().setAttribute("user", userEntity); %></a></li>
+
     <div class="form-group">
         <label class="col-sm-5 control-label">用户ID</label>
         <div class="col-sm-7">

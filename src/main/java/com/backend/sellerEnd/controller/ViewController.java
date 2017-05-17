@@ -95,13 +95,13 @@ public class ViewController {
 
     @RequestMapping(value = "/Goods/SaleRelease",method = RequestMethod.POST)
     public String getSaleRelease(@ModelAttribute("sellerName") String sellerName, HttpServletRequest request) {
-        request.getSession().setAttribute("goodslist", this.goodsService.getRelease(sellerName));
+        request.getSession().setAttribute("goodsList", this.goodsService.getRelease(sellerName));
         return "saleReleaseOfGoods";
     }
 
     @RequestMapping(value = "/Goods/SaleRelease/Search/{sellerName}",method = RequestMethod.POST)
     public String searchGoods(@ModelAttribute("goodsType") String goodsType, @PathVariable("sellerName") String sellerName, HttpServletRequest request) {
-        request.getSession().setAttribute("goodslist", this.goodsService.searchGoods(goodsType, sellerName));
+        request.getSession().setAttribute("goodsList", this.goodsService.searchGoods(goodsType, sellerName));
         return "saleReleaseOfGoods";
     }
 
@@ -132,12 +132,12 @@ public class ViewController {
 
     @RequestMapping("/Goods/Delete/{goodsID}")
     public String deleteGoods(@ModelAttribute("sellerName") String sellerName, @PathVariable("goodsID") String goodsID, HttpServletRequest request) {
-        request.getSession().setAttribute("goodslist", this.goodsService.deleteGoods(goodsID, sellerName));
+        request.getSession().setAttribute("goodsList", this.goodsService.deleteGoods(goodsID, sellerName));
         return "saleReleaseOfGoods";
     }
 
     @RequestMapping("/Goods/Add")
-    public String addGoods(@ModelAttribute("sellerName") String sellerName, @ModelAttribute("addGoodsID") String goodsID, @ModelAttribute("addName") String name, @ModelAttribute("addCount") String count, @ModelAttribute("addPrice") String price, @ModelAttribute("addStoreWay") String storeWay, @ModelAttribute("addSourceArea") String sourceArea, @ModelAttribute("addType") String type, @ModelAttribute("addLeastAmount") String leastAmount, @ModelAttribute("addLargeAmount") String largeAmount, @ModelAttribute("addLargePrice") String largePrice, @ModelAttribute("addGoodsSize") String goodsSize, @ModelAttribute("addGoodsIntro") String goodsIntro, HttpServletRequest request) {
+    public String addGoods(@ModelAttribute("sellerName") String sellerName, @ModelAttribute("addGoodsID") String goodsID, @ModelAttribute("addGoodsName") String name, @ModelAttribute("addGoodsCount") String count, @ModelAttribute("addGoodsPrice") String price, @ModelAttribute("addStoreWay") String storeWay, @ModelAttribute("addSourceArea") String sourceArea, @ModelAttribute("addGoodsType") String type, @ModelAttribute("addLeastAmount") String leastAmount, @ModelAttribute("addLargeAmount") String largeAmount, @ModelAttribute("addLargePrice") String largePrice, @ModelAttribute("addGoodsSize") String goodsSize, @ModelAttribute("addGoodsIntro") String goodsIntro, HttpServletRequest request) {
         String[] values = new String[14];
         values[0] = goodsID;
         values[1] = name;
@@ -154,7 +154,7 @@ public class ViewController {
         values[11] = largePrice;
         values[12] = goodsSize;
         values[13] = goodsIntro;
-        request.getSession().setAttribute("addgoodsid", this.goodsService.addGoods(values));
+        request.getSession().setAttribute("addGoodsID", this.goodsService.addGoods(values));
         return "saleAddGoodsPic";
     }
 

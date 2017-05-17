@@ -86,7 +86,7 @@
             <h4>商品图片：</h4>
             <div class="thumbnail" style="height:220px;width:300px">
                 <div style="height:220px;width:220px" overflow:hidden; text-align:center; border:1px solid red;>
-                    <img src="<%=goods.getPicture() %>"
+                    <img src="/resources/images/<%=goods.getPicture() %>"
                          class="img-responsive center-block" alt="通用的占位符缩略图"
                          style="display:inline-block; vertical-align:middle; max-height:220px; max-width:250px;">
                 </div>

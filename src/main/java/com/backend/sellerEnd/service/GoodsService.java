@@ -35,27 +35,27 @@ public class GoodsService extends HttpServlet {
      */
  //   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     public ArrayList<GoodsEntity> getRelease(String sellerName) {
-        ArrayList<GoodsEntity> goodslist = new ArrayList<GoodsEntity>();
-        goodslist = this.goodsDao.releaseOfGoods(sellerName);
+        ArrayList<GoodsEntity> goodsList = new ArrayList<GoodsEntity>();
+        goodsList = this.goodsDao.releaseOfGoods(sellerName);
         GoodsEntity a = new GoodsEntity();
-        for (int j = 0; j < goodslist.size(); j++) {
-            a = (GoodsEntity) goodslist.get(j);
+        for (int j = 0; j < goodsList.size(); j++) {
+            a = (GoodsEntity) goodsList.get(j);
             System.out.println(a.getGoodsName() + " " + a.getGoodsPrice() + " " + a.getSourceArea() + " " + a.getPicture());
         }
-        return goodslist;
+        return goodsList;
     }
 
     public ArrayList<GoodsEntity> searchGoods(String goodsType,String sellerName) {
-        ArrayList<GoodsEntity> goodslist = new ArrayList<GoodsEntity>();
+        ArrayList<GoodsEntity> goodsList = new ArrayList<GoodsEntity>();
         if (goodsType.equals("全部")) {
-            goodslist = this.goodsDao.releaseOfGoods(sellerName);
-        } else goodslist = this.goodsDao.searchGoods(sellerName, goodsType);
+            goodsList = this.goodsDao.releaseOfGoods(sellerName);
+        } else goodsList = this.goodsDao.searchGoods(sellerName, goodsType);
         GoodsEntity a = new GoodsEntity();
-        for (int j = 0; j < goodslist.size(); j++) {
-            a = (GoodsEntity) goodslist.get(j);
+        for (int j = 0; j < goodsList.size(); j++) {
+            a = (GoodsEntity) goodsList.get(j);
             System.out.println(a.getGoodsName() + " " + a.getGoodsPrice() + " " + a.getSourceArea() + " " + a.getPicture());
         }
-        return goodslist;
+        return goodsList;
     }
 
     public GoodsEntity editGoods(String goodsID){
@@ -73,10 +73,10 @@ public class GoodsService extends HttpServlet {
     }
 
     public ArrayList<GoodsEntity> deleteGoods(String goodsID,String sellerName){
-        ArrayList<GoodsEntity> goodslist = new ArrayList<GoodsEntity>();
+        ArrayList<GoodsEntity> goodsList = new ArrayList<GoodsEntity>();
         this.goodsDao.deleteGoods(goodsID);
-        goodslist = this.goodsDao.releaseOfGoods(sellerName);
-        return goodslist;
+        goodsList = this.goodsDao.releaseOfGoods(sellerName);
+        return goodsList;
     }
 
     public String sellerID(String sellerName){

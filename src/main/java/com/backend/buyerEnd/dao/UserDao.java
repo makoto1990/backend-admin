@@ -25,7 +25,7 @@ public class UserDao {
         criteria.where(builder.equal(root.get("userName"), username));
         return session.createQuery(criteria).getSingleResult();
     }
-
+    @SuppressWarnings("unchecked")
     public List<UserEntity> listUser() {
         Session session = this.sessionFactory.openSession();
         return  session.createQuery("from UserEntity").list();

@@ -43,7 +43,7 @@ public class SellerDao{
 
     public SellerEntity getSellerById(String sellerId) {
         Session session = this.sessionFactory.openSession();
-        return (SellerEntity) session.load(SellerEntity.class, sellerId);
+        return session.load(SellerEntity.class, sellerId);
     }
 
 }

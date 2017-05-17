@@ -21,7 +21,7 @@ public class OrderDaoImpl implements OrderDao {
     public void removeOrder(String orderId) {
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        OrderEntity o = (OrderEntity) session.load(OrderEntity.class, orderId);
+        OrderEntity o = session.load(OrderEntity.class, orderId);
         if (o != null) {
             session.delete(o);
         }
@@ -38,6 +38,6 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public OrderEntity getOrderById(String orderId) {
         Session session = this.sessionFactory.openSession();
-        return (OrderEntity) session.load(OrderEntity.class, orderId);
+        return session.load(OrderEntity.class, orderId);
     }
 }

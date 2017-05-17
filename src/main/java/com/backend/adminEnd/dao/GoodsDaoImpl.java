@@ -27,14 +27,14 @@ public class GoodsDaoImpl implements GoodsDao {
     @Override
     public GoodsEntity getGoodsByGoodsId(String goodsId) {
         Session session = this.sessionFactory.openSession();
-        return (GoodsEntity) session.load(GoodsEntity.class, goodsId);
+        return session.load(GoodsEntity.class, goodsId);
     }
 
     @Override
     public void removeGoods(String goodsId) {
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        GoodsEntity g = (GoodsEntity) session.load(GoodsEntity.class, goodsId);
+        GoodsEntity g = session.load(GoodsEntity.class, goodsId);
         if (g != null) {
             session.delete(g);
         }

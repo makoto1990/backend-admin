@@ -12,7 +12,7 @@
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
-<body style="background:url(/resources/image/ground.jpg)">
+<body>
 <div class="container" style="background-color: #E5E5E5;">
     <div class="row">
         <div class="col-md-12">

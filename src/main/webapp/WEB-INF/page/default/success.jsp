@@ -5,6 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="3;URL='/'">
     <title>支农网上生鲜超市</title>
     <link rel="stylesheet"
           href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -15,14 +16,13 @@
 
 </head>
 <body style="background:url(/resources/image/ground.jpg)">
-<div class="container" style="background-color: #E5E5E5;">
-    <div class="row">
-        <div class="col-md-12">
-
-            <h4 align="center">您以注册成功请返回登陆<a href="/">返回登陆</a></h4>
-
+    <div class="container" style="background-color: #E5E5E5;">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 align="center">注册成功，3秒后自动跳转登录页面<a href="/">立即跳转</a></h4>
+            </div>
         </div>
     </div>
-</div>
+
 </body>
 </html>

@@ -45,6 +45,12 @@
                     jdbc:sqlserver://123.206.116.122\MSSQLSERVER:1433;databaseName=onlineMarket
                 </prop>
                 <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
+                <prop key="hibernate.c3p0.min_size">2</prop>
+                <prop key="hibernate.c3p0.timeout">5000</prop>
+                <prop key="hibernate.c3p0.max_statements">100</prop>
+                <prop key="hibernate.c3p0.idle_test_period">3000</prop>
+                <prop key="hibernate.c3p0.acquire_increment">2</prop>
+                <prop key="hibernate.c3p0.validate">false</prop>
             </props>
         </property>
     </bean>

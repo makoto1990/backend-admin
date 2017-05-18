@@ -63,7 +63,7 @@
         <div class="col-sm-7">
             <p class="form-control-static"><%=(userEntity.getPhone()==null?"暂未填写":userEntity.getPhone()) %>
             </p>
-        </div>
+        </div>-
     </div>
     <div class="form-group">
         <label class="col-sm-5 control-label">邮编</label>

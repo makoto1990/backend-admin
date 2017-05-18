@@ -13,7 +13,7 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
     private SessionFactory sessionFactory;
 
-    public void setSessionFactory(SessionFactory sf){
+    public void setSessionFactory(SessionFactory sf) {
         this.sessionFactory = sf;
     }
 
@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao {
     @SuppressWarnings("unchecked")
     public List<UserEntity> listUser() {
         Session session = this.sessionFactory.openSession();
-        return  session.createQuery("from UserEntity").list();
+        return session.createQuery("from UserEntity").list();
     }
 
     @Override
@@ -58,8 +58,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<String> idLists(){
+    public List<String> idLists() {
         Session session = this.sessionFactory.openSession();
-        return session.createQuery("select userId from UserEntity ",String.class).list();
+        return session.createQuery("select userId from UserEntity ", String.class).list();
     }
 }
